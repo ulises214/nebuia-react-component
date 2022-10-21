@@ -1,0 +1,35 @@
+{
+  "include": [
+    "src",
+    ".eslintrc.mjs",
+    "postcss.config.js",
+    "vite.config.ts",
+    "tailwind.config.js",
+    "rollup.config.js"
+  ],
+  "exclude": ["dist", "node_modules"],
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "ES2016",
+    "lib": ["dom", "esnext", "DOM.Iterable"],
+    "importHelpers": true,
+    "declaration": true,
+    "sourceMap": true,
+    "rootDir": "./src",
+    "outDir": "./dist/esm",
+    "strict": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
