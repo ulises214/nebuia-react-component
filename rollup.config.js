@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const typescript = require('@rollup/plugin-typescript');
 const postcss = require('rollup-plugin-postcss');
 
