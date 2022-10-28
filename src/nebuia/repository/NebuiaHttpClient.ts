@@ -98,9 +98,7 @@ export class NebuiaHttpClient {
       body: multipart,
       method: 'post',
       keys,
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
+      headers: {},
     });
   }
 
