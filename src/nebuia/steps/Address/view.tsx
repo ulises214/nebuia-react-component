@@ -83,10 +83,10 @@ export const AddressView: FC<AddressViewProps> = (con) => {
       )}
       {con.showNext && (
         <div className="flex flex-col w-full gap-6 justify-evenly xs:flex-row">
-          <Button variant="outline" onClick={() => void con.back()}>
+          <Button center variant="outline" onClick={() => void con.back()}>
             Subir otro documento
           </Button>
-          <Button variant="primary" onClick={() => void con.next()}>
+          <Button center variant="primary" onClick={() => void con.next()}>
             Siguiente
           </Button>
         </div>

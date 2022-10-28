@@ -47,10 +47,10 @@ export const DocumentPreviewView: FC<DocumentPreviewViewProps> = (con) => {
       </div>
       <SizedBox height="s15" />
       <div className="flex flex-col w-full gap-4 xs:flex-row justify-evenly">
-        <Button onClick={() => void con.back()} variant="outline">
+        <Button center onClick={() => void con.back()} variant="outline">
           Capturar nuevamente
         </Button>
-        <Button variant="primary" onClick={() => void con.confirm()}>
+        <Button center variant="primary" onClick={() => void con.confirm()}>
           Confirmar
         </Button>
       </div>
