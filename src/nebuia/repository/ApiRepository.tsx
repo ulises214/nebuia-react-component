@@ -6,7 +6,7 @@ import { FormFile } from '../models/FormFile';
 import { IKYC } from '../models/Ikyc';
 import { NebuiaKeys } from '../models/Keys';
 import { NebuiaApiResponse } from './ApiResponse';
-import { AnaliceIDResponse, GetCompanyKeysResponse } from './ApiResponses';
+import { GetCompanyKeysResponse } from './ApiResponses';
 import { NebuiaHttpClient } from './NebuiaHttpClient';
 
 type CommonProps = {
@@ -47,7 +47,7 @@ type NebuiaApiRepositoryI = {
   ): Promise<NebuiaApiResponse<number>>;
   analiceID(
     arg0: CommonProps & { img: Blob },
-  ): Promise<NebuiaApiResponse<AnaliceIDResponse>>;
+  ): Promise<NebuiaApiResponse<{ image: string }>>;
   uploadID<T>(
     arg0: CommonProps & { document: NebuiaDocument },
   ): Promise<NebuiaApiResponse<T>>;

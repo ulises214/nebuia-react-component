@@ -26,7 +26,7 @@ type IContext = {
   view: Optional<JSX.Element>;
   loadSteps: ParamCallback<NebuiaKeys, Promise<void>>;
   loading: boolean;
-  onFinish: VoidCallback;
+  onFinish: ParamCallback<string, Promise<void>>;
   finishStep: VoidCallback;
   emailValue: Optional<string>;
   phoneValue: Optional<string>;
@@ -35,7 +35,7 @@ export type NebuiaStepsContextProviderProps = {
   kyc?: string;
   email?: string;
   phone?: string;
-  onFinish: VoidCallback;
+  onFinish: ParamCallback<string, Promise<void>>;
   getKeys: ValueCallback<Promise<NebuiaKeys | string>>;
 };
 
@@ -60,7 +60,7 @@ export const NebuiaStepsContextProvider: FC<
     });
     if (response.status) {
       if (response.payload.steps.every((s) => s.status)) {
-        return onFinish();
+        return onFinish(report);
       }
       setSteps(response.payload);
       setLoading(false);
