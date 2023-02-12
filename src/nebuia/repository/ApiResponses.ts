@@ -11,9 +11,3 @@ export type GetThemeCompanyResponse = {
   secondary_color?: string;
   dark_mode?: boolean;
 };
-export type AnaliceIDResponse =
-  | {
-      type: string;
-      image: string;
-    }
-  | string;

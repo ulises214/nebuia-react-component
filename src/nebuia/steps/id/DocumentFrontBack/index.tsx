@@ -4,8 +4,8 @@ import { Optional } from '../../../../lib/common/Optional';
 import { useNebuiaStepsContext } from '../../../context/NebuiaStepsContext';
 import { useNebuiaStepsDocumentContext } from '../../../context/NebuiaStepsDocumentContext';
 import { DocumentSection } from '../../../models/Document';
-import { DocumentDecodedUtils } from '../../../models/DocumentDecoded';
 import { NebuiaApiRepository } from '../../../repository/ApiRepository';
+import { getBlobFromBase64 } from '../../../utils/BlobWindow';
 import { deviceType } from '../../../utils/DeviceType';
 import { DocumentPreview } from '../Preview';
 import { Selection } from '../Selection';
@@ -44,25 +44,14 @@ export const DocumentFrontBack: FC<{ section: DocumentSection }> = ({
 
         return;
       }
-      const decoded = DocumentDecodedUtils.fromJson(response.payload);
-      // check if image contains valid document
-      if (!decoded.valid) {
-        _showError('Tipo de documento no reconocido.');
+
+      const decoded = getBlobFromBase64(response.payload.image);
+      if (!decoded) {
+        _showError('Error al obtener documento.');
 
         return;
       }
-      // set document type found in image
-      const type = decoded.type;
-      // check match layer
-      if (
-        type !==
-        nebuiaDocument.layers[section === DocumentSection.FRONT ? 0 : 1]
-      ) {
-        _showError('El documento proporcionado no corresponde al requerido.');
-
-        return;
-      }
-      addImage({ image: decoded.image, original });
+      addImage({ image: decoded, original });
       con.changeView(<DocumentPreview section={section} />);
     },
     [_showError, addImage, con, nebuiaDocument.layers, section],

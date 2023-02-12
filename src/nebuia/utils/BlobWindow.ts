@@ -40,3 +40,13 @@ export const optionalBlobLink = (
 
   return getBlobLink(blob, type);
 };
+
+export const getBlobFromBase64 = (base64: string): Blob | undefined => {
+  try {
+    const buffer = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+
+    return new Blob([buffer], { type: 'image/jpeg' });
+  } catch (e) {
+    return undefined;
+  }
+};
