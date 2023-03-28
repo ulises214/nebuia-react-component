@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
+import Button from '../../../components/atoms/buttons/Button';
 import { DoubleParamCallback } from '../../../lib/common/VoidCallback';
-import Button from '../../../lib/components/atoms/buttons/Button';
 import { P } from '../atoms';
 import { ListTile } from './ListTile';
 
@@ -13,7 +13,7 @@ type AddressItemProps = {
 };
 export const AddressItem: FC<AddressItemProps> = (props) => {
   return (
-    <div className="w-full p-1 border border-gray-400 rounded-t-sm">
+    <div className="w-full rounded-t-sm border border-gray-400 p-1">
       <ListTile
         className="p-1"
         title={<P small>{props.content}</P>}

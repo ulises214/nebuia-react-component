@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 
+import Button from '../../../../components/atoms/buttons/Button';
+import NextImage from '../../../../components/molecules/NextImage';
 import { Optional } from '../../../../lib/common/Optional';
 import { VoidCallback } from '../../../../lib/common/VoidCallback';
-import Button from '../../../../lib/components/atoms/buttons/Button';
-import NextImage from '../../../../lib/components/molecules/NextImage';
 import { H1, P, SizedBox } from '../../../components/atoms';
 import { useNebuiaStepsDocumentContext } from '../../../context/NebuiaStepsDocumentContext';
 import { DocumentSection } from '../../../models/Document';
@@ -33,7 +33,7 @@ export const DocumentPreviewView: FC<DocumentPreviewViewProps> = (con) => {
         legibles. Sin borrosidad ni deslumbramiento
       </P>
       <SizedBox height="s15" />
-      <div className="flex justify-center w-full">
+      <div className="flex w-full justify-center">
         {url && (
           <NextImage
             useSkeleton
@@ -41,12 +41,12 @@ export const DocumentPreviewView: FC<DocumentPreviewViewProps> = (con) => {
             src={url}
             width={1920}
             height={1080}
-            className="w-full h-auto max-w-xs"
+            className="h-auto w-full max-w-xs"
           />
         )}
       </div>
       <SizedBox height="s15" />
-      <div className="flex flex-col w-full gap-4 xs:flex-row justify-evenly">
+      <div className="flex w-full flex-col justify-evenly gap-4 xs:flex-row">
         <Button center onClick={() => void con.back()} variant="outline">
           Capturar nuevamente
         </Button>

@@ -10,7 +10,7 @@ export const NoteBox: FC<NoteBoxProps> = (props) => {
     <SizedBox width="s400" className="flex flex-col justify-start">
       <SizedBox
         width="s60"
-        className="flex items-center justify-center rounded-lg bg-secondary-500"
+        className="flex items-center justify-center rounded-lg"
       >
         <P center small className="!text-white">
           Nota

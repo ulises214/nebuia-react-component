@@ -1,4 +1,4 @@
-import clsxm from '../../common/utils/clsxm';
+import clsxm from '../../lib/common/utils/clsxm';
 
 enum SkeletonColor {
   'blue',

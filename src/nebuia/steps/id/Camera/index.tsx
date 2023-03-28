@@ -2,15 +2,15 @@ import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import Webcam from 'react-webcam';
 
+import Button from '../../../../components/atoms/buttons/Button';
+import { IconButton } from '../../../../components/atoms/buttons/IconButton';
+import { RawButton } from '../../../../components/atoms/buttons/RawButton';
 import { Optional } from '../../../../lib/common/Optional';
 import clsxm from '../../../../lib/common/utils/clsxm';
 import {
   ParamCallback,
   VoidCallback,
 } from '../../../../lib/common/VoidCallback';
-import Button from '../../../../lib/components/atoms/buttons/Button';
-import { IconButton } from '../../../../lib/components/atoms/buttons/IconButton';
-import { RawButton } from '../../../../lib/components/atoms/buttons/RawButton';
 import { H1, LoaderIndicator, P, SizedBox } from '../../../components/atoms';
 import { Permissions, PermissionsCamera } from '../../../components/molecules';
 
@@ -33,11 +33,11 @@ const Controls: FC<{ action: VoidCallback; close: VoidCallback }> = ({
   close,
 }) => {
   return (
-    <div className="absolute bottom-0 right-0 left-0 flex h-[27%] flex-col items-center justify-center rounded-t-3xl bg-black opacity-50">
+    <div className="absolute inset-x-0 bottom-0 flex h-[27%] flex-col items-center justify-center rounded-t-3xl bg-black opacity-50">
       <div className="flex items-center justify-between">
-        <div className="flex-shrink"></div>
-        <div className="flex-shrink"></div>
-        <div className="flex flex-col items-center flex-shrink-0">
+        <div className="shrink"></div>
+        <div className="shrink"></div>
+        <div className="flex shrink-0 flex-col items-center">
           <SizedBox height="s60" width="s60">
             <RawButton
               className="p-4"
@@ -50,9 +50,9 @@ const Controls: FC<{ action: VoidCallback; close: VoidCallback }> = ({
             Pulsa para capturar imagen
           </P>
         </div>
-        <div className="flex-shrink"></div>
+        <div className="shrink"></div>
         <SizedBox
-          className="flex flex-col items-center justify-center flex-shrink-0"
+          className="flex shrink-0 flex-col items-center justify-center"
           height="s30"
           width="s30"
         >
@@ -102,7 +102,7 @@ export const CaptureDocument: FC<CaptureDocumentProps> = (con) => {
   }, [con]);
 
   return (
-    <div className="relative flex flex-col items-center justify-start w-full h-full">
+    <div className="relative flex h-full w-full flex-col items-center justify-start">
       <Webcam
         screenshotFormat="image/jpeg"
         onUserMediaError={(e) => {
@@ -140,8 +140,8 @@ export const CaptureDocument: FC<CaptureDocumentProps> = (con) => {
           <LoaderIndicator />
         </div>
       )}
-      <div className="absolute flex flex-col items-start pt-5 pl-5 pr-10">
-        <div className="flex justify-between w-full">
+      <div className="absolute flex flex-col items-start pl-5 pr-10 pt-5">
+        <div className="flex w-full justify-between">
           <H1
             className={clsxm(state === PermissionsCamera.DONE && '!text-white')}
           >

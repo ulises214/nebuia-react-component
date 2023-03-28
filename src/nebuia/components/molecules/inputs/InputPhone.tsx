@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
+import NextImage from '../../../../components/molecules/NextImage';
 import clsxm from '../../../../lib/common/utils/clsxm';
-import NextImage from '../../../../lib/components/molecules/NextImage';
 import { P, SizedBox } from '../../atoms';
 import { InputProps, InputWrapper } from './InputWrapper';
 

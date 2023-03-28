@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
-import clsxm from '../../../common/utils/clsxm';
+import clsxm from '../../../lib/common/utils/clsxm';
 
 enum ButtonVariant {
   'primary',

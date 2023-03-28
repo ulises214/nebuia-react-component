@@ -24,7 +24,7 @@ export const DocumentPreview: FC<{ section: DocumentSection }> = ({
   const back = useCallback(() => {
     void popImage();
     indexCon.changeView(<DocumentFrontBack section={section} />);
-  }, [popImage, indexCon, section]);
+  }, [indexCon, popImage, section]);
 
   return <DocumentPreviewView {...{ confirm, back, section }} />;
 };

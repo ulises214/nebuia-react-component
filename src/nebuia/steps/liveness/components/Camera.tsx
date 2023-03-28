@@ -102,7 +102,7 @@ export const FaceAnalyzerCamera: FC<FaceAnalyzerCameraProps> = (con) => {
         Sitúate en un lugar con buena luz y coloca tu rostro en el centro de el
         circulo, éste se pondrá verde si la prueba es correcta.
       </P>
-      <div className="pt-5 pb-2">
+      <div className="pb-2 pt-5">
         <div
           className={clsxm(
             'aspect-square w-full max-w-xs',

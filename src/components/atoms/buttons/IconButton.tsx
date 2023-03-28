@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, forwardRef } from 'react';
 
-import clsxm from '../../../common/utils/clsxm';
+import clsxm from '../../../lib/common/utils/clsxm';
 
 type IconButtonProps = ComponentPropsWithRef<'button'>;
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(

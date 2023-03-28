@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from 'react';
 
+import Button from '../../../../components/atoms/buttons/Button';
+import NextImage from '../../../../components/molecules/NextImage';
 import { Optional } from '../../../../lib/common/Optional';
 import { VoidCallback } from '../../../../lib/common/VoidCallback';
-import Button from '../../../../lib/components/atoms/buttons/Button';
-import NextImage from '../../../../lib/components/molecules/NextImage';
 import { H1, LoaderIndicator, P, SizedBox } from '../../../components/atoms';
 import { useNebuiaStepsDocumentContext } from '../../../context/NebuiaStepsDocumentContext';
 import { getBlobLink, removeBlobLink } from '../../../utils/BlobWindow';

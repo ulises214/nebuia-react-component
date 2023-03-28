@@ -23,7 +23,7 @@ export const DocumentViewCamera: FC<DocumentViewProps> = (con) => {
         loading={con.isUploading}
       />
       {con.error && (
-        <div className="p-2 bg-red-400 rounded-sm">
+        <div className="rounded-sm bg-red-400 p-2">
           <P center className="!text-white" small>
             {con.error}
           </P>

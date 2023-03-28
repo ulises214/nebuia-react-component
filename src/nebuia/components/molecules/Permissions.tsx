@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { BiErrorCircle, BiHelpCircle } from 'react-icons/bi';
 import { MdDone, MdOutlineDeviceUnknown } from 'react-icons/md';
 
-import { IconButton } from '../../../lib/components/atoms/buttons/IconButton';
+import { IconButton } from '../../../components/atoms/buttons/IconButton';
 import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
 import { LoaderIndicator } from '../atoms';
 import { ListTile } from './ListTile';
@@ -60,7 +60,7 @@ export const Permissions: FC<PermissionsProps> = ({ permission }) => {
   const { theme } = useNebuiaThemeContext();
 
   return (
-    <div className="border border-gray-400 rounded-sm">
+    <div className="rounded-sm border border-gray-400">
       <ListTile
         leading={<State permission={permission} />}
         title={getTitle(permission)}

@@ -221,7 +221,7 @@ export const NebuiaApiRepository: NebuiaApiRepositoryI = {
       keys,
       report,
       path: 'services/address',
-      body: JSON.parse(JSON.stringify(address)),
+      body: JSON.parse(JSON.stringify(address)) as Record<string, unknown>,
     });
   },
   // get face image

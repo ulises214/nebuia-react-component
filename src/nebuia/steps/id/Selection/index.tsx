@@ -17,7 +17,7 @@ const SelectionView: FC<SelectionViewProps> = ({ onID }) => {
       <SizedBox height="s10" />
       <P center>Selecciona el tipo de documento que te gustaría usar</P>
       <SizedBox height="s15" />
-      <div className="flex flex-col w-full p-2">
+      <div className="flex w-full flex-col p-2">
         <SelectionID
           icon="https://i.ibb.co/GTmYrwL/id-icon.png"
           title="INE"

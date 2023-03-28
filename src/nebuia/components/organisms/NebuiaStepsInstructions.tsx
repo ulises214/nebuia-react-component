@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
+import NextImage from '../../../components/molecules/NextImage';
 import clsxm from '../../../lib/common/utils/clsxm';
 import { ParamCallback } from '../../../lib/common/VoidCallback';
-import NextImage from '../../../lib/components/molecules/NextImage';
 import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
 import { CompleteStep } from '../../models/CompleteStep';
 import { H1 } from '../atoms';

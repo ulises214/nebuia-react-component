@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
+import Button from '../../../components/atoms/buttons/Button';
 import { ValueCallback, VoidCallback } from '../../../lib/common/VoidCallback';
-import Button from '../../../lib/components/atoms/buttons/Button';
 import { H1, LoaderIndicator, P, SizedBox } from '../../components/atoms';
 import {
   InputEmail,

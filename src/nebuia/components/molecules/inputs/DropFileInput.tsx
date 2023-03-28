@@ -92,7 +92,7 @@ export const DropFileInput: FC<DropFileInputProps> = ({
           dragging && 'border-primary-400',
         )}
       >
-        <span className="flex flex-col items-center space-x-2 justify-evenly">
+        <span className="flex flex-col items-center justify-evenly space-x-2">
           <AiOutlineCloudUpload
             style={{
               color: !dragging ? theme.text : undefined,

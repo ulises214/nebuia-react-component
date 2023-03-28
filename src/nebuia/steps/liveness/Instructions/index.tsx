@@ -1,7 +1,7 @@
 import { FC, useCallback } from 'react';
 
-import Button from '../../../../lib/components/atoms/buttons/Button';
-import NextImage from '../../../../lib/components/molecules/NextImage';
+import Button from '../../../../components/atoms/buttons/Button';
+import NextImage from '../../../../components/molecules/NextImage';
 import { H1, P, SizedBox } from '../../../components/atoms';
 import { useNebuiaStepsContext } from '../../../context/NebuiaStepsContext';
 import { FaceAnalyzer } from '../index';

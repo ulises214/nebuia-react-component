@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
+import Button from '../../../components/atoms/buttons/Button';
 import { Optional } from '../../../lib/common/Optional';
 import {
   DoubleParamCallback,
   ParamCallback,
   VoidCallback,
 } from '../../../lib/common/VoidCallback';
-import Button from '../../../lib/components/atoms/buttons/Button';
 import { H1, LoaderIndicator, P, SizedBox } from '../../components/atoms';
 import { AddressInput, DropFileInput } from '../../components/molecules';
 import { Address } from '../../models/Address';
@@ -57,7 +57,7 @@ export const AddressView: FC<AddressViewProps> = (con) => {
       )}
       <SizedBox height="s5" />
       {con.showError && (
-        <div className="w-full p-2 bg-red-400 rounded-sm">
+        <div className="w-full rounded-sm bg-red-400 p-2">
           <P center className="!text-white" small>
             {con.error ?? 'Error'}
           </P>
@@ -82,7 +82,7 @@ export const AddressView: FC<AddressViewProps> = (con) => {
         </div>
       )}
       {con.showNext && (
-        <div className="flex flex-col w-full gap-6 justify-evenly xs:flex-row">
+        <div className="flex w-full flex-col justify-evenly gap-6 xs:flex-row">
           <Button center variant="outline" onClick={() => void con.back()}>
             Subir otro documento
           </Button>

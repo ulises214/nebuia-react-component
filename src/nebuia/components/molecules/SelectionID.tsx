@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 
+import { IconButton } from '../../../components/atoms/buttons/IconButton';
+import NextImage from '../../../components/molecules/NextImage';
 import { VoidCallback } from '../../../lib/common/VoidCallback';
-import { IconButton } from '../../../lib/components/atoms/buttons/IconButton';
-import NextImage from '../../../lib/components/molecules/NextImage';
 import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
 import { ListTile } from './ListTile';
 
@@ -22,7 +22,7 @@ export const SelectionID: FC<SelectionIDProps> = ({
   const { theme } = useNebuiaThemeContext();
 
   return (
-    <div className="border border-gray-400 rounded-sm">
+    <div className="rounded-sm border border-gray-400">
       <ListTile
         className="p-2"
         leading={

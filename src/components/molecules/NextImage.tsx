@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import clsxm from '../../common/utils/clsxm';
+import clsxm from '../../lib/common/utils/clsxm';
 
 type NextImageProps = {
   useSkeleton?: boolean;

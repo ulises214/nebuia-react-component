@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
+import Button from '../../../components/atoms/buttons/Button';
 import { ValueCallback, VoidCallback } from '../../../lib/common/VoidCallback';
-import Button from '../../../lib/components/atoms/buttons/Button';
 import { H1, LoaderIndicator, P, SizedBox } from '../../components/atoms';
 import {
   InputPhone,
@@ -49,7 +49,7 @@ export const PhoneView: FC<PhoneViewProps> = ({
   };
 
   return (
-    <div className="flex flex-col items-center overflow-y-auto scroll-style">
+    <div className="scroll-style flex flex-col items-center overflow-y-auto">
       <SizedBox height="s35" />
       <H1 center>Verifica tu número de teléfono</H1>
       <SizedBox height="s15" />

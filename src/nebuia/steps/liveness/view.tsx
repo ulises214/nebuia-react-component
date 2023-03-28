@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { AiFillCheckCircle } from 'react-icons/ai';
 
 import { ParamCallback, VoidCallback } from '../../../lib/common/VoidCallback';
-import Button from '../../../lib/components/atoms/buttons/Button';
+import Button from '../../../components/atoms/buttons/Button';
 import { H1, P, SizedBox } from '../../components/atoms';
 import { ListTile } from '../../components/molecules';
 import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';

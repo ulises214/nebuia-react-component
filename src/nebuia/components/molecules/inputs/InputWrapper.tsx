@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
+import Button from '../../../../components/atoms/buttons/Button';
 import { Optional } from '../../../../lib/common/Optional';
 import clsxm from '../../../../lib/common/utils/clsxm';
-import Button from '../../../../lib/components/atoms/buttons/Button';
 import { useNebuiaThemeContext } from '../../../context/NebuiaThemeContext';
 import { fancyTimeFormat } from '../../../utils/fancyTimer';
 
