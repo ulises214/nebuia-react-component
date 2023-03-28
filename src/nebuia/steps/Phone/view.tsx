@@ -49,7 +49,7 @@ export const PhoneView: FC<PhoneViewProps> = ({
   };
 
   return (
-    <div className="scroll-style flex flex-col items-center overflow-y-auto">
+    <div className="flex flex-col items-center overflow-y-auto">
       <SizedBox height="s35" />
       <H1 center>Verifica tu número de teléfono</H1>
       <SizedBox height="s15" />

@@ -9,14 +9,11 @@ import {
 import Swal from 'sweetalert2';
 
 import { Optional } from '../../lib/common/Optional';
-import {
-  ParamCallback,
-  ValueCallback,
-  VoidCallback,
-} from '../../lib/common/VoidCallback';
+import { ParamCallback, ValueCallback } from '../../lib/common/VoidCallback';
 import { CompleteSteps } from '../models/CompletedSteps';
 import { NebuiaKeys } from '../models/Keys';
 import { NebuiaApiRepository } from '../repository/ApiRepository';
+import { useNebuiaThemeContext } from './NebuiaThemeContext';
 
 type IContext = {
   steps: Optional<CompleteSteps>;
@@ -27,7 +24,7 @@ type IContext = {
   loadSteps: ParamCallback<NebuiaKeys, Promise<void>>;
   loading: boolean;
   onFinish: ParamCallback<string, Promise<void>>;
-  finishStep: VoidCallback;
+  finishStep: VoidFunction;
   emailValue: Optional<string>;
   phoneValue: Optional<string>;
 };
@@ -43,6 +40,7 @@ const context = createContext<IContext>({} as IContext);
 export const NebuiaStepsContextProvider: FC<
   PropsWithChildren<NebuiaStepsContextProviderProps>
 > = ({ kyc, children, onFinish, email, phone, getKeys }) => {
+  const { setColorScheme, setDefaultColorScheme } = useNebuiaThemeContext();
   const [view, setView] = useState<Optional<JSX.Element>>();
   const [report, setReport] = useState(kyc ?? '');
   const [keys, setKeys] = useState<NebuiaKeys>({
@@ -54,10 +52,23 @@ export const NebuiaStepsContextProvider: FC<
   const [loading, setLoading] = useState(true);
   const loadSteps = async (keys: NebuiaKeys, paramReport = '') => {
     setLoading(true);
-    const response = await NebuiaApiRepository.getStepsFromReport({
-      keys,
-      report: paramReport || report,
-    });
+    const [response, themeResponse] = await Promise.all([
+      NebuiaApiRepository.getStepsFromReport({
+        keys,
+        report: paramReport || report,
+      }),
+      NebuiaApiRepository.getCompanyTheme(keys),
+    ]);
+    if (themeResponse.status) {
+      const theme = themeResponse.payload;
+      setColorScheme({
+        dark: theme.dark_mode,
+        primary: theme.primary_color,
+        secondary: theme.secondary_color,
+      });
+    } else {
+      setDefaultColorScheme();
+    }
     if (response.status) {
       if (response.payload.steps.every((s) => s.status)) {
         return onFinish(report);
@@ -71,15 +82,15 @@ export const NebuiaStepsContextProvider: FC<
     await Swal.fire({
       icon: 'error',
       title: 'Error al cargar los pasos',
-      text: response.messages,
+      text: response.payload,
       confirmButtonText: 'Reintentar',
     });
 
     await loadSteps(keys);
   };
-  const finishStep = async () => {
+  const finishStep = () => {
     setView(undefined);
-    await loadSteps(keys);
+    loadSteps(keys).catch(console.error);
   };
   const loadReport = async (keys: NebuiaKeys): Promise<string> => {
     if (report) {

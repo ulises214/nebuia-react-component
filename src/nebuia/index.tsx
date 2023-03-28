@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+import clsxm from '../lib/common/utils/clsxm';
 import { LoaderIndicator } from './components/atoms';
 import { NebuiaStepsInstructions } from './components/organisms/NebuiaStepsInstructions';
 import {
@@ -8,20 +9,19 @@ import {
   useNebuiaStepsContext,
 } from './context/NebuiaStepsContext';
 import { NebuiaStepsDocumentContextProvider } from './context/NebuiaStepsDocumentContext';
-import { NebuiaThemeContextProvider } from './context/NebuiaThemeContext';
+import { ThemeProvider } from './context/NebuiaThemeContext';
 import { CompleteStep } from './models/CompleteStep';
 import { Address } from './steps/Address';
-import { Email } from './steps/Email';
+import { EmailPhone } from './steps/EmailPhone/view';
 import { Selection } from './steps/id/Selection';
 import { FaceInstruction } from './steps/liveness/Instructions';
-import { Phone } from './steps/Phone';
 
 const getStep = (step: CompleteStep) => {
   if (step.name === 'email') {
-    return <Email />;
+    return <EmailPhone type="email" />;
   }
   if (step.name === 'phone') {
-    return <Phone />;
+    return <EmailPhone type="phone" />;
   }
   if (step.name === 'id') {
     return <Selection />;
@@ -61,20 +61,22 @@ export const Content: FC = () => {
   );
 };
 
-export const NebuiaStepsList: FC<NebuiaStepsContextProviderProps> = ({
-  kyc,
-  onFinish,
-  email,
-  phone,
-  getKeys,
-}) => {
+export const NebuiaStepsList: FC<
+  NebuiaStepsContextProviderProps & {
+    enableBackground?: boolean;
+  }
+> = ({ kyc, onFinish, email, phone, getKeys, enableBackground }) => {
   return (
-    <NebuiaStepsContextProvider {...{ kyc, onFinish, email, phone, getKeys }}>
-      <NebuiaStepsDocumentContextProvider>
-        <NebuiaThemeContextProvider>
-          <Content></Content>
-        </NebuiaThemeContextProvider>
-      </NebuiaStepsDocumentContextProvider>
-    </NebuiaStepsContextProvider>
+    <ThemeProvider>
+      <NebuiaStepsContextProvider {...{ kyc, onFinish, email, phone, getKeys }}>
+        <NebuiaStepsDocumentContextProvider>
+          <div
+            className={clsxm('p-1', enableBackground && 'bg-nebuia-background')}
+          >
+            <Content></Content>
+          </div>
+        </NebuiaStepsDocumentContextProvider>
+      </NebuiaStepsContextProvider>
+    </ThemeProvider>
   );
 };

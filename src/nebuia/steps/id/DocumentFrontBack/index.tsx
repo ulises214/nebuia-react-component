@@ -54,7 +54,7 @@ export const DocumentFrontBack: FC<{ section: DocumentSection }> = ({
       addImage({ image: decoded, original });
       con.changeView(<DocumentPreview section={section} />);
     },
-    [_showError, addImage, con, nebuiaDocument.layers, section],
+    [_showError, addImage, con, section],
   );
 
   // on file drag

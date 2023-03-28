@@ -82,7 +82,7 @@ export const AddressView: FC<AddressViewProps> = (con) => {
         </div>
       )}
       {con.showNext && (
-        <div className="flex w-full flex-col justify-evenly gap-6 xs:flex-row">
+        <div className="flex w-full flex-col-reverse justify-evenly gap-6 xs:flex-row">
           <Button center variant="outline" onClick={() => void con.back()}>
             Subir otro documento
           </Button>

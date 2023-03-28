@@ -39,12 +39,14 @@ export const InputWrapper: FC<InputWrapperProps> = ({
   actionDisabled,
   countDown,
 }) => {
-  const { theme } = useNebuiaThemeContext();
+  const {
+    theme: { primary },
+  } = useNebuiaThemeContext();
 
   return (
     <div
       className={clsxm(
-        'flex h-12 w-full flex-row items-center justify-evenly rounded-tl-sm rounded-bl-sm rounded-tr-md rounded-br-md border',
+        'flex h-12 w-full flex-row items-center justify-evenly rounded-md border',
         error ? 'border-red-500' : 'border-gray-400',
       )}
     >
@@ -58,10 +60,11 @@ export const InputWrapper: FC<InputWrapperProps> = ({
           write(e.target.value);
         }}
         className={clsxm(
-          'disabled:bg-slate-200 disabled:text-slate-500 disabled:shadow-none',
-          '!focus:border-none h-full w-full border-none border-transparent active:border-none',
+          'disabled:bg-slate-200 disabled:text-slate-500 disabled:shadow-none rounded-md outline-none',
+          '!focus:border-none h-full w-full border-none border-transparent active:border-none focus:ring-nebuia-primary-500',
+          'bg-nebuia-background',
         )}
-        style={{ color: theme.text }}
+        style={{ color: primary }}
       />
       {action && (
         <div className="h-full">

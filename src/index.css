@@ -3,26 +3,32 @@
 @tailwind utilities;
 :root {
   /* #region  /**=========== Primary Color =========== */
-  --tw-color-primary-50: 166 156 232;
-  --tw-color-primary-100: 151 139 229;
-  --tw-color-primary-200: 120 106 221;
-  --tw-color-primary-300: 90 73 214;
-  --tw-color-primary-400: 65 46 200;
-  --tw-color-primary-500: 54 38 167;
-  --tw-color-primary-600: 39 28 121;
-  --tw-color-primary-700: 24 17 76;
-  --tw-color-primary-800: 10 7 30;
-  --tw-color-primary-900: 0 0 0;
-  --color-primary-50: rgb(var(--tw-color-primary-50)); /* #A69CE8 */
-  --color-primary-100: rgb(var(--tw-color-primary-100)); /* #978BE5 */
-  --color-primary-200: rgb(var(--tw-color-primary-200)); /* #786ADD */
-  --color-primary-300: rgb(var(--tw-color-primary-300)); /* #5A49D6 */
-  --color-primary-400: rgb(var(--tw-color-primary-400)); /* #412EC8 */
-  --color-primary-500: rgb(var(--tw-color-primary-500)); /* #3626A7 */
-  --color-primary-600: rgb(var(--tw-color-primary-600)); /* #271C79 */
-  --color-primary-700: rgb(var(--tw-color-primary-700)); /* #18114C */
-  --color-primary-800: rgb(var(--tw-color-primary-800)); /* #0A071E */
-  --color-primary-900: rgb(var(--tw-color-primary-900)); /* #000000 */
+  --tw-nebuia-color-primary-50: 166 156 232; /* #a69ce8 */
+  --tw-nebuia-color-primary-100: 151 139 229; /* #978be5 */
+  --tw-nebuia-color-primary-200: 120 106 221; /* #786aed */
+  --tw-nebuia-color-primary-300: 90 73 214; /* #5a49d6 */
+  --tw-nebuia-color-primary-400: 65 46 200; /* #412ec8 */
+  --tw-nebuia-color-primary-500: 54 38 167; /* #3626a7 */
+  --tw-nebuia-color-primary-600: 39 28 121; /* #271879 */
+  --tw-nebuia-color-primary-700: 24 17 76; /* #18114c */
+  --tw-nebuia-color-primary-800: 10 7 30; /* #0a071e */
+  --tw-nebuia-color-primary-900: 0 0 0; /* #000000 */
+
+  /* #endregion */
+
+  /* #region  /**=========== Secondary Color =========== */
+  --tw-nebuia-color-secondary-50: /* #6847a2 */ 104 71 162;
+  --tw-nebuia-color-secondary-100: /* #5e4092 */ 94 64 146;
+  --tw-nebuia-color-secondary-200: /* #533982 */ 83 57 130;
+  --tw-nebuia-color-secondary-300: /* #493271 */ 73 50 113;
+  --tw-nebuia-color-secondary-400: /* #3e2b61 */ 62 43 97;
+  --tw-nebuia-color-secondary-500: /* #342451 */ 52 36 81;
+  --tw-nebuia-color-secondary-600: /* #2a1c41 */ 42 28 65;
+  --tw-nebuia-color-secondary-700: /* #1f1531 */ 31 21 49;
+  --tw-nebuia-color-secondary-800: /* #150e20 */ 21 14 32;
+  --tw-nebuia-color-secondary-900: /* #0a0710 */ 10 7 16;
+
+  --tw-nebuia-color-background: #fff;
 }
 @layer utilities {
   .animated-underline {

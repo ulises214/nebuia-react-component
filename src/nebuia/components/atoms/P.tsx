@@ -2,6 +2,7 @@ import { FC, PropsWithChildren } from 'react';
 
 import clsxm from '../../../lib/common/utils/clsxm';
 import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
+import { Theme } from '../../models/Theme';
 
 type PProps = {
   className?: string;
@@ -32,7 +33,7 @@ export const P: FC<PropsWithChildren<PProps>> = ({
       )}
       style={{
         color: secondary ? theme.textSecondary : theme.text,
-        fontSize: small ? theme.smallSize : theme.normalSize,
+        fontSize: small ? Theme.i.smallSize : Theme.i.normalSize,
       }}
     >
       {children}

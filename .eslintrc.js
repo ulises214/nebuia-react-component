@@ -44,7 +44,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-non-null-assertion': 'warn',
     'tailwindcss/classnames-order': 'error',
-    'tailwindcss/no-custom-classname': 'warn',
+    'tailwindcss/no-custom-classname': 'error',
     'tailwindcss/no-contradicting-classname': 'error',
     'import/no-unresolved': 'error',
     'prettier/prettier': [

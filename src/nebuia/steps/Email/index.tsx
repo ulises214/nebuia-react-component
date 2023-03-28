@@ -52,7 +52,7 @@ export const Email: FC = () => {
     setIsLoading(false);
     if (!response.status) {
       setErrorEmailNumber(true);
-      setErrorEmail(response.messages);
+      setErrorEmail(response.payload);
 
       return false;
     }
@@ -77,7 +77,7 @@ export const Email: FC = () => {
     setIsLoading(false);
     setErrorOTP(!_response.status);
     if (!errorOTP) {
-      await con.finishStep();
+      con.finishStep();
     }
   }, [code, con, errorOTP]);
 

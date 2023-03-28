@@ -106,7 +106,7 @@ export const DropFileInput: FC<DropFileInputProps> = ({
             <P small center secondary>
               {label}
             </P>
-            <P small center className="!text-primary-600 underline">
+            <P small center className="!text-nebuia-primary-600 underline">
               O busca el archivo
             </P>
           </div>

@@ -2,6 +2,7 @@ import { FC, PropsWithChildren } from 'react';
 
 import clsxm from '../../../lib/common/utils/clsxm';
 import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
+import { Theme } from '../../models/Theme';
 
 type H1Props = {
   className?: string;
@@ -17,7 +18,7 @@ export const H1: FC<PropsWithChildren<H1Props>> = ({
   return (
     <h1
       className={clsxm('font-bold', center && 'text-center', className)}
-      style={{ color: theme.text, fontSize: theme.titleSize }}
+      style={{ color: theme.text, fontSize: Theme.i.titleSize }}
     >
       {children}
     </h1>

@@ -32,15 +32,25 @@ const Tile: FC<{ name: Step; line: boolean; onClick: ParamCallback<Step> }> = ({
   line,
   onClick,
 }) => {
+  const {
+    theme: { dark },
+  } = useNebuiaThemeContext();
+
   return (
     <ListTile
       onClick={() => !name.disabled && onClick(name)}
       className={clsxm(
         'items-start justify-center py-1',
         !name.disabled && 'cursor-pointer',
-        !name.disabled && !name.status && 'hover:bg-gray-200',
+        !name.disabled &&
+          !name.status &&
+          (dark ? 'hover:bg-slate-700' : 'hover:bg-gray-200'),
         name.disabled && 'opacity-50',
-        name.status && 'bg-blue-100 opacity-100',
+        {
+          'opacity-100': name.status,
+          'bg-nebuia-primary-100': name.status && !dark,
+          'bg-nebuia-primary-700': name.status && dark,
+        },
       )}
       leading={
         <div

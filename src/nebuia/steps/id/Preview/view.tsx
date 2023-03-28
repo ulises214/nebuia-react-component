@@ -46,7 +46,7 @@ export const DocumentPreviewView: FC<DocumentPreviewViewProps> = (con) => {
         )}
       </div>
       <SizedBox height="s15" />
-      <div className="flex w-full flex-col justify-evenly gap-4 xs:flex-row">
+      <div className="flex w-full flex-col-reverse justify-evenly gap-4 xs:flex-row">
         <Button center onClick={() => void con.back()} variant="outline">
           Capturar nuevamente
         </Button>

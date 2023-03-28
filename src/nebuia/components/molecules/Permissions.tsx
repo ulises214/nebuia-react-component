@@ -27,7 +27,7 @@ const State: FC<PermissionsProps> = ({ permission }) => {
     return <MdOutlineDeviceUnknown className="text-black " size="35px" />;
   }
 
-  return <MdDone className="text-primary-500" size="35px" />;
+  return <MdDone className="text-nebuia-primary-500" size="35px" />;
 };
 const getTitle = (permission: PermissionsCamera): string => {
   switch (permission) {

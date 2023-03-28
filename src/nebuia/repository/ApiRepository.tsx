@@ -66,6 +66,16 @@ type NebuiaApiRepositoryI = {
   generateUrlSMS<T>(
     arg0: CommonProps & { phone: string },
   ): Promise<NebuiaApiResponse<T>>;
+  getCompanyTheme(keys: NebuiaKeys): Promise<
+    NebuiaApiResponse<{
+      dark_mode?: boolean;
+      primary_color?: string;
+      secondary_color?: string;
+    }>
+  >;
+  saveEmailPhone<T>(
+    arg0: CommonProps & { value: string; toEmail: boolean },
+  ): Promise<NebuiaApiResponse<T>>;
 };
 
 const client = new NebuiaHttpClient();
@@ -96,7 +106,7 @@ export const NebuiaApiRepository: NebuiaApiRepositoryI = {
       path: 'steps/company',
     });
     if (!response.status) {
-      return { status: false, messages: response.messages };
+      return { status: false, payload: response.payload };
     }
 
     return { status: true, payload: response.payload };
@@ -109,7 +119,7 @@ export const NebuiaApiRepository: NebuiaApiRepositoryI = {
       path: 'services/steps',
     });
     if (!response.status) {
-      return { status: false, messages: response.messages };
+      return { status: false, payload: response.payload };
     }
 
     return { status: true, payload: { steps: response.payload } };
@@ -136,6 +146,16 @@ export const NebuiaApiRepository: NebuiaApiRepositoryI = {
       body: { email },
     });
   },
+
+  async saveEmailPhone({ value, keys, report, toEmail }) {
+    return client.put({
+      keys,
+      report,
+      path: `services/${toEmail ? 'email' : 'phone'}`,
+      body: toEmail ? { email: value } : { phone: `+52${value}` },
+    });
+  },
+
   // sent OTP Code
   async generateOTPCode({ keys, report, toEmail }) {
     return client.get({
@@ -242,6 +262,14 @@ export const NebuiaApiRepository: NebuiaApiRepositoryI = {
       keys,
       report,
       path: `services/mobile/generate/${phone}`,
+    });
+  },
+
+  async getCompanyTheme(keys) {
+    return client.get({
+      keys,
+      report: '',
+      path: 'theme/company',
     });
   },
 };

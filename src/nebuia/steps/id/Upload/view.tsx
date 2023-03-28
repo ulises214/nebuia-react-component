@@ -55,9 +55,11 @@ export const UploadDocumentView: FC<UploadDocumentViewProps> = (con) => {
             nuevamente
           </P>
           <SizedBox height="s15" />
-          <Button variant="error" onClick={() => void con.back()}>
-            Intentar nuevamente
-          </Button>
+          <div className="flex justify-center">
+            <Button variant="error" onClick={() => void con.back()}>
+              Intentar nuevamente
+            </Button>
+          </div>
         </div>
       )}
       {con.next && (

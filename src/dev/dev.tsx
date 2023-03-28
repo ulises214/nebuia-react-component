@@ -18,8 +18,9 @@ root.render(
     <NebuiaStepsList
       onFinish={async (data) => {
         // eslint-disable-next-line no-console
-        await Promise.resolve(() => console.log('onFinish', data));
+        (await Promise.resolve(() => console.log('onFinish', data)))();
       }}
+      kyc="64234a10a99c19d28856c6b6"
       getKeys={() => {
         return Promise.resolve({
           apiKey: API_KEY,
