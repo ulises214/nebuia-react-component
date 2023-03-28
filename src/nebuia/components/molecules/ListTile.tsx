@@ -39,7 +39,7 @@ export const ListTile: FC<ListTileProps> = ({
       )}
     >
       {leading && <SizedBox width="s5" />}
-      {leading && <div className="flex-shrink-0">{leading}</div>}
+      {leading && <div className="shrink-0">{leading}</div>}
       <SizedBox width="s15" />
       <div className="flex-1">
         {typeof title === 'string' && (
@@ -55,7 +55,7 @@ export const ListTile: FC<ListTileProps> = ({
         )}
       </div>
       <SizedBox width="s15" />
-      {trailing && <div className="flex-shrink-0">{trailing}</div>}
+      {trailing && <div className="shrink-0">{trailing}</div>}
     </div>
   );
 };

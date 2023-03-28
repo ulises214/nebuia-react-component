@@ -15,8 +15,7 @@ export const DocumentFrontBack: FC<{ section: DocumentSection }> = ({
   section,
 }) => {
   const con = useNebuiaStepsContext();
-  const { document: nebuiaDocument, addImage } =
-    useNebuiaStepsDocumentContext();
+  const { addImage } = useNebuiaStepsDocumentContext();
 
   const [error, setError] = useState<Optional<string>>(undefined);
   const [isUploading, setIsUploading] = useState(false);

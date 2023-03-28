@@ -48,7 +48,7 @@ export const UploadDocument: FC = () => {
   // pass to next KYC step
   const confirm = useCallback(() => {
     _clearAll();
-    void indexCon.finishStep();
+    indexCon.finishStep();
   }, [_clearAll, indexCon]);
   // re upload all documents
   const back = useCallback(() => {

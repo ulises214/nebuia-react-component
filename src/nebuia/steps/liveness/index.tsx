@@ -38,7 +38,7 @@ export const FaceAnalyzer: FC = () => {
     [],
   );
   const finalize = useCallback(() => {
-    void indexCon.finishStep();
+    indexCon.finishStep();
   }, [indexCon]);
 
   return (

@@ -82,7 +82,7 @@ export const Phone: FC = () => {
     const error = !_response.status;
     setErrorOTP(error);
     if (!error) {
-      await con.finishStep();
+      con.finishStep();
     }
   }, [code, con]);
 

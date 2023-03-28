@@ -108,7 +108,7 @@ export const Address: FC = () => {
       address: [addressSelected],
       exact: true,
     });
-    await indexCon.finishStep();
+    indexCon.finishStep();
   }, [addressSelected, indexCon, saveAddress]);
   const back = useCallback(() => {
     setAddressI(undefined);

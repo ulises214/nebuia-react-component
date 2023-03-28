@@ -31,7 +31,7 @@ export class NebuiaHttpClient {
     } catch (error) {
       return {
         status: false,
-        messages:
+        payload:
           error instanceof Error
             ? ErrorMessages[error.message] ?? error.message
             : 'Error desconocido',
@@ -122,7 +122,7 @@ export class NebuiaHttpClient {
     } catch (error) {
       return {
         status: false,
-        messages:
+        payload:
           error instanceof Error
             ? ErrorMessages[error.message] ?? error.message
             : 'Error desconocido',
@@ -159,7 +159,7 @@ export class NebuiaHttpClient {
     } catch (error) {
       return {
         status: false,
-        messages:
+        payload:
           error instanceof Error
             ? ErrorMessages[error.message] ?? error.message
             : 'Error desconocido',
