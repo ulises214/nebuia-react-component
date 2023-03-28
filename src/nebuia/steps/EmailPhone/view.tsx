@@ -3,7 +3,7 @@ import validator from 'validator';
 
 import Button from '../../../components/atoms/buttons/Button';
 import { H1, LoaderIndicator, P, SizedBox } from '../../components/atoms';
-import { InputEmail, InputPin } from '../../components/molecules';
+import { InputEmail, InputPhone, InputPin } from '../../components/molecules';
 import { useNebuiaStepsContext } from '../../context/NebuiaStepsContext';
 import { useOtpCodeInput } from './index';
 
@@ -49,6 +49,10 @@ export const EmailPhone: FC<{ type: 'email' | 'phone' }> = ({ type }) => {
 
   const con = useNebuiaStepsContext();
 
+  const Input = type === 'email' ? InputEmail : InputPhone;
+
+  const defaultValue = type === 'email' ? con.emailValue : con.phoneValue;
+
   return (
     <div className="flex flex-col items-center">
       <SizedBox height="s35" />
@@ -69,9 +73,9 @@ export const EmailPhone: FC<{ type: 'email' | 'phone' }> = ({ type }) => {
         {type === 'email' ? 'Correo electrónico' : 'Número de teléfono'}
       </P>
       <SizedBox height="s5" />
-      <InputEmail
-        readonly={isLoading || !!con.emailValue}
-        value={con.emailValue ?? value}
+      <Input
+        readonly={isLoading || !!defaultValue}
+        value={defaultValue ?? value}
         action={saveValue}
         error={!!valueError}
         write={onChange}
@@ -95,7 +99,12 @@ export const EmailPhone: FC<{ type: 'email' | 'phone' }> = ({ type }) => {
       <SizedBox height="s10" />
       {showPin && (
         <div>
-          <Button isLoading={isLoading} variant="primary" onClick={saveOtp}>
+          <Button
+            disabled={isLoading || !!otpError}
+            isLoading={isLoading}
+            variant="primary"
+            onClick={saveOtp}
+          >
             Verificar
           </Button>
         </div>

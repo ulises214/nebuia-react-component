@@ -48,7 +48,7 @@ const Tile: FC<{ name: Step; line: boolean; onClick: ParamCallback<Step> }> = ({
         name.disabled && 'opacity-50',
         {
           'opacity-100': name.status,
-          'bg-nebuia-primary-100': name.status && !dark,
+          'bg-nebuia-primary-200': name.status && !dark,
           'bg-nebuia-primary-700': name.status && dark,
         },
       )}

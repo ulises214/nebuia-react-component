@@ -86,8 +86,9 @@ export const useOtpCodeInput = (props: OtpCodeInputProps): OtpCodeInput => {
       validateValue(value);
       setValue(value);
       setShowPin(false);
+      setRequested(false);
     },
-    [validateValue],
+    [setRequested, validateValue],
   );
 
   const onOtpChange = useCallback(

@@ -75,7 +75,7 @@ export const InputWrapper: FC<InputWrapperProps> = ({
             onClick={action}
           >
             {!countDown && 'Enviar'}
-            {countDown && fancyTimeFormat(countDown)}
+            {!!countDown && fancyTimeFormat(countDown)}
           </Button>
         </div>
       )}
