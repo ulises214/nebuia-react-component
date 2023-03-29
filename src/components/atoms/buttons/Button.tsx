@@ -64,16 +64,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               'disabled:bg-red-400 disabled:hover:bg-red-400',
             ],
             variant === 'primary' && [
-              'bg-nebuia-primary-500 text-white',
+              '!bg-nebuia-primary-500 text-white',
               'border border-nebuia-primary-600',
-              'hover:bg-nebuia-primary-600 hover:text-white',
-              'active:bg-nebuia-primary-500',
-              'disabled:bg-nebuia-primary-300 disabled:hover:bg-nebuia-primary-300',
+              'hover:!bg-nebuia-primary-600 hover:text-white',
+              'active:!bg-nebuia-primary-500',
+              'disabled:!bg-nebuia-primary-300 disabled:hover:!bg-nebuia-primary-300',
             ],
             variant === 'outline' && [
               'text-nebuia-primary-500',
               'border border-nebuia-primary-500',
-              'hover:bg-primary-50 active:bg-nebuia-primary-100 disabled:bg-nebuia-primary-100',
+              'hover:bg-primary-50 active:!bg-nebuia-primary-100 disabled:!bg-nebuia-primary-100',
               isDarkBg &&
                 'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
             ],
@@ -81,9 +81,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               'text-nebuia-primary-500',
               'shadow-none',
               !dark &&
-                'hover:bg-nebuia-primary-50 active:bg-nebuia-primary-100 disabled:bg-nebuia-primary-100',
+                'hover:!bg-nebuia-primary-50 active:!bg-nebuia-primary-100 disabled:!bg-nebuia-primary-100',
               dark &&
-                'hover:bg-nebuia-primary-700 active:bg-nebuia-primary-700 disabled:bg-nebuia-primary-700 hover:text-white',
+                'hover:!bg-nebuia-primary-700 active:!bg-nebuia-primary-700 disabled:!bg-nebuia-primary-700 hover:text-white',
               isDarkBg &&
                 'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
             ],

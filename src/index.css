@@ -14,6 +14,17 @@
   --tw-nebuia-color-primary-800: 10 7 30; /* #0a071e */
   --tw-nebuia-color-primary-900: 0 0 0; /* #000000 */
 
+  --color-nebuia-primary-50: rgb(var(--tw-nebuia-color-primary-50));
+  --color-nebuia-primary-100: rgb(var(--tw-nebuia-color-primary-100));
+  --color-nebuia-primary-200: rgb(var(--tw-nebuia-color-primary-200));
+  --color-nebuia-primary-300: rgb(var(--tw-nebuia-color-primary-300));
+  --color-nebuia-primary-400: rgb(var(--tw-nebuia-color-primary-400));
+  --color-nebuia-primary-500: rgb(var(--tw-nebuia-color-primary-500));
+  --color-nebuia-primary-600: rgb(var(--tw-nebuia-color-primary-600));
+  --color-nebuia-primary-700: rgb(var(--tw-nebuia-color-primary-700));
+  --color-nebuia-primary-800: rgb(var(--tw-nebuia-color-primary-800));
+  --color-nebuia-primary-900: rgb(var(--tw-nebuia-color-primary-900));
+
   /* #endregion */
 
   /* #region  /**=========== Secondary Color =========== */
@@ -27,6 +38,17 @@
   --tw-nebuia-color-secondary-700: /* #1f1531 */ 31 21 49;
   --tw-nebuia-color-secondary-800: /* #150e20 */ 21 14 32;
   --tw-nebuia-color-secondary-900: /* #0a0710 */ 10 7 16;
+
+  --color-nebuia-secondary-50: rgb(var(--tw-nebuia-color-secondary-50));
+  --color-nebuia-secondary-100: rgb(var(--tw-nebuia-color-secondary-100));
+  --color-nebuia-secondary-200: rgb(var(--tw-nebuia-color-secondary-200));
+  --color-nebuia-secondary-300: rgb(var(--tw-nebuia-color-secondary-300));
+  --color-nebuia-secondary-400: rgb(var(--tw-nebuia-color-secondary-400));
+  --color-nebuia-secondary-500: rgb(var(--tw-nebuia-color-secondary-500));
+  --color-nebuia-secondary-600: rgb(var(--tw-nebuia-color-secondary-600));
+  --color-nebuia-secondary-700: rgb(var(--tw-nebuia-color-secondary-700));
+  --color-nebuia-secondary-800: rgb(var(--tw-nebuia-color-secondary-800));
+  --color-nebuia-secondary-900: rgb(var(--tw-nebuia-color-secondary-900));
 
   --tw-nebuia-color-background: #fff;
 }
