@@ -19,7 +19,7 @@ export const FaceAnalyzer: FC = () => {
       if (!response.status) {
         return false;
       }
-      if (!(response.payload > 64)) {
+      if (!(response.payload > 30)) {
         return false;
       }
       const analiceResponse = await NebuiaApiRepository.analiceFace({
