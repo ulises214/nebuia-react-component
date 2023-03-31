@@ -1,11 +1,14 @@
 import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import Webcam from 'react-webcam';
 
-import { Optional } from '../../../../lib/common/Optional';
-import clsxm from '../../../../lib/common/utils/clsxm';
-import { ParamCallback } from '../../../../lib/common/VoidCallback';
-import { P } from '../../../components/atoms';
-import { Permissions, PermissionsCamera } from '../../../components/molecules';
+import { Optional } from '../../../../../lib/common/Optional';
+import clsxm from '../../../../../lib/common/utils/clsxm';
+import { ParamCallback } from '../../../../../lib/common/VoidCallback';
+import { P } from '../../../../components/atoms';
+import {
+  Permissions,
+  PermissionsCamera,
+} from '../../../../components/molecules';
 
 type FaceAnalyzerCameraProps = {
   capture: ParamCallback<Blob, Promise<boolean>>;
