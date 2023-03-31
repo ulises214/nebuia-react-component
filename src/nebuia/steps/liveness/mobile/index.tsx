@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import Swal from 'sweetalert2';
 
 import { Optional } from '../../../../lib/common/Optional';
 import { useNebuiaStepsContext } from '../../../context/NebuiaStepsContext';
@@ -13,11 +14,32 @@ export const FaceAnalyzerMobile = () => {
 
   const checkQuality = useCallback(
     async (image: Optional<File>): Promise<boolean> => {
+      if (
+        image &&
+        ![
+          'image/jpeg',
+          'image/png',
+          'image/jpg',
+          'image/webp',
+          'image/tiff',
+          'image/bmp',
+        ].includes(image.type)
+      ) {
+        void Swal.fire({
+          title: 'Error',
+          text: 'El archivo seleccionado no es una imagen',
+          icon: 'error',
+        });
+
+        return false;
+      }
+
       setCurrentImage(image);
       setIsLive(undefined);
       if (!image) {
         return false;
       }
+
       setLoading(true);
       const analiceResponse = await NebuiaApiRepository.analiceFace({
         img: image,

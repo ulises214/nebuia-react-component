@@ -4,6 +4,7 @@ import { AiFillCheckCircle } from 'react-icons/ai';
 import Button from '../../../../components/atoms/buttons/Button';
 import { H1, LoaderIndicator, P, SizedBox } from '../../../components/atoms';
 import { DropFileInput, ListTile } from '../../../components/molecules';
+import { getBlobLink } from '../../../utils/BlobWindow';
 
 type Props = {
   title: string;
@@ -27,16 +28,16 @@ export const FaceAnalyzerMobileView: FC<Props> = (con) => {
           onFileChange={con.onCapture}
         />
       )}
-      {/* {con.currentImage && (
+      {con.currentImage && (
         <img
           src={getBlobLink(
             con.currentImage,
             con.currentImage.type as 'image/png',
           )}
           alt="face"
-          className="h-40 w-40 rounded-full"
+          className="h-52 w-52 rounded-full object-cover"
         />
-      )} */}
+      )}
       <SizedBox height="s5" />
       {con.currentImage && (
         <div className="flex flex-col items-center">
