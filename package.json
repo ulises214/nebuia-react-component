@@ -27,6 +27,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-tailwindcss": "^3.10.1",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "gh-pages": "^5.0.0",
     "postcss": "^8.4.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -43,7 +44,9 @@
     "lint": "yarn lint:format && yarn lint:fix ",
     "build": "rollup -c ./rollup.config.js",
     "prepare": "yarn build",
-    "dev": "vite"
+    "dev": "vite",
+    "build:demo": "vite build --base /nebuia-react-component/ --outDir demo",
+    "deploy:demo": "yarn build:demo && gh-pages -d demo"
   },
   "husky": {
     "hooks": {

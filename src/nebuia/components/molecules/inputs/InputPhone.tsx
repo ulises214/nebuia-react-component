@@ -27,7 +27,9 @@ export const InputPhone: FC<InputProps> = ({
           <SizedBox width="s5" />
           <NextImage
             alt="Mexico flag"
-            src={'https://i.ibb.co/NYvQ95z/mexico-flag-icon-64.png'}
+            src={
+              'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAkCAIAAAC2bqvFAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u'
+            }
             width={64}
             height={36}
             className="w-6"
