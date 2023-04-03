@@ -27,13 +27,15 @@ export const DocumentViewFile: FC<DocumentViewProps> = (con) => {
       </div>
       <SizedBox height="s10" />
       <div className="p-2">
-        <DropFileInput
-          onFileChange={con.onFileChange}
-          id={con.section.toString()}
-          label={`Sube o arrastra al area punteada la imagen de la parte ${
-            con.section === DocumentSection.FRONT ? 'frontal' : 'trasera'
-          } de tu ${document.name === 'id' ? 'INE' : 'PASAPORTE'}`}
-        />
+        {!con.isUploading && (
+          <DropFileInput
+            onFileChange={con.onFileChange}
+            id={con.section.toString()}
+            label={`Sube o arrastra al area punteada la imagen de la parte ${
+              con.section === DocumentSection.FRONT ? 'frontal' : 'trasera'
+            } de tu ${document.name === 'id' ? 'INE' : 'PASAPORTE'}`}
+          />
+        )}
       </div>
       <SizedBox height="s10" />
       {con.error && (
