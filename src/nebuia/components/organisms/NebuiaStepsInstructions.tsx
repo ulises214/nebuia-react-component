@@ -109,8 +109,8 @@ const Tile: FC<{
       className={clsxm(
         'flex w-full items-start text-start gap-4 p-2',
         !name.disabled && {
-          'bg-teal-50': !dark,
-          'bg-slate-800': dark,
+          '!bg-teal-50': !dark,
+          '!bg-slate-800': dark,
         },
         !name.disabled &&
           !name.status && {
