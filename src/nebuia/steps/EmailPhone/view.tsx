@@ -2,7 +2,7 @@ import { FC } from 'react';
 import validator from 'validator';
 
 import Button from '../../../components/atoms/buttons/Button';
-import { H1, LoaderIndicator, P, SizedBox } from '../../components/atoms';
+import { LoaderIndicator, P, SizedBox } from '../../components/atoms';
 import { InputEmail, InputPhone, InputPin } from '../../components/molecules';
 import { useNebuiaStepsContext } from '../../context/NebuiaStepsContext';
 import { useOtpCodeInput } from './index';
@@ -54,14 +54,9 @@ export const EmailPhone: FC<{ type: 'email' | 'phone' }> = ({ type }) => {
   const defaultValue = type === 'email' ? con.emailValue : con.phoneValue;
 
   return (
-    <div className="flex flex-col items-center">
-      <SizedBox height="s35" />
-      <H1 center>
-        Verifica tu{' '}
-        {type === 'email' ? 'correo electrónico' : 'número de teléfono'}
-      </H1>
+    <>
       <SizedBox height="s15" />
-      <P bold center>
+      <P center>
         Enviaremos un código de verificación a tu{' '}
         {type === 'email'
           ? 'dirección de correo electrónico'
@@ -129,6 +124,6 @@ export const EmailPhone: FC<{ type: 'email' | 'phone' }> = ({ type }) => {
           </P>
         </>
       )}
-    </div>
+    </>
   );
 };

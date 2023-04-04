@@ -13,11 +13,28 @@ import {
 type FaceAnalyzerCameraProps = {
   capture: ParamCallback<Blob, Promise<boolean>>;
   isAlive: boolean;
+  image?: Blob;
 };
 const videoConstraints: MediaStreamConstraints = {
   audio: false,
   video: true,
 };
+
+const stopCampera = (
+  stream: MediaStream | null | undefined,
+  setNull: () => void,
+) => {
+  if (!stream?.active) {
+    return;
+  }
+  const tracks = stream.getTracks();
+  // eslint-disable-next-line no-param-reassign
+  setNull();
+  for (const track of tracks) {
+    track.stop();
+  }
+};
+
 export const FaceAnalyzerCamera: FC<FaceAnalyzerCameraProps> = (con) => {
   const ref = useRef<Webcam>(null);
   const [state, setState] = useState<PermissionsCamera>(
@@ -44,16 +61,19 @@ export const FaceAnalyzerCamera: FC<FaceAnalyzerCameraProps> = (con) => {
     let scanning = true;
     while (scanning) {
       // eslint-disable-next-line no-await-in-loop
-      await new Promise((resolve) => {
-        setTimeout(resolve, 1500);
-      });
-      // eslint-disable-next-line no-await-in-loop
       const blob = await generateCanvas();
       // eslint-disable-next-line no-await-in-loop
       const result = blob ? await con.capture(blob) : false;
       if (result) {
         scanning = false;
+        stopCampera(ref.current?.stream, () => {
+          ref.current?.stream && (ref.current.stream = null);
+        });
       }
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise((resolve) => {
+        setTimeout(resolve, 1500);
+      });
     }
   }, [con, generateCanvas]);
   useEffect(() => {
@@ -80,14 +100,9 @@ export const FaceAnalyzerCamera: FC<FaceAnalyzerCameraProps> = (con) => {
     const current = ref.current;
 
     return () => {
-      if (!current?.stream?.active) {
-        return;
-      }
-      const tracks = current.stream.getTracks();
-      current.stream = null;
-      for (const track of tracks) {
-        track.stop();
-      }
+      stopCampera(current?.stream, () => {
+        current?.stream && (current.stream = null);
+      });
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -109,24 +124,33 @@ export const FaceAnalyzerCamera: FC<FaceAnalyzerCameraProps> = (con) => {
         <div
           className={clsxm(
             'aspect-square w-full max-w-xs',
-            con.isAlive ? 'border-secondary-500' : 'border-primary-500',
-            'rounded-[200px] border-[0.5px]',
+            con.isAlive ? 'border-emerald-500' : 'border-primary-500',
+            'rounded-full border-[2px] overflow-hidden',
           )}
         >
-          <Webcam
-            screenshotFormat="image/jpeg"
-            playsInline
-            autoPlay
-            muted
-            style={{
-              borderRadius: '50%',
-              WebkitTransform: 'scaleX(-1)',
-              transform: 'scaleX(-1)',
-            }}
-            className={clsxm('block !h-full !w-full object-cover')}
-            ref={ref}
-            audio={false}
-          />
+          {!con.image && (
+            <Webcam
+              screenshotFormat="image/jpeg"
+              playsInline
+              autoPlay
+              muted
+              style={{
+                borderRadius: '50%',
+                WebkitTransform: 'scaleX(-1)',
+                transform: 'scaleX(-1)',
+              }}
+              className={clsxm('block !h-full !w-full object-cover')}
+              ref={ref}
+              audio={false}
+            />
+          )}
+          {con.image && (
+            <img
+              src={URL.createObjectURL(con.image)}
+              className="block !h-full !w-full object-cover"
+              alt="imagen"
+            />
+          )}
         </div>
       </div>
     </div>

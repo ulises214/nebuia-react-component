@@ -51,7 +51,7 @@ export const DocumentFrontBack: FC<{ section: DocumentSection }> = ({
         return;
       }
       addImage({ image: decoded, original });
-      con.changeView(<DocumentPreview section={section} />);
+      con.changeView(<DocumentPreview section={section} />, undefined);
     },
     [_showError, addImage, con, section],
   );
@@ -75,7 +75,7 @@ export const DocumentFrontBack: FC<{ section: DocumentSection }> = ({
   );
   // return to document selection
   const back = useCallback(() => {
-    con.changeView(<Selection />);
+    con.changeView(<Selection />, undefined);
   }, [con]);
 
   return (

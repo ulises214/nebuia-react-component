@@ -16,14 +16,17 @@ export const DocumentPreview: FC<{ section: DocumentSection }> = ({
   const confirm = useCallback(() => {
     if (section === DocumentSection.FRONT && document.hasBackLayer) {
       updateDocument({ section: DocumentSection.BACK });
-      indexCon.changeView(<DocumentFrontBack section={DocumentSection.BACK} />);
+      indexCon.changeView(
+        <DocumentFrontBack section={DocumentSection.BACK} />,
+        undefined,
+      );
     } else {
-      indexCon.changeView(<UploadDocument />);
+      indexCon.changeView(<UploadDocument />, undefined);
     }
   }, [document.hasBackLayer, indexCon, section, updateDocument]);
   const back = useCallback(() => {
     void popImage();
-    indexCon.changeView(<DocumentFrontBack section={section} />);
+    indexCon.changeView(<DocumentFrontBack section={section} />, undefined);
   }, [indexCon, popImage, section]);
 
   return <DocumentPreviewView {...{ confirm, back, section }} />;

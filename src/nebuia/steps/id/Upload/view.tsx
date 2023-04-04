@@ -4,7 +4,7 @@ import Button from '../../../../components/atoms/buttons/Button';
 import NextImage from '../../../../components/molecules/NextImage';
 import { Optional } from '../../../../lib/common/Optional';
 import { VoidCallback } from '../../../../lib/common/VoidCallback';
-import { H1, LoaderIndicator, P, SizedBox } from '../../../components/atoms';
+import { H2, LoaderIndicator, P, SizedBox } from '../../../components/atoms';
 import { useNebuiaStepsDocumentContext } from '../../../context/NebuiaStepsDocumentContext';
 import { getBlobLink, removeBlobLink } from '../../../utils/BlobWindow';
 
@@ -28,9 +28,8 @@ export const UploadDocumentView: FC<UploadDocumentViewProps> = (con) => {
   }, [document.images]);
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <SizedBox height="s35" />
-      <H1 center>Subiendo documentos</H1>
+    <>
+      <H2 center>Subiendo documentos</H2>
       <SizedBox height="s10" />
       <P center>Por favor espera, estamos subiendo tus documentos</P>
       <SizedBox height="s15" />
@@ -75,6 +74,6 @@ export const UploadDocumentView: FC<UploadDocumentViewProps> = (con) => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };

@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 
-import { IconButton } from '../../../components/atoms/buttons/IconButton';
 import NextImage from '../../../components/molecules/NextImage';
 import { VoidCallback } from '../../../lib/common/VoidCallback';
 import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
@@ -24,6 +23,7 @@ export const SelectionID: FC<SelectionIDProps> = ({
   return (
     <div className="rounded-sm border border-gray-400">
       <ListTile
+        onClick={() => void action()}
         className="p-2"
         leading={
           <NextImage
@@ -36,11 +36,7 @@ export const SelectionID: FC<SelectionIDProps> = ({
         }
         title={title}
         subtitle={subtitle}
-        trailing={
-          <IconButton onClick={() => void action()}>
-            <MdOutlineNavigateNext color={theme.text} />
-          </IconButton>
-        }
+        trailing={<MdOutlineNavigateNext color={theme.text} />}
       />
     </div>
   );

@@ -7,7 +7,7 @@ import {
   ParamCallback,
   VoidCallback,
 } from '../../../lib/common/VoidCallback';
-import { H1, LoaderIndicator, P, SizedBox } from '../../components/atoms';
+import { LoaderIndicator, P, SizedBox } from '../../components/atoms';
 import { AddressInput, DropFileInput } from '../../components/molecules';
 import { Address } from '../../models/Address';
 import { EditAddress } from './components/EditAddress';
@@ -32,10 +32,15 @@ type AddressViewProps = {
 };
 export const AddressView: FC<AddressViewProps> = (con) => {
   return (
-    <div className="flex flex-col items-center">
-      <SizedBox height="s35" />
-      <H1 center>Comprobante de domicilio</H1>
-      <SizedBox height="s10" />
+    <>
+      {con.showUploadElement && (
+        <>
+          <P center>
+            Sube un comprobante de domicilio no mayor a 3 meses de antigüedad
+          </P>
+          <SizedBox height="s35" />
+        </>
+      )}
       {con.editAddress && (
         <EditAddress
           {...{
@@ -45,7 +50,7 @@ export const AddressView: FC<AddressViewProps> = (con) => {
           }}
         />
       )}
-      {con.showUploadElement && (
+      {con.showUploadElement && !con.loading && (
         <DropFileInput
           {...{
             onFileChange: con.onFile,
@@ -91,6 +96,6 @@ export const AddressView: FC<AddressViewProps> = (con) => {
           </Button>
         </div>
       )}
-    </div>
+    </>
   );
 };

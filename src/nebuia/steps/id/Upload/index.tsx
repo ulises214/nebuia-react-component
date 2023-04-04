@@ -53,7 +53,7 @@ export const UploadDocument: FC = () => {
   // re upload all documents
   const back = useCallback(() => {
     _clearAll();
-    indexCon.changeView(<Selection />);
+    indexCon.changeView(<Selection />, undefined);
   }, [_clearAll, indexCon]);
 
   return <UploadDocumentView {...{ confirm, back, error, next, uploading }} />;

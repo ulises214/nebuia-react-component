@@ -9,7 +9,11 @@ import {
 import Swal from 'sweetalert2';
 
 import { Optional } from '../../lib/common/Optional';
-import { ParamCallback, ValueCallback } from '../../lib/common/VoidCallback';
+import {
+  DoubleParamCallback,
+  ParamCallback,
+  ValueCallback,
+} from '../../lib/common/VoidCallback';
 import { CompleteSteps } from '../models/CompletedSteps';
 import { NebuiaKeys } from '../models/Keys';
 import { NebuiaApiRepository } from '../repository/ApiRepository';
@@ -19,7 +23,8 @@ type IContext = {
   steps: Optional<CompleteSteps>;
   keys: NebuiaKeys;
   kyc: string;
-  changeView: ParamCallback<JSX.Element>;
+  changeView: DoubleParamCallback<JSX.Element, string | undefined>;
+  title: string;
   view: Optional<JSX.Element>;
   loadSteps: ParamCallback<NebuiaKeys, Promise<void>>;
   loading: boolean;
@@ -37,6 +42,9 @@ export type NebuiaStepsContextProviderProps = {
 };
 
 const context = createContext<IContext>({} as IContext);
+
+const DEFAULT_TITLE = 'Completa tu proceso de identidad';
+
 export const NebuiaStepsContextProvider: FC<
   PropsWithChildren<NebuiaStepsContextProviderProps>
 > = ({ kyc, children, onFinish, email, phone, getKeys }) => {
@@ -50,6 +58,7 @@ export const NebuiaStepsContextProvider: FC<
   });
   const [steps, setSteps] = useState<Optional<CompleteSteps>>();
   const [loading, setLoading] = useState(true);
+  const [title, setTitle] = useState(DEFAULT_TITLE);
   const loadSteps = async (keys: NebuiaKeys, paramReport = '') => {
     setLoading(true);
     const [response, themeResponse] = await Promise.all([
@@ -90,6 +99,7 @@ export const NebuiaStepsContextProvider: FC<
   };
   const finishStep = () => {
     setView(undefined);
+    setTitle(DEFAULT_TITLE);
     loadSteps(keys).catch(console.error);
   };
   const loadReport = async (keys: NebuiaKeys): Promise<string> => {
@@ -116,8 +126,7 @@ export const NebuiaStepsContextProvider: FC<
 
       return loadSteps(keys, report);
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-    await Swal.fire({
+    const response = await Swal.fire({
       icon: 'error',
       title: 'Error al cargar las credenciales',
       text: keys,
@@ -125,8 +134,17 @@ export const NebuiaStepsContextProvider: FC<
       allowOutsideClick: false,
       confirmButtonText: 'Reintentar',
     });
-    await firstLoad();
+
+    if (response.isConfirmed) {
+      await firstLoad();
+    }
   };
+
+  const changeView = (view: JSX.Element, title?: string) => {
+    setView(view);
+    title && setTitle(title);
+  };
+
   useEffect(() => {
     void firstLoad();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -137,7 +155,8 @@ export const NebuiaStepsContextProvider: FC<
       value={{
         emailValue: email,
         phoneValue: phone,
-        changeView: setView,
+        title,
+        changeView,
         finishStep,
         keys,
         kyc: report,

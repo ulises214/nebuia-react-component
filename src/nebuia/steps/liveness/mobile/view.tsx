@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { AiFillCheckCircle } from 'react-icons/ai';
 
 import Button from '../../../../components/atoms/buttons/Button';
-import { H1, LoaderIndicator, P, SizedBox } from '../../../components/atoms';
+import { LoaderIndicator, P, SizedBox } from '../../../components/atoms';
 import { DropFileInput, ListTile } from '../../../components/molecules';
 import { getBlobLink } from '../../../utils/BlobWindow';
 
@@ -17,10 +17,14 @@ type Props = {
 
 export const FaceAnalyzerMobileView: FC<Props> = (con) => {
   return (
-    <div className="flex flex-col items-center justify-center">
-      <SizedBox height="s35" />
-      <H1 center>{con.title}</H1>
-      <SizedBox height="s10" />
+    <>
+      {!con.currentImage && (
+        <P center> Por favor, toma una foto de tu rostro </P>
+      )}
+      {con.currentImage && con.loading && (
+        <P center> Por favor, espera mientras procesamos tu rostro </P>
+      )}
+      <SizedBox height="s5" />
       {!con.currentImage && (
         <DropFileInput
           id="face-analyzer"
@@ -80,6 +84,6 @@ export const FaceAnalyzerMobileView: FC<Props> = (con) => {
           )}
         </div>
       )}
-    </div>
+    </>
   );
 };

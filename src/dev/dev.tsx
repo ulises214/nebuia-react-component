@@ -36,7 +36,7 @@ root.render(
       kyc={REPORT}
       onFinish={async (data) => {
         // eslint-disable-next-line no-console
-        (await Promise.resolve(() => console.log('onFinish', data)))();
+        (await Promise.resolve(() => alert(`onFinish = ${data}`)))();
       }}
       getKeys={() => {
         return Promise.resolve({

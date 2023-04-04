@@ -4,7 +4,7 @@ import Button from '../../../../components/atoms/buttons/Button';
 import NextImage from '../../../../components/molecules/NextImage';
 import { Optional } from '../../../../lib/common/Optional';
 import { VoidCallback } from '../../../../lib/common/VoidCallback';
-import { H1, P, SizedBox } from '../../../components/atoms';
+import { H2, P, SizedBox } from '../../../components/atoms';
 import { useNebuiaStepsDocumentContext } from '../../../context/NebuiaStepsDocumentContext';
 import { DocumentSection } from '../../../models/Document';
 import { optionalBlobLink } from '../../../utils/BlobWindow';
@@ -24,9 +24,8 @@ export const DocumentPreviewView: FC<DocumentPreviewViewProps> = (con) => {
   }, [con.section, document.images]);
 
   return (
-    <div className="flex flex-col items-center">
-      <SizedBox height="s35" />
-      <H1 center>Comprobar legibilidad</H1>
+    <>
+      <H2 center>Comprobar legibilidad</H2>
       <SizedBox height="s10" />
       <P center secondary>
         Por favor verifica que los detalles de tu {document.name} sean claros y
@@ -54,6 +53,6 @@ export const DocumentPreviewView: FC<DocumentPreviewViewProps> = (con) => {
           Confirmar
         </Button>
       </div>
-    </div>
+    </>
   );
 };

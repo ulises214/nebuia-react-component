@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Button from '../../../../../components/atoms/buttons/Button';
-import { H1, LoaderIndicator, P, SizedBox } from '../../../../components/atoms';
+import { H2, LoaderIndicator, P, SizedBox } from '../../../../components/atoms';
 import { DropFileInput } from '../../../../components/molecules';
 import { useNebuiaStepsDocumentContext } from '../../../../context/NebuiaStepsDocumentContext';
 import { DocumentSection } from '../../../../models/Document';
@@ -12,15 +12,15 @@ export const DocumentViewFile: FC<DocumentViewProps> = (con) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="flex w-full max-w-sm justify-between">
-        <H1>
+      <div className="relative">
+        <H2 center>
           Parte {con.section === DocumentSection.FRONT ? 'frontal' : 'trasera'}{' '}
           de tu {document.name}
-        </H1>
+        </H2>
         <Button
           onClick={() => void con.back()}
           variant="ghost"
-          className="!w-auto"
+          className="absolute inset-y-0 left-full ml-2"
         >
           Atrás
         </Button>

@@ -24,3 +24,20 @@ export const H1: FC<PropsWithChildren<H1Props>> = ({
     </h1>
   );
 };
+
+export const H2: FC<PropsWithChildren<H1Props>> = ({
+  children,
+  center,
+  className,
+}) => {
+  const { theme } = useNebuiaThemeContext();
+
+  return (
+    <h2
+      className={clsxm('font-bold', center && 'text-center', className)}
+      style={{ color: theme.text }}
+    >
+      {children}
+    </h2>
+  );
+};

@@ -7,6 +7,7 @@ import { FaceAnalyzerView } from './view';
 export const FaceAnalyzerDesktop: FC = () => {
   const indexCon = useNebuiaStepsContext();
   const [isLive, setIsLive] = useState(false);
+  const [image, setImage] = useState<Blob>();
 
   // from camera preview generate thumbnails for face detection
   const checkQuality = useCallback(
@@ -30,7 +31,12 @@ export const FaceAnalyzerDesktop: FC = () => {
       if (!analiceResponse.status) {
         return false;
       }
+
       setIsLive(analiceResponse.payload.status);
+
+      if (analiceResponse.payload.status) {
+        setImage(image);
+      }
 
       return analiceResponse.payload.status;
     },
@@ -47,6 +53,7 @@ export const FaceAnalyzerDesktop: FC = () => {
         capture: checkQuality,
         finalize,
         isAlive: isLive,
+        image,
         title: 'Prueba de vida',
       }}
     ></FaceAnalyzerView>
