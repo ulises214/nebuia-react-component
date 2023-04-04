@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
 import { Layout } from '../components/layout';
-import NextImage from '../components/molecules/NextImage';
 import { LoaderIndicator } from './components/atoms';
 import { NebuiaStepsInstructions } from './components/organisms/NebuiaStepsInstructions';
 import {
@@ -78,16 +77,7 @@ export const NebuiaStepsList: FC<
       <NebuiaStepsContextProvider {...{ kyc, onFinish, email, phone, getKeys }}>
         <NebuiaStepsDocumentContextProvider>
           <Layout enableBackground={enableBackground}>
-            <div className="flex h-full flex-col items-center justify-start">
-              <Content />
-            </div>
-            <NextImage
-              className="w-full max-w-[4rem] lg:max-w-[6rem] xl:max-w-[8rem]"
-              width="640"
-              height="84"
-              src="https://i.ibb.co/Vvr94nP/powerby-ver1.png"
-              alt="Powered by NebuIA"
-            />
+            <Content />
           </Layout>
         </NebuiaStepsDocumentContextProvider>
       </NebuiaStepsContextProvider>

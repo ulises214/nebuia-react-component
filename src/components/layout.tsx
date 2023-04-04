@@ -5,6 +5,7 @@ import clsxm from '../lib/common/utils/clsxm';
 import { H1, SizedBox } from '../nebuia/components/atoms';
 import { useNebuiaStepsContext } from '../nebuia/context/NebuiaStepsContext';
 import { IconButton } from './atoms/buttons/IconButton';
+import NextImage from './molecules/NextImage';
 
 export const Layout: FC<PropsWithChildren<{ enableBackground?: boolean }>> = ({
   children,
@@ -22,6 +23,13 @@ export const Layout: FC<PropsWithChildren<{ enableBackground?: boolean }>> = ({
       )}
     >
       <SizedBox height="s15" />
+      <NextImage
+        className="w-full max-w-[4rem] lg:max-w-[6rem] xl:max-w-[8rem]"
+        width="640"
+        height="84"
+        src="https://i.ibb.co/Vvr94nP/powerby-ver1.png"
+        alt="Powered by NebuIA"
+      />
       <div className="flex w-full items-center gap-2">
         {view && (
           <IconButton
