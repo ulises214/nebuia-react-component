@@ -1,9 +1,10 @@
 import { FC, PropsWithChildren } from 'react';
+import { MdArrowBackIosNew } from 'react-icons/md';
 
 import clsxm from '../lib/common/utils/clsxm';
 import { H1, SizedBox } from '../nebuia/components/atoms';
 import { useNebuiaStepsContext } from '../nebuia/context/NebuiaStepsContext';
-import Button from './atoms/buttons/Button';
+import { IconButton } from './atoms/buttons/IconButton';
 
 export const Layout: FC<PropsWithChildren<{ enableBackground?: boolean }>> = ({
   children,
@@ -21,20 +22,19 @@ export const Layout: FC<PropsWithChildren<{ enableBackground?: boolean }>> = ({
       )}
     >
       <SizedBox height="s15" />
-      <div className="flex w-full items-center justify-evenly">
-        <H1 center className="relative">
+      <div className="flex w-full items-center gap-2">
+        {view && (
+          <IconButton
+            className="!p-1"
+            onClick={() => {
+              finishStep();
+            }}
+          >
+            <MdArrowBackIosNew className="h-6 w-6 text-black" />
+          </IconButton>
+        )}
+        <H1 center className="grow">
           {title}
-          {view && (
-            <Button
-              className="absolute inset-y-0 left-full ml-2"
-              variant="ghost"
-              onClick={() => {
-                finishStep();
-              }}
-            >
-              Volver
-            </Button>
-          )}
         </H1>
       </div>
       <SizedBox height="s15" />

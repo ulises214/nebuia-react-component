@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 
 import NextImage from '../../../components/molecules/NextImage';
+import clsxm from '../../../lib/common/utils/clsxm';
 import { VoidCallback } from '../../../lib/common/VoidCallback';
 import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
 import { ListTile } from './ListTile';
@@ -21,7 +22,12 @@ export const SelectionID: FC<SelectionIDProps> = ({
   const { theme } = useNebuiaThemeContext();
 
   return (
-    <div className="rounded-sm border border-gray-400">
+    <div
+      className={clsxm('rounded-sm border border-gray-400', {
+        'hover:bg-gray-100': !theme.dark,
+        'hover:bg-gray-800': theme.dark,
+      })}
+    >
       <ListTile
         onClick={() => void action()}
         className="p-2"

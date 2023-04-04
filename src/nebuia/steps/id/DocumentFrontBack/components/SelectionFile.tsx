@@ -1,6 +1,7 @@
 import { FC } from 'react';
+import { MdArrowBackIosNew } from 'react-icons/md';
 
-import Button from '../../../../../components/atoms/buttons/Button';
+import { IconButton } from '../../../../../components/atoms/buttons/IconButton';
 import { H2, LoaderIndicator, P, SizedBox } from '../../../../components/atoms';
 import { DropFileInput } from '../../../../components/molecules';
 import { useNebuiaStepsDocumentContext } from '../../../../context/NebuiaStepsDocumentContext';
@@ -12,18 +13,14 @@ export const DocumentViewFile: FC<DocumentViewProps> = (con) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative">
+      <div className="flex items-center gap-4">
+        <IconButton className="!p-1" onClick={() => void con.back()}>
+          <MdArrowBackIosNew className="h-4 w-4 text-black" />
+        </IconButton>
         <H2 center>
           Parte {con.section === DocumentSection.FRONT ? 'frontal' : 'trasera'}{' '}
           de tu {document.name}
         </H2>
-        <Button
-          onClick={() => void con.back()}
-          variant="ghost"
-          className="absolute inset-y-0 left-full ml-2"
-        >
-          Atrás
-        </Button>
       </div>
       <SizedBox height="s10" />
       <div className="p-2">

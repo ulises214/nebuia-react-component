@@ -20,26 +20,25 @@ const videoConstraints: MediaStreamConstraints = {
   video: true,
 };
 
-const stopCampera = (
-  stream: MediaStream | null | undefined,
-  setNull: () => void,
-) => {
-  if (!stream?.active) {
-    return;
-  }
-  const tracks = stream.getTracks();
-  // eslint-disable-next-line no-param-reassign
-  setNull();
-  for (const track of tracks) {
-    track.stop();
-  }
-};
-
 export const FaceAnalyzerCamera: FC<FaceAnalyzerCameraProps> = (con) => {
   const ref = useRef<Webcam>(null);
   const [state, setState] = useState<PermissionsCamera>(
     PermissionsCamera.WAITING,
   );
+
+  const stopCampera = useCallback(() => {
+    if (!ref.current?.stream?.active) {
+      return;
+    }
+    const tracks = ref.current.stream.getTracks();
+
+    for (const track of tracks) {
+      track.stop();
+    }
+
+    ref.current.stream = null;
+  }, []);
+
   const generateCanvas = useCallback(async (): Promise<Blob | undefined> => {
     const context = ref.current?.getCanvas()?.getContext('2d');
     if (!context?.canvas) {
@@ -66,16 +65,14 @@ export const FaceAnalyzerCamera: FC<FaceAnalyzerCameraProps> = (con) => {
       const result = blob ? await con.capture(blob) : false;
       if (result) {
         scanning = false;
-        stopCampera(ref.current?.stream, () => {
-          ref.current?.stream && (ref.current.stream = null);
-        });
+        stopCampera();
       }
       // eslint-disable-next-line no-await-in-loop
       await new Promise((resolve) => {
         setTimeout(resolve, 1500);
       });
     }
-  }, [con, generateCanvas]);
+  }, [con, generateCanvas, stopCampera]);
   useEffect(() => {
     const load = async () => {
       const devices = window.navigator.mediaDevices as Optional<MediaDevices>;
@@ -97,12 +94,9 @@ export const FaceAnalyzerCamera: FC<FaceAnalyzerCameraProps> = (con) => {
       }
     };
     void load();
-    const current = ref.current;
 
     return () => {
-      stopCampera(current?.stream, () => {
-        current?.stream && (current.stream = null);
-      });
+      stopCampera();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
