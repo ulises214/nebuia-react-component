@@ -115,8 +115,8 @@ const Tile: FC<{
         !name.disabled &&
           !name.status && {
             'transition-colors': true,
-            'hover:bg-teal-100': !dark,
-            'hover:bg-slate-700': dark,
+            'hover:!bg-teal-100': !dark,
+            'hover:!bg-slate-700': dark,
           },
       )}
     >
