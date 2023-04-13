@@ -22,63 +22,7 @@ export const FaceAnalyzerOld = () => {
   );
 };
 
-const LivenessUrl = 'https://face.nebuia.com';
-
-export const FaceAnalyzer = () => {
-  const { kyc, keys, finishStep } = useNebuiaStepsContext();
-
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [completed, setCompleted] = useState(false);
-
-  useEffect(() => {
-    if (completed) {
-      return;
-    }
-    const hasPassed = (data: unknown): data is { status: true } => {
-      return (
-        typeof data === 'object' &&
-        data !== null &&
-        'status' in data &&
-        data.status === true
-      );
-    };
-
-    const receiveMessage = (event: MessageEvent) => {
-      const url = new URL(LivenessUrl);
-      if (event.origin !== url.origin) {
-        return;
-      }
-
-      if (hasPassed(event.data)) {
-        setCompleted(true);
-      }
-    };
-    window.addEventListener('message', receiveMessage, false);
-
-    return () => {
-      window.removeEventListener('message', receiveMessage, false);
-    };
-  }, [completed, finishStep]);
-
-  if (completed) {
-    /* eslint-disable-next-line no-use-before-define */
-    return <Completed />;
-  }
-
-  return (
-    <>
-      <iframe
-        ref={iframeRef}
-        title="Face Analyzer - Nebuia"
-        id="face_nebuia"
-        width="100%"
-        height="500"
-        src={`${LivenessUrl}?key=${keys.apiKey}&secret=${keys.apiSecret}&report=${kyc}`}
-        allow="camera"
-      />
-    </>
-  );
-};
+const LivenessUrl = 'http://localhost:8080';
 
 const Completed = () => {
   const { finishStep } = useNebuiaStepsContext();
@@ -99,5 +43,62 @@ const Completed = () => {
         Finalizar
       </Button>
     </div>
+  );
+};
+
+export const FaceAnalyzer = () => {
+  const { kyc, keys, finishStep } = useNebuiaStepsContext();
+
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [completed, setCompleted] = useState(false);
+
+  useEffect(() => {
+    if (completed) {
+      return;
+    }
+    const hasPassed = (data: unknown): data is { status: true } => {
+      if (typeof data !== 'object' || data === null) {
+        return false;
+      }
+
+      if (!('status' in data)) {
+        return false;
+      }
+
+      return (data as { status: unknown }).status === true;
+    };
+
+    const receiveMessage = (event: MessageEvent) => {
+      const url = new URL(LivenessUrl);
+      if (event.origin !== url.origin) {
+        return;
+      }
+      if (hasPassed(event.data)) {
+        setCompleted(true);
+      }
+    };
+    window.addEventListener('message', receiveMessage, false);
+
+    return () => {
+      window.removeEventListener('message', receiveMessage, false);
+    };
+  }, [completed, finishStep]);
+
+  if (completed) {
+    return <Completed />;
+  }
+
+  return (
+    <>
+      <iframe
+        ref={iframeRef}
+        title="Face Analyzer - Nebuia"
+        id="face_nebuia"
+        width="100%"
+        height="500"
+        src={`${LivenessUrl}?key=${keys.apiKey}&secret=${keys.apiSecret}&report=${kyc}`}
+        allow="camera"
+      />
+    </>
   );
 };
