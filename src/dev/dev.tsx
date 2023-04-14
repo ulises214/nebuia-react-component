@@ -11,10 +11,18 @@ if (!rootElement) {
   throw new Error('Root element not found');
 }
 const query = new URLSearchParams(window.location.search);
+
+const getFromQuery = (key: string) => {
+  const value = query.get(key);
+
+  return value ?? undefined;
+};
+
 const getFromQueryOrPrompt = <T,>(key: string, defaultValue: T) => {
   const value = query.get(key);
+
   if (value) {
-    return value as unknown as T;
+    return value;
   }
 
   return prompt(`Insert ${key}`) ?? defaultValue;
@@ -22,9 +30,9 @@ const getFromQueryOrPrompt = <T,>(key: string, defaultValue: T) => {
 
 const API_KEY = getFromQueryOrPrompt('API_KEY', '');
 const API_SECRET = getFromQueryOrPrompt('API_SECRET', '');
-const REPORT = getFromQueryOrPrompt('REPORT', undefined);
-const EMAIL = getFromQueryOrPrompt('EMAIL', undefined);
-const PHONE = getFromQueryOrPrompt('PHONE', undefined);
+const REPORT = getFromQuery('REPORT');
+const EMAIL = getFromQuery('EMAIL');
+const PHONE = getFromQuery('PHONE');
 
 const root = createRoot(rootElement);
 root.render(

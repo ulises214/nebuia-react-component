@@ -22,7 +22,7 @@ export const FaceAnalyzerOld = () => {
   );
 };
 
-const LivenessUrl = 'http://localhost:8080';
+const LivenessUrl = 'https://face.nebuia.com';
 
 const Completed = () => {
   const { finishStep } = useNebuiaStepsContext();
