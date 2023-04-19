@@ -16,6 +16,7 @@ import {
   MdVerifiedUser,
 } from 'react-icons/md';
 
+import Button from '../../../components/atoms/buttons/Button';
 import clsxm from '../../../lib/common/utils/clsxm';
 import { ParamCallback } from '../../../lib/common/VoidCallback';
 import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
@@ -31,6 +32,7 @@ type Step = CompleteStep & {
 type InstructionsProps = {
   names: Step[];
   onStepClick: ParamCallback<Step>;
+  withContinueButton: boolean;
 };
 const Line: FC<{
   active: boolean;
@@ -108,15 +110,20 @@ const Tile: FC<{
       }}
       className={clsxm(
         'flex w-full items-start text-start gap-4 p-2',
+        '!border-none !outline-none !focus:outline-none !focus:border-none',
+        {
+          'cursor-pointer': !name.disabled,
+          '!cursor-default': name.disabled,
+        },
         !name.disabled && {
-          '!bg-teal-50': !dark,
-          '!bg-slate-800': dark,
+          '!bg-nebuia-main/10': !dark,
+          '!bg-nebuia-main-dark/40': dark,
         },
         !name.disabled &&
           !name.status && {
             'transition-colors': true,
-            'hover:!bg-teal-100': !dark,
-            'hover:!bg-slate-700': dark,
+            'hover:!bg-nebuia-main/20': !dark,
+            'hover:!bg-nebuia-main-dark/80': dark,
           },
       )}
     >
@@ -199,7 +206,10 @@ const Tile: FC<{
 export const NebuiaStepsInstructions: FC<InstructionsProps> = ({
   names,
   onStepClick,
+  withContinueButton,
 }) => {
+  const nextStep = names.find((n) => !n.status);
+
   return (
     <div className="flex flex-col gap-1">
       {names.map((n, k) => {
@@ -213,6 +223,16 @@ export const NebuiaStepsInstructions: FC<InstructionsProps> = ({
           />
         );
       })}
+      {withContinueButton && nextStep && (
+        <Button
+          center
+          variant="primary"
+          className="mt-4"
+          onClick={() => onStepClick(nextStep)}
+        >
+          Continuar
+        </Button>
+      )}
     </div>
   );
 };

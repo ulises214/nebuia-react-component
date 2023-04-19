@@ -38,20 +38,25 @@ const getStep = (step: CompleteStep): [JSX.Element, string] => {
 
   return [<Address key={step.name} />, 'Verifica tu domicilio'];
 };
-export const Content: FC = () => {
+export const Content: FC<{
+  withSummaryPage: boolean;
+}> = ({ withSummaryPage }) => {
   const { changeView, loading, steps, view } = useNebuiaStepsContext();
   if (loading) {
     return <LoaderIndicator />;
   }
-  if (!steps) {
-    return <div>No hay pasos para realizar</div>;
-  }
+
   if (view) {
     return view;
   }
 
+  if (!steps) {
+    return <div>No hay pasos para realizar</div>;
+  }
+
   return (
     <NebuiaStepsInstructions
+      withContinueButton={withSummaryPage}
       onStepClick={(s) => {
         changeView(...getStep(s));
       }}
@@ -74,10 +79,14 @@ export const NebuiaStepsList: FC<
 > = ({ kyc, onFinish, email, phone, getKeys, enableBackground }) => {
   return (
     <ThemeProvider>
-      <NebuiaStepsContextProvider {...{ kyc, onFinish, email, phone, getKeys }}>
+      <NebuiaStepsContextProvider
+        withDetailsPage
+        {...{ kyc, onFinish, email, phone, getKeys }}
+      >
         <NebuiaStepsDocumentContextProvider>
           <Layout enableBackground={enableBackground}>
-            <Content />
+            <Content withSummaryPage />
+            {/* <SummaryPage></SummaryPage> */}
           </Layout>
         </NebuiaStepsDocumentContextProvider>
       </NebuiaStepsContextProvider>

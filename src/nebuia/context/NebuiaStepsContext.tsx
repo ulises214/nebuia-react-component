@@ -17,6 +17,7 @@ import {
 import { CompleteSteps } from '../models/CompletedSteps';
 import { NebuiaKeys } from '../models/Keys';
 import { NebuiaApiRepository } from '../repository/ApiRepository';
+import { SummaryPage } from '../steps/Summary./Summary.page';
 import { useNebuiaThemeContext } from './NebuiaThemeContext';
 
 type IContext = {
@@ -39,6 +40,7 @@ export type NebuiaStepsContextProviderProps = {
   phone?: string;
   onFinish: ParamCallback<string, Promise<void>>;
   getKeys: ValueCallback<Promise<NebuiaKeys | string>>;
+  withDetailsPage?: boolean;
 };
 
 const context = createContext<IContext>({} as IContext);
@@ -47,7 +49,7 @@ const DEFAULT_TITLE = 'Completa tu proceso de identidad';
 
 export const NebuiaStepsContextProvider: FC<
   PropsWithChildren<NebuiaStepsContextProviderProps>
-> = ({ kyc, children, onFinish, email, phone, getKeys }) => {
+> = ({ kyc, children, onFinish, email, phone, getKeys, withDetailsPage }) => {
   const { setColorScheme, setDefaultColorScheme } = useNebuiaThemeContext();
   const [view, setView] = useState<Optional<JSX.Element>>();
   const [report, setReport] = useState(kyc ?? '');
@@ -78,24 +80,34 @@ export const NebuiaStepsContextProvider: FC<
     } else {
       setDefaultColorScheme();
     }
-    if (response.status) {
-      if (response.payload.steps.every((s) => s.status)) {
-        return onFinish(report);
-      }
-      setSteps(response.payload);
-      setLoading(false);
+    if (!response.status) {
+      await Swal.fire({
+        icon: 'error',
+        title: 'Error al cargar los pasos',
+        text: response.payload,
+        confirmButtonText: 'Reintentar',
+      });
+
+      await loadSteps(keys);
 
       return;
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-    await Swal.fire({
-      icon: 'error',
-      title: 'Error al cargar los pasos',
-      text: response.payload,
-      confirmButtonText: 'Reintentar',
-    });
+    const reportCompleted = response.payload.steps.every((s) => s.status);
+    if (reportCompleted) {
+      if (withDetailsPage) {
+        setLoading(false);
+        setView(<SummaryPage />);
+        setTitle('Resumen de tu proceso de identidad');
 
-    await loadSteps(keys);
+        return;
+      }
+
+      await onFinish(report);
+
+      return;
+    }
+    setSteps(response.payload);
+    setLoading(false);
   };
   const finishStep = () => {
     setView(undefined);

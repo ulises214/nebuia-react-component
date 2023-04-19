@@ -11,6 +11,8 @@ module.exports = {
         xs: '475px',
       },
       colors: {
+        'nebuia-main': '#6df8e2',
+        'nebuia-main-dark': '#050217',
         'nebuia-background': 'var(--tw-nebuia-color-background)',
         'nebuia-primary': shades.reduce(
           (acc, shade) => ({

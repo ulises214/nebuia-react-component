@@ -127,11 +127,11 @@ export interface IKYC {
   company?: string;
   face?: Face;
   document?: Document;
-  email: {
+  email?: {
     email: string;
     verified: boolean;
   };
-  phone: {
+  phone?: {
     phone: string;
     verified: boolean;
   };

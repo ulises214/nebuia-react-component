@@ -19,7 +19,7 @@ export const Layout: FC<PropsWithChildren<{ enableBackground?: boolean }>> = ({
         enableBackground && 'bg-nebuia-background',
         'p-1',
         'flex flex-col items-center',
-        'w-full max-w-xl h-full',
+        'w-full max-w-md h-full',
       )}
     >
       <SizedBox height="s15" />
