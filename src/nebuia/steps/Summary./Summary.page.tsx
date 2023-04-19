@@ -7,10 +7,8 @@ import {
   checkReportValidity,
   ReportValidity,
 } from '../../../lib/common/utils/checkReportValidity';
-import clsxm from '../../../lib/common/utils/clsxm';
-import { H3, LoaderIndicator, SizedBox } from '../../components/atoms';
+import { H3, LoaderIndicator, P, SizedBox } from '../../components/atoms';
 import { useNebuiaStepsContext } from '../../context/NebuiaStepsContext';
-import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
 import { IKYC } from '../../models/Ikyc';
 import { NebuiaApiRepository } from '../../repository/ApiRepository';
 import { downloadBlob, getBlobLink } from '../../utils/BlobWindow';
@@ -82,7 +80,13 @@ export const SummaryPage = () => {
           className="aspect-square w-full max-w-xs rounded-full object-cover"
         />
       )}
-      {report && <Summary {...{ report }} />}
+      {report && (
+        <>
+          <SizedBox height="s15" />
+
+          <Summary {...{ report }} />
+        </>
+      )}
       <SizedBox height="s15" />
 
       {!isLoadingReport && reportError && (
@@ -135,30 +139,13 @@ const SummaryIcon: FC<{ status: ReportValidity }> = ({ status }) => {
 
 const Summary: FC<{ report: IKYC }> = ({ report }) => {
   const { status, summary, title } = checkReportValidity(report);
-  const {
-    theme: { text, dark },
-  } = useNebuiaThemeContext();
 
   return (
-    <div className="max-w-xl space-y-4">
-      <div
-        className={clsxm(
-          'flex items-center flex-col md:flex-row gap-4 p-2 rounded-md',
-          dark ? 'bg-slate-800' : 'bg-white',
-        )}
-      >
+    <div className="flex max-w-md flex-col gap-2">
+      <H3>{title}</H3>
+      <div className="flex items-center gap-4">
         <SummaryIcon status={status} />
-        <div className="flex grow flex-col">
-          <H3>{title}</H3>
-          <span
-            style={{
-              color: text,
-            }}
-            className="max-w-xl"
-          >
-            {summary}
-          </span>
-        </div>
+        <P>{summary}</P>
       </div>
     </div>
   );
