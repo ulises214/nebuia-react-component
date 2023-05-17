@@ -17,7 +17,7 @@ import {
 import { CompleteSteps } from '../models/CompletedSteps';
 import { NebuiaKeys } from '../models/Keys';
 import { NebuiaApiRepository } from '../repository/ApiRepository';
-import { SummaryPage } from '../steps/Summary./Summary.page';
+import { SummaryPage } from '../steps/Summary/Summary.page';
 import { useNebuiaThemeContext } from './NebuiaThemeContext';
 
 type IContext = {
