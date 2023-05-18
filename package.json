@@ -5,6 +5,7 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
   "author": "Ulises Rafael Ramirez Martinez",
+  "repository": "https://github.com/ulises214/nebuia-react-component.git",
   "license": "MIT",
   "files": [
     "dist",
