@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 
+import Button from '../../../components/atoms/buttons/Button';
 import NextImage from '../../../components/molecules/NextImage';
-import clsxm from '../../../lib/common/utils/clsxm';
 import { VoidCallback } from '../../../lib/common/VoidCallback';
 import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
-import { ListTile } from './ListTile';
+import { P } from '../atoms';
 
 type SelectionIDProps = {
   icon: string;
@@ -22,28 +22,27 @@ export const SelectionID: FC<SelectionIDProps> = ({
   const { theme } = useNebuiaThemeContext();
 
   return (
-    <div
-      className={clsxm('rounded-sm border border-gray-400', {
-        'hover:bg-gray-100': !theme.dark,
-        'hover:bg-gray-800': theme.dark,
-      })}
+    <Button
+      onClick={() => void action()}
+      variant="outline"
+      className="flex flex-row items-center"
     >
-      <ListTile
-        onClick={() => void action()}
-        className="p-2"
-        leading={
-          <NextImage
-            src={icon}
-            alt={title}
-            width={26}
-            height={26}
-            className="w-10"
-          />
-        }
-        title={title}
-        subtitle={subtitle}
-        trailing={<MdOutlineNavigateNext color={theme.text} />}
+      <NextImage
+        src={icon}
+        alt={title}
+        width={26}
+        height={26}
+        className="w-10"
       />
-    </div>
+      <div className="flex grow flex-col items-start">
+        <P bold className="flex-1">
+          {title}
+        </P>
+        <P secondary small className="flex-1">
+          {subtitle}
+        </P>
+      </div>
+      <MdOutlineNavigateNext color={theme.text} />
+    </Button>
   );
 };

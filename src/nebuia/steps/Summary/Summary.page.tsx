@@ -7,8 +7,10 @@ import {
   checkReportValidity,
   ReportValidity,
 } from '../../../lib/common/utils/checkReportValidity';
+import classNames from '../../../lib/common/utils/clsxm';
 import { H3, LoaderIndicator, P, SizedBox } from '../../components/atoms';
 import { useNebuiaStepsContext } from '../../context/NebuiaStepsContext';
+import { useNebuiaThemeContext } from '../../context/NebuiaThemeContext';
 import { IKYC } from '../../models/Ikyc';
 import { NebuiaApiRepository } from '../../repository/ApiRepository';
 import { downloadBlob, getBlobLink } from '../../utils/BlobWindow';
@@ -32,11 +34,8 @@ export const SummaryPage = () => {
         }),
         NebuiaApiRepository.existReport({ keys, report: kyc }),
       ]);
-
       if (face.status) {
         setFaceDocument(getBlobLink(face.payload, 'image/png'));
-      } else {
-        setReportError(face.payload);
       }
       if (kycRes.status) {
         setReport(kycRes.payload);
@@ -73,7 +72,7 @@ export const SummaryPage = () => {
       <SizedBox height="s15" />
 
       <SizedBox height="s15" />
-      {faceDocument && (
+      {report?.face && faceDocument && (
         <img
           src={faceDocument}
           alt={`Face: ${kyc}`}
@@ -83,8 +82,7 @@ export const SummaryPage = () => {
       {report && (
         <>
           <SizedBox height="s15" />
-
-          <Summary {...{ report }} />
+          <ReportSummaryCard report={report} />
         </>
       )}
       <SizedBox height="s15" />
@@ -115,36 +113,54 @@ export const SummaryPage = () => {
 };
 
 const SummaryIcon: FC<{ status: ReportValidity }> = ({ status }) => {
+  let Icon = MdCheck;
   if (status === ReportValidity.REJECTED) {
-    return (
-      <div className="rounded-full bg-pink-600 p-1 text-white">
-        <MdError className="h-6 w-6" />
-      </div>
-    );
+    Icon = MdError;
   }
   if (status === ReportValidity.DANGER) {
-    return (
-      <div className="rounded-full bg-amber-600 p-1 text-white">
-        <MdWarning className="h-6 w-6" />
-      </div>
-    );
+    Icon = MdWarning;
   }
 
   return (
-    <div className="rounded-full bg-emerald-600 p-1 text-white">
-      <MdCheck className="h-6 w-6" />
+    <div
+      className={classNames(
+        status === 'REJECTED' && 'bg-pink-600',
+        status === 'SUCCESS' && 'bg-emerald-600',
+        status === 'DANGER' && 'bg-amber-600',
+        'rounded-full p-1 text-white',
+      )}
+    >
+      <Icon className="h-9 w-9" />
     </div>
   );
 };
 
-const Summary: FC<{ report: IKYC }> = ({ report }) => {
+export const ReportSummaryCard: FC<{ report: IKYC }> = ({ report }) => {
   const { status, summary, title } = checkReportValidity(report);
+  const {
+    theme: { dark },
+  } = useNebuiaThemeContext();
 
   return (
-    <div className="flex max-w-md flex-col gap-2">
-      <H3>{title}</H3>
-      <div className="flex items-center gap-4">
-        <SummaryIcon status={status} />
+    <div
+      className={classNames(
+        'rounded-lg border',
+        'flex items-center flex-col md:flex-row gap-2 py-1 px-2',
+        !dark && [
+          status === 'REJECTED' && 'border-pink-600 bg-pink-50',
+          status === 'DANGER' && 'border-amber-600 bg-amber-50',
+          status === 'SUCCESS' && 'border-emerald-600 bg-emerald-50',
+        ],
+        dark && [
+          status === 'REJECTED' && 'border-pink-600 bg-pink-900',
+          status === 'DANGER' && 'border-amber-600 bg-amber-900',
+          status === 'SUCCESS' && 'border-emerald-600 bg-emerald-900',
+        ],
+      )}
+    >
+      <SummaryIcon status={status} />
+      <div className="flex grow flex-col">
+        <H3>{title}</H3>
         <P>{summary}</P>
       </div>
     </div>

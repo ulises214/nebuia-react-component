@@ -117,8 +117,29 @@ export class NebuiaHttpClient {
         headers: KeysUtils.json(keys),
         responseType: 'arraybuffer',
       });
+      if (
+        !String(response.headers['content-type']).includes('application/json')
+      ) {
+        return {
+          status: true,
+          payload: response.data,
+        };
+      }
 
-      return { status: true, payload: response.data };
+      const binaryString = String.fromCharCode.apply(
+        null,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        new Uint8Array(response.data),
+      );
+      const parsedData = JSON.parse(binaryString) as {
+        payload: unknown;
+      };
+
+      return {
+        status: false,
+        payload: parsedData.payload as string,
+      };
     } catch (error) {
       return {
         status: false,

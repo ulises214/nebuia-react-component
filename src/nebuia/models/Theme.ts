@@ -73,3 +73,18 @@ export const hexToRgb = (hex: string): number[] =>
     .substring(1)
     .match(/.{2}/g)
     ?.map((x) => parseInt(x, 16)) ?? [0, 0, 0];
+
+export function getColorContrast(colorHex: string): string {
+  // Convierte el color hexadecimal a RGB
+  const r = parseInt(colorHex.substr(1, 2), 16);
+  const g = parseInt(colorHex.substr(3, 2), 16);
+  const b = parseInt(colorHex.substr(5, 2), 16);
+
+  // Calcula el brillo relativo del color
+  const brillo = (r * 299 + g * 587 + b * 114) / 1000;
+
+  // Elige un color de contraste basado en el brillo
+  const colorContraste = brillo > 128 ? '#000000' : '#FFFFFF';
+
+  return colorContraste;
+}

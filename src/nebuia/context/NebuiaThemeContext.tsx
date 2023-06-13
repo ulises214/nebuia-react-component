@@ -8,7 +8,11 @@ import {
   useState,
 } from 'react';
 
-import { hexToRgb, lightenDarkenColor } from '../models/Theme';
+import {
+  getColorContrast,
+  hexToRgb,
+  lightenDarkenColor,
+} from '../models/Theme';
 
 type Theme = {
   primary: string;
@@ -18,6 +22,8 @@ type Theme = {
   background: string;
   secondaryBackground: string;
   dark: boolean;
+  primaryText: string;
+  secondaryText: string;
 };
 interface ThemeContextValue {
   theme: Theme;
@@ -55,25 +61,25 @@ const setTwShades = (rgbColors: string[], prefix: string) => {
 };
 
 const ThemeContext = createContext<ThemeContextValue>({} as ThemeContextValue);
-const DARK_THEME = {
-  bg: '#0B132B',
+export const DARK_THEME = {
+  bg: '#050217',
   text: '#fff',
   textSecondary: 'rgba(255, 255, 255, 0.6)',
   secondaryBackground: '#1C2541',
 } as const;
-const LIGHT_THEME = {
-  bg: '#fff',
+export const LIGHT_THEME = {
+  bg: '#fDfDfD',
   text: '#000',
   textSecondary: 'rgba(0, 0, 0, 0.6)',
   secondaryBackground: '#0B132B',
 } as const;
 
-export const DEFAULT_PRIMARY_COLOR = '#050217';
-export const DEFAULT_SECONDARY_COLOR = '#6847a2';
+export const DEFAULT_PRIMARY_COLOR = '#6847a2';
+export const DEFAULT_SECONDARY_COLOR = '#050217';
 export const DEFAULT_DARK_PRIMARY_COLOR = '#d4037d';
 export const DEFAULT_DARK_SECONDARY_COLOR = '#864ce9';
 
-const defaultTheme = {
+const defaultTheme: Theme = {
   dark: false,
   primary: DEFAULT_PRIMARY_COLOR,
   secondary: DEFAULT_SECONDARY_COLOR,
@@ -81,6 +87,8 @@ const defaultTheme = {
   textSecondary: LIGHT_THEME.textSecondary,
   background: LIGHT_THEME.bg,
   secondaryBackground: LIGHT_THEME.secondaryBackground,
+  primaryText: getColorContrast(DEFAULT_PRIMARY_COLOR),
+  secondaryText: getColorContrast(DEFAULT_SECONDARY_COLOR),
 };
 
 export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -95,19 +103,53 @@ export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
       '--tw-nebuia-color-background',
       theme.background,
     );
+    document.documentElement.style.setProperty(
+      '--color-on-primary',
+      theme.primaryText,
+    );
+    document.documentElement.style.setProperty(
+      '--color-on-secondary',
+      theme.secondaryText,
+    );
+    document.documentElement.style.setProperty(
+      '--base-text-color',
+      theme.dark ? '#fff' : '#000',
+    );
   }, [theme]);
 
   const setColorScheme = useCallback<ThemeContextValue['setColorScheme']>(
     ({ primary, secondary, dark }) => {
-      setTheme({
-        primary: primary ?? DEFAULT_PRIMARY_COLOR,
-        secondary: secondary ?? DEFAULT_SECONDARY_COLOR,
-        dark: dark ?? false,
-        background: (dark ? DARK_THEME : LIGHT_THEME).bg,
-        text: (dark ? DARK_THEME : LIGHT_THEME).text,
-        textSecondary: (dark ? DARK_THEME : LIGHT_THEME).textSecondary,
-        secondaryBackground: (dark ? DARK_THEME : LIGHT_THEME)
-          .secondaryBackground,
+      setTheme((prev: Partial<Theme>) => {
+        const isDark = dark ?? prev.dark ?? false;
+        const defaultPrimary = isDark
+          ? DEFAULT_DARK_PRIMARY_COLOR
+          : DEFAULT_PRIMARY_COLOR;
+        const defaultSecondary = isDark
+          ? DEFAULT_DARK_SECONDARY_COLOR
+          : DEFAULT_SECONDARY_COLOR;
+
+        let primaryColor = primary;
+        if (!primaryColor) {
+          primaryColor = prev.primary ?? defaultPrimary;
+        }
+        let secondaryColor = secondary;
+        if (!secondaryColor) {
+          secondaryColor = prev.secondary ?? defaultSecondary;
+        }
+
+        const theme = isDark ? DARK_THEME : LIGHT_THEME;
+
+        return {
+          primary: primaryColor,
+          secondary: secondaryColor,
+          dark: isDark,
+          background: theme.bg,
+          text: theme.text,
+          textSecondary: theme.textSecondary,
+          secondaryBackground: theme.secondaryBackground,
+          primaryText: getColorContrast(primaryColor),
+          secondaryText: getColorContrast(secondaryColor),
+        };
       });
     },
     [],

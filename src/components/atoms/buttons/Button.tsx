@@ -1,122 +1,98 @@
-import { forwardRef } from 'react';
+import * as React from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
-import clsxm from '../../../lib/common/utils/clsxm';
+import styles from './Button.module.css';
+
+import classNames from '../../../lib/common/utils/clsxm';
 import { useNebuiaThemeContext } from '../../../nebuia/context/NebuiaThemeContext';
 
-enum ButtonVariant {
-  'primary',
-  'outline',
-  'ghost',
-  'light',
-  'dark',
-  'error',
-}
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'outline'
+  | 'ghost'
+  | 'white'
+  | 'black'
+  | 'error'
+  | 'success'
+  | 'warning'
+  | 'outline-error'
+  | 'outline-info'
+  | 'outline-success'
+  | 'info';
 
 type ButtonProps = {
   isLoading?: boolean;
   isDarkBg?: boolean;
-  variant: keyof typeof ButtonVariant;
+  variant: ButtonVariant;
   small?: boolean;
+  extraSmall?: boolean;
   center?: boolean;
+  withNotification?: boolean;
+  as?: React.ElementType;
 } & React.ComponentPropsWithRef<'button'>;
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
+      extraSmall,
       children,
       className,
       disabled: buttonDisabled,
-      isLoading = false,
+      isLoading,
       variant,
-      isDarkBg = false,
+      isDarkBg: isDarkBgProp,
       center = false,
       small,
+      withNotification = false,
+      as,
       ...rest
     },
     ref,
   ) => {
-    const disabled = isLoading || buttonDisabled;
     const {
       theme: { dark },
     } = useNebuiaThemeContext();
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    const disabled = isLoading || buttonDisabled;
+
+    const isDarkBg = isDarkBgProp ?? dark;
+
+    const Component = as ?? 'button';
 
     return (
-      <button
+      <Component
         ref={ref}
         type="button"
         disabled={disabled}
-        className={clsxm(
-          'inline-flex items-center rounded font-medium',
-          !small && 'px-4 py-2',
-          small && 'px-2 py-1',
-          'focus:outline-none focus-visible:ring focus-visible:ring-nebuia-primary-500',
-          'shadow-sm',
-          'transition-colors duration-75',
-          center && 'justify-center',
-          //#region  //*=========== Variants ===========
-          [
-            variant === 'error' && [
-              'bg-red-500 text-white',
-              'border border-red-600',
-              'hover:bg-red-600 hover:text-white',
-              'active:bg-red-500',
-              'disabled:bg-red-400 disabled:hover:bg-red-400',
-            ],
-            variant === 'primary' && [
-              '!bg-nebuia-primary-500 text-white',
-              'border border-nebuia-primary-600',
-              'hover:!bg-nebuia-primary-600 hover:text-white',
-              'active:!bg-nebuia-primary-500',
-              'disabled:!bg-nebuia-primary-300 disabled:hover:!bg-nebuia-primary-300',
-            ],
-            variant === 'outline' && [
-              'text-nebuia-primary-500',
-              'border border-nebuia-primary-500',
-              'hover:bg-primary-50 active:!bg-nebuia-primary-100 disabled:!bg-nebuia-primary-100',
-              isDarkBg &&
-                'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
-            ],
-            variant === 'ghost' && [
-              'text-nebuia-primary-500',
-              'shadow-none',
-              !dark &&
-                'hover:!bg-nebuia-primary-50 active:!bg-nebuia-primary-100 disabled:!bg-nebuia-primary-100',
-              dark &&
-                'hover:!bg-nebuia-primary-700 active:!bg-nebuia-primary-700 disabled:!bg-nebuia-primary-700 hover:text-white',
-              isDarkBg &&
-                'hover:bg-gray-900 active:bg-gray-800 disabled:bg-gray-800',
-            ],
-            variant === 'light' && [
-              'bg-white text-dark ',
-              'border border-gray-300',
-              'hover:bg-gray-100 hover:text-dark',
-              'active:bg-white/80 disabled:bg-gray-200',
-            ],
-            variant === 'dark' && [
-              'bg-gray-900 text-white',
-              'border border-gray-600',
-              'hover:bg-gray-800 active:bg-gray-700 disabled:bg-gray-700',
-            ],
-          ],
+        className={classNames(
+          styles['button'],
+          center && styles['center'],
+          small && styles['small'],
+          extraSmall && styles['extraSmall'],
+          styles[variant],
+          disabled && styles['disabled'],
+          isLoading && styles['loading'],
+          isDarkBg ? styles['dark'] : styles['light'],
+          !isDarkBg && styles['light'],
           //#endregion  //*======== Variants ===========
-          'disabled:cursor-not-allowed',
-          isLoading &&
-            'relative text-transparent transition-none hover:text-transparent disabled:cursor-wait',
           className,
         )}
         {...rest}
       >
+        {withNotification && (
+          <div className="absolute -top-2 right-[-2px]">
+            <span className="inline-flex h-2 w-2 items-center justify-center rounded-full bg-red-500 text-white"></span>
+          </div>
+        )}
         {isLoading && (
           <div
-            className={clsxm(
+            className={classNames(
               'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
               {
                 'text-white': ['primary', 'dark'].includes(variant),
                 'text-black': ['light'].includes(variant),
-                'text-nebuia-primary-500': ['outline', 'ghost'].includes(
-                  variant,
-                ),
+                'text-primary-500': ['outline', 'ghost'].includes(variant),
               },
             )}
           >
@@ -124,7 +100,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           </div>
         )}
         {children}
-      </button>
+      </Component>
     );
   },
 );

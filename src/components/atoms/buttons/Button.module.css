@@ -1,0 +1,300 @@
+.button {
+  --_py: var(--py, 0.5rem);
+  --_px: var(--px, 1rem);
+  --_radius: var(--radius, 0.5rem);
+  --_font-size: var(--font-size, 1rem);
+  --_border: var(--border, 1px solid var(--color-border));
+  --_font-weight: var(--font-weight, 500);
+  --tw-ring-opacity: 1;
+  --tw-ring-color: var(--color-border) / var(--tw-ring-opacity);
+
+  /* variant customizations */
+  --color: var(--color-on-surface);
+  --bg: var(--color-surface);
+  --color-border: var(--color-border);
+
+  padding: var(--_py) var(--_px);
+  background: var(--bg);
+  color: var(--color);
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--_radius);
+  font-size: var(--_font-size);
+  font-weight: var(--_font-weight);
+  transition: all 0.2s ease;
+  @apply inline-flex items-center relative;
+}
+
+.button.center {
+  @apply justify-center;
+}
+.button:focus {
+  outline: none;
+}
+.button:focus-visible {
+  @apply ring;
+}
+/* sizing */
+.button.small {
+  --py: 0.25rem;
+  --px: 0.5rem;
+  --font-size: 0.875rem;
+}
+.button.extraSmall {
+  --py: 0.125rem;
+  --px: 0.5rem;
+  --font-size: 0.75rem;
+}
+/* states */
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.button.loading {
+  @apply disabled:cursor-wait;
+}
+.button.light {
+  @apply shadow-sm;
+}
+.button.light:not(:disabled):hover {
+  @apply shadow-md;
+}
+
+.button:active,
+.button:hover {
+  --color: var(--color-on-surface-hover);
+  --bg: var(--color-surface-hover);
+  --color-border: var(--color-border-hover);
+}
+.button:disabled:hover,
+.button.loading:hover {
+  --color: var(--color-on-surface);
+  --bg: var(--color-surface);
+  --color-border: var(--color-border);
+}
+
+/* =================== variants =================== */
+
+/*     =============== primary ===============     */
+.button.primary {
+  --color-on-surface: var(--color-on-primary);
+  --color-on-surface-hover: var(--color-on-primary);
+}
+.button.primary.light {
+  --color-surface: var(--color-nebuia-primary-500);
+  --color-border: var(--color-nebuia-primary-600);
+  --color-border-hover: var(--color-nebuia-primary-700);
+  --color-surface-hover: var(--color-nebuia-primary-600);
+}
+.button.primary.dark {
+  --color-surface: var(--color-nebuia-primary-600);
+  --color-border: var(--color-nebuia-primary-700);
+  --color-surface-hover: var(--color-nebuia-primary-700);
+  --color-border-hover: var(--color-nebuia-primary-800);
+}
+/*     =============== secondary ===============     */
+.button.secondary {
+  --color-on-surface: var(--color-on-secondary);
+  --color-on-surface-hover: var(--color-on-secondary);
+}
+.button.secondary.light {
+  --color-surface: var(--color-nebuia-secondary-500);
+  --color-border: var(--color-nebuia-secondary-600);
+  --color-border-hover: var(--color-nebuia-secondary-700);
+  --color-surface-hover: var(--color-nebuia-secondary-600);
+}
+.button.secondary.dark {
+  --color-surface: var(--color-nebuia-secondary-500);
+  --color-border: var(--color-nebuia-secondary-700);
+  --color-surface-hover: var(--color-nebuia-secondary-700);
+  --color-border-hover: var(--color-nebuia-secondary-800);
+}
+
+/*     =============== outline ===============     */
+.button.outline {
+  --color-on-surface: var(--base-text-color);
+  --color-on-surface-hover: var(--base-text-color);
+  --color-surface: transparent;
+}
+.button.outline.light {
+  --color-surface-hover: #f7f8fa;
+  --color-border: #d0d5dd;
+  --color-border-hover: #b8bfc9;
+}
+.button.outline.dark {
+  --color-surface-hover: #1f2937;
+  --color-border: #374151;
+  --color-border-hover: #4b5563;
+}
+/*     =============== ghost ===============     */
+.button.ghost {
+  --color-on-surface: var(--base-text-color);
+  --color-on-surface-hover: var(--base-text-color);
+  --color-surface: transparent;
+}
+.button.ghost.light {
+  --color-surface-hover: #f7f8fa;
+  --color-border: transparent;
+  --color-border-hover: transparent;
+}
+.button.ghost.dark {
+  --color-surface-hover: #1f2937;
+  --color-border: transparent;
+  --color-border-hover: transparent;
+}
+/*     =============== white ===============     */
+.button.white {
+  --color-on-surface: #000;
+  --color-on-surface-hover: #000;
+  --color-surface: #fff;
+}
+.button.white.light {
+  --color-border: #d0d5dd;
+  --color-border-hover: #b8bfc9;
+  --color-surface-hover: #f7f8fa;
+}
+.button.white.dark {
+  --color-border: #374151;
+  --color-border-hover: #4b5563;
+  --color-surface-hover: #b8bfc9;
+}
+
+/*     =============== black ===============     */
+.button.black {
+  --color-on-surface: #fff;
+  --color-on-surface-hover: #fff;
+  --color-surface: #000;
+  --color-surface-hover: #1f2937;
+}
+.button.black.light,
+.button.black.dark {
+  --color-border: #374151;
+  --color-border-hover: #4b5563;
+}
+
+/*     =============== error ===============     */
+.button.error {
+  --color-on-surface: white;
+  --color-on-surface-hover: white;
+}
+.button.error.light {
+  --color-surface: #ef4444;
+  --color-border: #ed2424;
+  --color-border-hover: #ed2424;
+  --color-surface-hover: #db1414;
+}
+.button.error.dark {
+  --color-surface: #db1414;
+  --color-border: #ed2424;
+  --color-surface-hover: #ed2424;
+  --color-border-hover: #ed2424;
+}
+/*     =============== success ===============     */
+.button.success {
+  --color-on-surface: white;
+  --color-on-surface-hover: white;
+}
+.button.success.light {
+  --color-surface: #10b981;
+  --color-border: #059669;
+  --color-border-hover: #059669;
+  --color-surface-hover: #047857;
+}
+.button.success.dark {
+  --color-surface: #047857;
+  --color-border: #059669;
+  --color-surface-hover: #059669;
+  --color-border-hover: #059669;
+}
+
+/*     =============== warning ===============     */
+.button.warning {
+  --color-on-surface: white;
+  --color-on-surface-hover: white;
+}
+.button.warning.light {
+  --color-surface: #f59e0b;
+  --color-border: #d97706;
+  --color-border-hover: #d97706;
+  --color-surface-hover: #b45309;
+}
+.button.warning.dark {
+  --color-surface: #b45309;
+  --color-border: #d97706;
+  --color-surface-hover: #d97706;
+  --color-border-hover: #d97706;
+}
+
+/*     =============== outline-error ===============     */
+.button.outline-error {
+  --color-on-surface: #ef4444;
+  --color-on-surface-hover: #ef4444;
+}
+.button.outline-error.light {
+  --color-border: #ef4444;
+  --color-border-hover: #db1414;
+  --color-surface: rgba(219, 20, 20, 0.02);
+  --color-surface-hover: rgba(219, 20, 20, 0.1);
+}
+.button.outline-error.dark {
+  --color-surface-hover: #1f2937;
+  --color-border: #db1414;
+  --color-border-hover: #db1414;
+  --color-surface: rgba(219, 20, 20, 0.02);
+  --color-surface-hover: rgba(219, 20, 20, 0.1);
+}
+
+/*     =============== info ===============     */
+.button.info {
+  --color-on-surface: white;
+  --color-on-surface-hover: white;
+}
+.button.info.light {
+  --color-surface: #3b82f6;
+  --color-border: #1d4ed8;
+  --color-border-hover: #1d4ed8;
+  --color-surface-hover: #1e40af;
+}
+.button.info.dark {
+  --color-surface: #1e40af;
+  --color-border: #1d4ed8;
+  --color-surface-hover: #1d4ed8;
+  --color-border-hover: #1d4ed8;
+}
+
+/*     =============== outline-info ===============     */
+.button.outline-info {
+  --color-on-surface: #3b82f6;
+  --color-on-surface-hover: #3b82f6;
+}
+.button.outline-info.light {
+  --color-border: #3b82f6;
+  --color-border-hover: #1e40af;
+  --color-surface: rgba(14, 165, 233, 0.03);
+  --color-surface-hover: rgba(14, 165, 233, 0.1);
+}
+.button.outline-info.dark {
+  --color-border: #1e40af;
+  --color-border-hover: #1e40af;
+  --color-surface: rgba(14, 165, 233, 0.03);
+  --color-surface-hover: rgba(14, 165, 233, 0.1);
+}
+/*     =============== outline-success ===============     */
+.button.outline-success {
+  --color-on-surface: #10b981;
+  --color-on-surface-hover: #10b981;
+}
+.button.outline-success.light {
+  --color-border: #10b981;
+  --color-border-hover: #047857;
+  --color-surface: rgba(4, 120, 87, 0.03);
+  --color-surface-hover: rgba(4, 120, 87, 0.1);
+}
+.button.outline-success.dark {
+  --color-border: #047857;
+  --color-border-hover: #047857;
+  --color-surface: rgba(4, 120, 87, 0.03);
+  --color-surface-hover: rgba(4, 120, 87, 0.1);
+}
+
+/* =================== end variants =================== */
