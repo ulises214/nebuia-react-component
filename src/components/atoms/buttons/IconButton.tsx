@@ -1,13 +1,15 @@
 import { FC, PropsWithChildren } from 'react';
 
 import classNames from '../../../lib/common/utils/clsxm';
-import Button from './Button';
+import Button, { ButtonVariant } from './Button';
 
-type Props = Omit<React.ComponentProps<typeof Button>, 'small' | 'extraSmall'>;
+type Props = Omit<React.ComponentProps<typeof Button>, 'small' | 'extraSmall' | 'variant'> & {
+  variant?: ButtonVariant
+};
 export const IconButton: FC<PropsWithChildren<Props>> = ({
   children,
   onClick,
-  variant,
+  variant = 'ghost',
   className,
   ...rest
 }) => {
