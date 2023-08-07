@@ -41,6 +41,17 @@ export const AddressView: FC<AddressViewProps> = (con) => {
           <SizedBox height="s35" />
         </>
       )}
+      <div className="flex w-full flex-col justify-center bg-nebuia-primary-200/20 px-3 py-2 text-center">
+        <div className="">
+          <p className="text-sm font-light text-slate-600 ">
+            Sólo se admiten recibos de:
+          </p>
+        </div>
+        <p className="text-sm font-semibold text-slate-600">
+          CFE, IZZI y TELMEX.
+        </p>
+      </div>
+      <SizedBox height="s35" />
       {con.editAddress && (
         <EditAddress
           {...{
