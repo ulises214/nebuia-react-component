@@ -2,25 +2,29 @@ import { NebuiaKeys } from '@nebuia-ts/models';
 import { NebuiaReportsUtils, NebuiaWidget } from '@nebuia-ts/sdk';
 import { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 
+import { updateUrl } from '../../../common/domain/utils/updateUrl';
 import { useTheme } from '../../../theme/presentation/hooks/UseTheme';
 import { RepositoryContext } from './RepositoryContext';
+import { useWidgetConfig } from './WidgetConfig/Context';
 
 type Props = {
   keys: NebuiaKeys;
-  kyc?: string;
 };
 
 export const NebuiaSdkProvider: FC<PropsWithChildren<Props>> = ({
   keys,
   children,
-  kyc,
 }) => {
   const { setColorScheme } = useTheme();
+  const { report: kyc } = useWidgetConfig();
 
   const [sdk, nebuiaUtils] = useMemo(() => {
     const sdk = new NebuiaWidget(keys);
     const nebuiaUtils = new NebuiaReportsUtils(keys);
-    kyc && sdk.setReport(kyc);
+    if (kyc) {
+      sdk.setReport(kyc);
+      updateUrl('report', kyc);
+    }
 
     return [sdk, nebuiaUtils];
   }, [keys, kyc]);

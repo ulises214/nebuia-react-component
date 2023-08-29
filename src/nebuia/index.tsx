@@ -9,29 +9,66 @@ import { useCurrentView } from '../common/presentation/providers/CurrentViewProv
 import { ThemeProvider } from '../theme/presentation/providers/ThemeProvider';
 import { initI18n, Lang } from '../translations/initi18';
 import { WidgetProps } from './domain/types/WidgetProps';
+import { FinishDetailsPage } from './presentation/pages/DetailsPage';
 import { GenericWelcomePage } from './presentation/pages/GenericWelcomePage';
 import { SignatureWelcomePage } from './presentation/pages/SignatureWelcomePage';
+import { StepsView } from './presentation/pages/StepView';
 import { CompanyStepsProvider } from './presentation/providers/CompanySteps';
 import { ReportStepsProvider } from './presentation/providers/ReportSteps';
+import { useReportSteps } from './presentation/providers/ReportSteps/Context';
 import { NebuiaSdkProvider } from './presentation/providers/RepositoryProvider';
 import { WidgetConfigProvider } from './presentation/providers/WidgetConfig';
 import { useWidgetConfig } from './presentation/providers/WidgetConfig/Context';
 
+const _Content: FC = () => {
+  const { currentView } = useCurrentView();
+  const { isForSignaturePage, report } = useWidgetConfig();
+  const [loading, isLoading] = useState(!!report);
+  const { loadSteps } = useReportSteps();
+
+  useEffect(() => {
+    if (loading) {
+      loadSteps().finally(() => {
+        isLoading(false);
+      });
+    }
+  }, [loading, loadSteps]);
+
+  if (loading) {
+    return <Loader />;
+  }
+
+  if (currentView === 'initial') {
+    if (!report) {
+      return (
+        <>
+          {isForSignaturePage && <SignatureWelcomePage />}
+          {!isForSignaturePage && <GenericWelcomePage />}
+        </>
+      );
+    }
+
+    return <StepsView />;
+  }
+
+  if (currentView === 'steps') {
+    return <StepsView />;
+  }
+
+  return <FinishDetailsPage />;
+};
+
 const Content: FC<{
   keys: NebuiaKeys;
-  kyc?: string;
-}> = ({ keys, kyc }) => {
-  const { currentView } = useCurrentView();
-  const { isForSignaturePage, enableWidgetBackground } = useWidgetConfig();
+}> = ({ keys }) => {
+  const { enableWidgetBackground } = useWidgetConfig();
 
   return (
-    <NebuiaSdkProvider keys={keys} kyc={kyc}>
+    <NebuiaSdkProvider keys={keys}>
       <CompanyStepsProvider>
         <ReportStepsProvider>
           <Layout enableBackground={enableWidgetBackground}>
-            {currentView}
-            {!currentView && isForSignaturePage && <SignatureWelcomePage />}
-            {!currentView && !isForSignaturePage && <GenericWelcomePage />}
+            <_Content />
           </Layout>
         </ReportStepsProvider>
       </CompanyStepsProvider>
@@ -40,11 +77,11 @@ const Content: FC<{
 };
 
 const NebuiaStepsListValidations: FC<
-  Pick<WidgetProps, 'kyc' | 'getKeys'> & {
+  Pick<WidgetProps, 'getKeys'> & {
     lang?: Lang;
     enableBackground?: boolean;
   }
-> = ({ getKeys, lang, kyc }) => {
+> = ({ getKeys, lang }) => {
   const [keys, setKeys] = useState<NebuiaKeys>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string>();
@@ -102,7 +139,7 @@ const NebuiaStepsListValidations: FC<
     );
   }
 
-  return <Content kyc={kyc} keys={keys} />;
+  return <Content keys={keys} />;
 };
 
 export const NebuiaStepsList: FC<
@@ -130,15 +167,12 @@ export const NebuiaStepsList: FC<
       phone={phone}
       isForSignaturePage={isForSignaturePage}
       withDetailsPage={withDetailsPage}
+      report={kyc}
     >
       <CurrentViewProvider>
         <ThemeProvider>
           <ControlActionsProvider>
-            <NebuiaStepsListValidations
-              getKeys={getKeys}
-              kyc={kyc}
-              lang={lang}
-            />
+            <NebuiaStepsListValidations getKeys={getKeys} lang={lang} />
           </ControlActionsProvider>
         </ThemeProvider>
       </CurrentViewProvider>

@@ -10,6 +10,7 @@ type Props = {
   onFinished: PromiseCallback<string>;
   withDetailsPage?: boolean;
   enableBackground: boolean;
+  report?: string;
 };
 export const WidgetConfigProvider: FC<PropsWithChildren<Props>> = ({
   children,
@@ -19,10 +20,12 @@ export const WidgetConfigProvider: FC<PropsWithChildren<Props>> = ({
   onFinished,
   withDetailsPage,
   enableBackground,
+  report,
 }) => {
   return (
     <widgetConfigContext.Provider
       value={{
+        report,
         enableWidgetBackground: enableBackground,
         initialEmail: email,
         initialPhone: phone,

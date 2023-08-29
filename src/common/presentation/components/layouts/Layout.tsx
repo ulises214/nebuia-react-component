@@ -76,6 +76,9 @@ export const Layout: FC<PropsWithChildren<{ enableBackground?: boolean }>> = ({
         'w-full max-w-xl max-h-[50rem] h-full space-y-2',
       )}
     >
+      {import.meta.env.MODE === 'demo' && (
+        <div className="text-center text-red-500">DEBUG</div>
+      )}
       <img
         className="w-full max-w-[7rem]"
         // width="700"

@@ -1,8 +1,9 @@
 import { createContext, useContext } from 'react';
 
+export type Views = 'initial' | 'steps' | 'details';
 type CurrentViewContextType = {
-  currentView?: JSX.Element;
-  setCurrentView: (view: JSX.Element) => void;
+  currentView?: Views;
+  setCurrentView: (view: Views) => void;
 };
 export const currentViewContext = createContext<CurrentViewContextType>(
   {} as CurrentViewContextType,

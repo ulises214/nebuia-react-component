@@ -41,5 +41,6 @@ module.exports = {
     'email-validator',
     'country-flag-icons/unicode',
     'phone',
+    'react-otp-input',
   ],
 };

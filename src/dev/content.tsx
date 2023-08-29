@@ -12,21 +12,20 @@ export const NebuiaDemoContent = () => {
     <Container>
       <NebuiaStepsList
         enableBackground
-        isForSignaturePage
         withDetailsPage
-        // email="ulises@nebuia.com"
-        // phone="+523123398831"
         kyc={REPORT}
         onFinish={async (report) => {
-          console.log('report', report);
-          if ('parent' in window) {
+          if (window.parent !== window) {
             window.parent.postMessage(report, '*');
-          }
-          if ('opener' in window && window.opener) {
-            (window.opener as (typeof window)['parent']).postMessage(
-              report,
-              '*',
-            );
+          } else if (
+            window.opener &&
+            window.opener !== window &&
+            'postMessage' in window.opener
+          ) {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+            window.opener.postMessage(report, '*');
+          } else {
+            alert(`KYC completed, your report: ${JSON.stringify(report)}`);
           }
 
           return Promise.resolve();

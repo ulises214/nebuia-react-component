@@ -16,6 +16,7 @@ root.render(
     <Routes>
       <Route path="/" element={<NebuiaDemoContent />} />
       <Route path="/widget/:secret" element={<NebuiaDemoContent />} />
+      <Route path="/nebuia-react-component" element={<NebuiaDemoContent />} />
     </Routes>
   </BrowserRouter>,
 );

@@ -9,6 +9,7 @@ export interface WidgetConfigContext {
   onFinished: PromiseCallback<string>;
   withDetailsPage: boolean;
   enableWidgetBackground: boolean;
+  report?: string;
 }
 export const widgetConfigContext = createContext({} as WidgetConfigContext);
 
