@@ -3,19 +3,7 @@ import { FC, useCallback, useState } from 'react';
 import { IdCapture } from './IdCapture';
 import { IdSelection } from './IdSelection';
 import { IdUpload } from './IdUpload';
-
-export const Documents = {
-  ine: {
-    name: 'ine',
-    sides: ['front', 'back'] as const,
-  },
-  passport: {
-    name: 'passport',
-    sides: ['front'] as const,
-  },
-} as const;
-
-export type IdAction = 'selection' | 'capture' | 'upload';
+import { Documents, IdAction } from './types';
 
 export const IDStep: FC = () => {
   const [docType, setDocType] = useState<keyof typeof Documents>();

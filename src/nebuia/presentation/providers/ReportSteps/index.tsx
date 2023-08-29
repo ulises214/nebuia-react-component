@@ -3,7 +3,6 @@ import { FC, PropsWithChildren, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ErrorKeys } from '../../../../common/domain/errors_keys';
-import { useCurrentView } from '../../../../common/presentation/providers/CurrentViewProvider/Context';
 import { useNebuiaSdk } from '../../hooks/UseRepository';
 import { useWidgetConfig } from '../WidgetConfig/Context';
 import { reportStepsContext } from './Context';
@@ -11,7 +10,6 @@ import { reportStepsContext } from './Context';
 export const ReportStepsProvider: FC<PropsWithChildren> = ({ children }) => {
   const sdk = useNebuiaSdk();
   const { withDetailsPage, onFinished } = useWidgetConfig();
-  const { setCurrentView } = useCurrentView();
   const [reportSteps, setReportSteps] = useState<NebuiaStep[]>();
   const [currentStep, setCurrentStep] = useState<NebuiaStepNames>();
   const [isLoading, setIsLoading] = useState(false);

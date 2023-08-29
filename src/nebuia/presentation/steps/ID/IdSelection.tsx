@@ -8,7 +8,7 @@ import clsxm from '../../../../common/presentation/utils/clsxm';
 import { useTheme } from '../../../../theme/presentation/hooks/UseTheme';
 import { ParamCallback } from '../../../domain/types/ParamCallback';
 import { ID_ICON, PASSPORT_ICON } from './Images';
-import { Documents, IdAction } from './index';
+import { Documents, IdAction } from './types';
 
 type Props = {
   current?: keyof typeof Documents;

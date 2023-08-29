@@ -10,7 +10,7 @@ import { useControlButton } from '../../../../common/presentation/hooks/UseContr
 import { ParamCallback } from '../../../domain/types/ParamCallback';
 import { useAnaliceIdImage } from '../../hooks/UseAnaliceIdImage';
 import { ID_BACKDROP_BIG, ID_FRONTAL_BIG } from './Images';
-import { Documents, IdAction } from './index';
+import { Documents, IdAction } from './types';
 
 type Props = {
   current: keyof typeof Documents;
