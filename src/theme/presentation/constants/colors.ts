@@ -1,0 +1,4 @@
+export const DEFAULT_PRIMARY_COLOR = '#6847a2';
+export const DEFAULT_SECONDARY_COLOR = '#050217';
+export const DEFAULT_DARK_PRIMARY_COLOR = '#d4037d';
+export const DEFAULT_DARK_SECONDARY_COLOR = '#864ce9';
