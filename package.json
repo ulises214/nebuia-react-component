@@ -1,6 +1,6 @@
 {
   "name": "nebuia-react-component-v2",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/types/index.d.ts",
