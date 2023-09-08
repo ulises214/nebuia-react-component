@@ -31,7 +31,9 @@ export const useAnaliceIdImage: ActionHookResponse<string, T> = ({
       setCroppedImage(res.payload.image);
     };
     setLoading(true);
-    uploadImage().finally(() => setLoading(false));
+    uploadImage()
+      .catch(() => setError('Error uploading'))
+      .finally(() => setLoading(false));
   }, [image, onSetImage, sdk]);
 
   return [loading, error, croppedImage];

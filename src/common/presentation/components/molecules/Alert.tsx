@@ -11,7 +11,13 @@ import { useTheme } from '../../../../theme/presentation/hooks/UseTheme';
 import clsxm from '../../utils/clsxm';
 import { P } from '../atoms/P';
 
-type AlertVariants = 'success' | 'error' | 'warning' | 'info';
+export const AlertVariants = {
+  success: 'success',
+  error: 'error',
+  warning: 'warning',
+  info: 'info',
+} as const;
+export type AlertVariants = (typeof AlertVariants)[keyof typeof AlertVariants];
 type AlertProps = {
   variant: AlertVariants;
   title: string;
