@@ -1,5 +1,6 @@
 {
-  "name": "nebuia-react-component-v2",
+  "name": "nebuia-react-component",
+  "description": "Widget to implement Nebuia in React",
   "version": "2.0.2",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

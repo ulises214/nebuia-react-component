@@ -1,27 +1,39 @@
-# React + TypeScript + Vite
+# Nebuia react component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a library to integrate Nebuia into your react app.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+npm install nebuia-react-component
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Requirements
+
+To use this library you need to have a Nebuia account and a valid API key.
+You can get this information in the Nebuia dashboard. [https://admin.nebuia.com](https://admin.nebuia.com)
+
+## Usage
+
+```javascript
+import { NebuiaStepsList } from 'nebuia-react-component';
+
+<NebuiaStepsList
+  enableBackground // Use own background, if false its background is transparent
+  withDetailsPage // Shows a final page with the report summary
+  lang="es" // Optional: Language of the component, default is "es", supported languages are "es" and "en"
+  kyc={REPORT} // Optional: Initialize the component with a report, if not provided it will create a new report 
+  email={EMAIL} // Optional: Initialize the component with an email, if not provided it will ask the user for it
+  phone={PHONE} // Optional: Initialize the component with a phone, if not provided it will ask the user for it
+  onFinish={async (report) => {
+    // When the user finishes the process, this function is called with the report
+  }}
+  getKeys={() => {
+    // Returns the API keys, or a promise that resolves to the API keys
+    return {
+      apiKey: 'API_KEY',
+      apiSecret: 'API_SECRET'
+    };
+  }}
+/>;
+```
