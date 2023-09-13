@@ -56,6 +56,14 @@
 .button.light {
   @apply shadow-sm;
 }
+.button.light.primary:disabled {
+  background-color: #98a2b3 !important;
+  border-color: transparent !important;
+}
+.button.dark.primary:disabled {
+  background-color: #1f2937 !important;
+}
+
 .button.light:not(:disabled):hover {
   @apply shadow-md;
 }

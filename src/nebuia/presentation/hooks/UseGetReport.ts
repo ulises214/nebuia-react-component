@@ -34,11 +34,10 @@ export const useGetReport: ActionHookResponse<Res> = () => {
       }
     };
     setIsLoading(true);
-    get().finally(() => setIsLoading(false));
+    void get().finally(() => setIsLoading(false));
   }, [sdk, utils]);
 
   const getReportPdf = useCallback(async () => {
-    debugger;
     const result = await utils.getPDF({ report: sdk.getReport() });
     if (result.status) {
       return [undefined, result.payload] as PdfResult;

@@ -76,7 +76,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           isLoading && styles['loading'],
           isDarkBg ? styles['dark'] : styles['light'],
           !isDarkBg && styles['light'],
-          //#endregion  //*======== Variants ===========
           className,
         )}
         {...rest}

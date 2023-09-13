@@ -14,7 +14,7 @@ export const P: FC<PropsWithChildren<{ className?: string }>> = ({
   return (
     <p
       className={clsxm(
-        `text-base font-normal`,
+        `text-sm font-normal`,
         dark ? 'text-white' : 'text-black',
         className,
       )}

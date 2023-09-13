@@ -1,6 +1,9 @@
-import phone from 'phone';
 import { FC, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import PhoneInput from 'react-phone-input-2';
+import es from 'react-phone-input-2/lang/es.json';
+
+import 'react-phone-input-2/lib/semantic-ui.css';
 
 import Button from '../../../../../common/presentation/components/atoms/buttons/Button';
 import { P } from '../../../../../common/presentation/components/atoms/P';
@@ -8,6 +11,7 @@ import clsxm from '../../../../../common/presentation/utils/clsxm';
 import { useTheme } from '../../../../../theme/presentation/hooks/UseTheme';
 import { ParamCallback } from '../../../../domain/types/ParamCallback';
 import { useNebuiaSdk } from '../../../hooks/UseRepository';
+import { useWidgetConfig } from '../../../providers/WidgetConfig/Context';
 
 export type CommonProps = {
   onContinue: ParamCallback<string>;
@@ -17,8 +21,6 @@ type Props = CommonProps & {
   validator: (value: string) => boolean;
   type: 'email' | 'phone';
   initialValue?: string;
-  prefix?: string;
-  requiresPrefix?: boolean;
 };
 export const Input: FC<Props> = ({
   onContinue,
@@ -26,9 +28,8 @@ export const Input: FC<Props> = ({
   type,
   validator,
   initialValue,
-  requiresPrefix,
-  prefix,
 }) => {
+  const { language } = useWidgetConfig();
   const sdk = useNebuiaSdk();
   const [_value, setValue] = useState(initialValue ?? value);
   const [loading, setLoading] = useState(false);
@@ -43,7 +44,9 @@ export const Input: FC<Props> = ({
     }
     let value;
     if (type === 'phone') {
-      value = phone(_value).phoneNumber;
+      // TODO
+      value = _value.replace(/\s/g, '');
+      value = value.startsWith('+') ? value : `+${value}`;
     } else {
       value = _value.replace(/\s/g, '');
     }
@@ -80,36 +83,54 @@ export const Input: FC<Props> = ({
         </label>
         <div className="mt-2 flex gap-2 rounded-md shadow-sm">
           <div className="relative flex grow items-stretch focus-within:z-10">
-            {requiresPrefix && (
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                <P className="sm:text-sm">{prefix}</P>
-              </div>
+            {type === 'email' && (
+              <input
+                value={_value}
+                onChange={(e) => setValue(e.target.value)}
+                type="email"
+                name={type}
+                id={type}
+                readOnly={!!initialValue}
+                disabled={!!initialValue}
+                className={clsxm(
+                  'block w-full rounded-lg',
+                  'border-0 py-1.5 ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-nebuia-primary-600 sm:text-sm sm:leading-6',
+                  !dark &&
+                    'text-gray-900 ring-gray-300 placeholder:text-gray-400',
+                  dark &&
+                    'text-gray-100 ring-gray-700 placeholder:text-gray-500',
+                  {
+                    'read-only:bg-gray-200 read-only:text-gray-400': !dark,
+                    'read-only:bg-gray-700 read-only:text-gray-500': dark,
+                  },
+                  'read-only:focus:ring-0',
+                )}
+                placeholder={'example@gmail.com'}
+              />
             )}
-            <input
-              value={_value}
-              onChange={(e) => setValue(e.target.value)}
-              type={type === 'email' ? type : 'tel'}
-              name={type}
-              id={type}
-              readOnly={!!initialValue}
-              disabled={!!initialValue}
-              className={clsxm(
-                'block w-full rounded-lg',
-                'border-0 py-1.5 ring-1 ring-inset focus:ring-2 focus:ring-inset focus:ring-nebuia-primary-600 sm:text-sm sm:leading-6',
-                !dark &&
-                  'text-gray-900 ring-gray-300 placeholder:text-gray-400',
-                dark && 'text-gray-100 ring-gray-700 placeholder:text-gray-500',
-                {
-                  'read-only:bg-gray-200 read-only:text-gray-400': !dark,
-                  'read-only:bg-gray-700 read-only:text-gray-500': dark,
-                },
-                'read-only:focus:ring-0',
-                requiresPrefix && 'pl-10',
-              )}
-              placeholder={
-                type === 'email' ? 'example@gmail.com' : '+91 9876543210'
-              }
-            />
+            {type === 'phone' && (
+              <PhoneInput
+                localization={language === 'es' ? es : undefined}
+                autoFormat
+                copyNumbersOnly
+                value={value}
+                onChange={(value) => {
+                  setValue(value);
+                }}
+                disabled={!!initialValue}
+                inputClass={clsxm(
+                  'focus:ring-nebuia-primary-600',
+                  !dark &&
+                    'text-gray-900 ring-gray-300 placeholder:text-gray-400',
+                  dark &&
+                    'text-gray-100 ring-gray-700 placeholder:text-gray-500',
+                  {
+                    'disabled:bg-gray-200 disabled:text-gray-400': !dark,
+                    'disabled:bg-gray-700 disabled:text-gray-500': dark,
+                  },
+                )}
+              />
+            )}
           </div>
           <Button
             variant="primary"

@@ -1,7 +1,7 @@
 {
   "name": "nebuia-react-component",
   "description": "Widget to implement Nebuia in React",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/types/index.d.ts",
@@ -30,14 +30,16 @@
     "@nebuia-ts/models": "1.1.8",
     "@nebuia-ts/sdk": "1.0.22",
     "clsx": "2.0.0",
-    "country-flag-icons": "1.5.7",
     "email-validator": "2.0.4",
     "i18next": "23.5.1",
-    "phone": "3.1.40",
+    "lean-qr": "^2.3.1",
+    "libphonenumber-js": "1.10.44",
     "react": "18.2.0",
+    "react-device-detect": "2.2.3",
     "react-i18next": "13.2.2",
     "react-icons": "4.11.0",
     "react-otp-input": "3.0.4",
+    "react-phone-input-2": "2.15.1",
     "tailwind-merge": "1.14.0"
   },
   "devDependencies": {
