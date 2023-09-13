@@ -47,6 +47,10 @@ export interface Pages {
     web: string;
     mobile: string;
   };
+  livenessQr: {
+    title: string;
+    description: string;
+  };
   livenessSuccess: LivenessSuccess;
   id: ID;
   address: Address;

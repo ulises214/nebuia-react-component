@@ -28,6 +28,11 @@ export const esTranslation: Translation = {
       web: 'No, continuar en web',
       mobile: 'Sí, continuar en celular',
     },
+    livenessQr: {
+      title: 'Verificación de identidad móvil',
+      description:
+        '¡Genial! Haz elegido la versión móvil para completar la verificación de identidad. Por favor escanea el código QR y sigue las instrucciones.',
+    },
     livenessSuccess: {
       title: '¡PRUEBA DE VIDA EXITOSA!',
       description: '¡Ya puedes continuar con tu verificación KYC!',

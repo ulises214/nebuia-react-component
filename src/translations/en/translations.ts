@@ -32,6 +32,11 @@ export const enTranslation: Translation = {
       web: 'No, continue on the web',
       mobile: 'Yes, continue on mobile',
     },
+    livenessQr: {
+      title: 'Mobile identity verification',
+      description:
+        'Great! You have chosen the mobile version to complete the identity verification. Please scan the QR code and follow the instructions.',
+    },
     id: {
       selection: {
         instructions: 'Select the type of document you would like to validate.',
