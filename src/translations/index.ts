@@ -37,7 +37,16 @@ export interface Errors {
 export interface Pages {
   signatureWelcome: Welcome;
   genericWelcome: Welcome;
-  livenessInstructions: { [key: string]: string };
+  livenessInstructions: { '0': string; '1': string; '2': string };
+  livenessChoice: {
+    label: {
+      first: string;
+      bold: string;
+      last: string;
+    };
+    web: string;
+    mobile: string;
+  };
   livenessSuccess: LivenessSuccess;
   id: ID;
   address: Address;

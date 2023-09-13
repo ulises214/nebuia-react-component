@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
 
+import { Lang } from '../../../../translations/initi18';
 import { PromiseCallback } from '../../../domain/types/ParamCallback';
 import { widgetConfigContext } from './Context';
 
@@ -11,6 +12,7 @@ type Props = {
   withDetailsPage?: boolean;
   enableBackground: boolean;
   report?: string;
+  lang: Lang;
 };
 export const WidgetConfigProvider: FC<PropsWithChildren<Props>> = ({
   children,
@@ -20,11 +22,13 @@ export const WidgetConfigProvider: FC<PropsWithChildren<Props>> = ({
   onFinished,
   withDetailsPage,
   enableBackground,
+  lang,
   report,
 }) => {
   return (
     <widgetConfigContext.Provider
       value={{
+        language: lang,
         report,
         enableWidgetBackground: enableBackground,
         initialEmail: email,

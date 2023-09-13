@@ -28,7 +28,7 @@ const _Content: FC = () => {
 
   useEffect(() => {
     if (loading) {
-      loadSteps().finally(() => {
+      void loadSteps().finally(() => {
         isLoading(false);
       });
     }
@@ -116,7 +116,7 @@ const NebuiaStepsListValidations: FC<
     };
 
     setIsLoading(true);
-    load().finally(() => {
+    void load().finally(() => {
       setIsLoading(false);
     });
   }, [getKeys, lang]);
@@ -161,6 +161,7 @@ export const NebuiaStepsList: FC<
 }) => {
   return (
     <WidgetConfigProvider
+      lang={lang ?? 'es'}
       enableBackground={enableBackground ?? false}
       email={email}
       onFinished={onFinish}

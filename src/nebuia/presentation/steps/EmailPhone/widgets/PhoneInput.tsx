@@ -1,48 +1,43 @@
-import getUnicodeFlagIcon from 'country-flag-icons/unicode';
-import { phone, PhoneResult } from 'phone';
-import { FC, useCallback, useEffect, useMemo, useState } from 'react';
+import { isValidPhoneNumber } from 'libphonenumber-js';
+import { FC, useCallback, useEffect, useState } from 'react';
+import {} from 'react-phone-input-2';
 
 import { useWidgetConfig } from '../../../providers/WidgetConfig/Context';
 import { CommonProps, Input } from './Input';
 
 export const PhoneInput: FC<CommonProps> = ({ value, onContinue }) => {
   const { initialPhone } = useWidgetConfig();
-  const [result, setResult] = useState<PhoneResult>();
+  const [result, setResult] = useState<{ isValid: boolean; phone: string }>();
   const validate = useCallback((value: string) => {
-    const result = phone(value);
-    setResult(result);
+    const parsed = value.startsWith('+') ? value : `+${value}`;
+    const result = isValidPhoneNumber(parsed);
 
-    return result.isValid;
+    setResult({
+      isValid: result,
+      phone: result ? value : '',
+    });
+
+    return result;
   }, []);
 
   useEffect(() => {
     initialPhone && validate(initialPhone);
   }, [initialPhone, validate]);
 
-  const flag = useMemo(() => {
-    if (!result?.countryIso2) {
-      return;
-    }
-
-    return getUnicodeFlagIcon(result.countryIso2);
-  }, [result?.countryIso2]);
-
   const handleContinue = useCallback(() => {
     if (!result?.isValid) {
       return;
     }
-    onContinue(result.phoneNumber);
+    onContinue(result.phone);
   }, [onContinue, result]);
 
   return (
     <Input
       initialValue={initialPhone}
       onContinue={handleContinue}
-      value={result?.phoneNumber ?? value}
+      value={result?.phone ?? value}
       type="phone"
       validator={validate}
-      prefix={flag}
-      requiresPrefix
     />
   );
 };

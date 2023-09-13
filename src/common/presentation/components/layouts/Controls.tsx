@@ -7,13 +7,40 @@ import clsxm from '../../utils/clsxm';
 import { IconButton } from '../atoms/buttons/IconButton';
 import { P } from '../atoms/P';
 
-export const Controls: FC = () => {
+export const ControlsBack: FC = () => {
+  const { previous } = useControlAction();
+  const [loadingPrevious, setLoadingPrevious] = useState(false);
+
+  const handlePrevious = async () => {
+    setLoadingPrevious(true);
+    await previous?.action();
+    setLoadingPrevious(false);
+  };
+
+  if (!previous?.show) {
+    return <></>;
+  }
+
+  return (
+    <div className="!absolute bottom-5 left-5">
+      <IconButton
+        isLoading={loadingPrevious}
+        variant="ghost"
+        onClick={() => void handlePrevious()}
+        disabled={!previous.active}
+      >
+        <ArrowLeftIcon className="h-4 w-4" />
+      </IconButton>
+    </div>
+  );
+};
+
+export const ControlsNext: FC = () => {
   const {
     theme: { dark },
   } = useTheme();
 
-  const { next, previous } = useControlAction();
-  const [loadingPrevious, setLoadingPrevious] = useState(false);
+  const { next } = useControlAction();
   const [loadingNext, setLoadingNext] = useState(false);
 
   const handleNext = async () => {
@@ -22,61 +49,31 @@ export const Controls: FC = () => {
     setLoadingNext(false);
   };
 
-  const handlePrevious = async () => {
-    setLoadingPrevious(true);
-    await previous?.action();
-    setLoadingPrevious(false);
-  };
+  if (!next?.show) {
+    return <></>;
+  }
 
   return (
-    <div className="flex w-full items-center gap-4">
-      {previous?.show && (
-        <div className="flex items-center gap-2">
-          <IconButton
-            isLoading={loadingPrevious}
-            variant="primary"
-            onClick={() => void handlePrevious()}
-            disabled={!previous.active}
-            className="!p-3"
-          >
-            <ArrowLeftIcon className="h-6 w-6" />
-          </IconButton>
-          <P
-            className={clsxm(
-              !previous.active && {
-                'text-gray-400': dark,
-                'text-gray-500': !dark,
-              },
-            )}
-          >
-            {previous.label}
-          </P>
-        </div>
-      )}
-      <div className="grow"></div>
-      {next?.show && (
-        <div className="flex items-center gap-2">
-          <P
-            className={clsxm(
-              !next.active && {
-                'text-gray-400': dark,
-                'text-gray-500': !dark,
-              },
-            )}
-          >
-            {next.label}
-          </P>
-          <IconButton
-            isLoading={loadingNext}
-            variant="primary"
-            onClick={() => void handleNext()}
-            className="!p-3"
-            disabled={!next.active}
-          >
-            <ArrowRightIcon className="h-6 w-6" />
-          </IconButton>
-        </div>
-      )}
+    <div className="flex w-full items-center justify-end gap-2">
+      <P
+        className={clsxm(
+          !next.active && {
+            'text-gray-400': dark,
+            'text-gray-500': !dark,
+          },
+        )}
+      >
+        {next.label}
+      </P>
+      <IconButton
+        isLoading={loadingNext}
+        variant="primary"
+        onClick={() => void handleNext()}
+        className="!p-3"
+        disabled={!next.active}
+      >
+        <ArrowRightIcon className="h-6 w-6" />
+      </IconButton>
     </div>
   );
 };

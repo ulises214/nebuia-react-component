@@ -23,6 +23,15 @@ export const enTranslation: Translation = {
       title: 'Proof of life completed!',
       description: 'You can proceed with your KYC verification now!',
     },
+    livenessChoice: {
+      label: {
+        first: 'To ensure ',
+        bold: 'security',
+        last: ', we need to verify that you are a real person by facial validation. For convenience, would you prefer to do this on your cell phone or continue on the web?',
+      },
+      web: 'No, continue on the web',
+      mobile: 'Yes, continue on mobile',
+    },
     id: {
       selection: {
         instructions: 'Select the type of document you would like to validate.',
@@ -97,7 +106,7 @@ export const enTranslation: Translation = {
     emailPhone: {
       inputLabel: {
         email: 'Email',
-        phone: 'Phone',
+        phone: 'Phone (Lada + Number)',
       },
       instructions: {
         email: 'We will send a verification code to your email.',

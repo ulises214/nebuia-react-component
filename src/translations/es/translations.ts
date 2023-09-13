@@ -19,6 +19,15 @@ export const esTranslation: Translation = {
       '1': 'Procura estar en un lugar bien iluminado, evitar reflejos y mantener recto tu rostro.',
       '2': 'Si usas lentes, por favor retíralos durante el proceso de prueba de vida.',
     },
+    livenessChoice: {
+      label: {
+        first: 'Para garantizar ',
+        bold: 'seguridad',
+        last: ', necesitamos verificar que eres una persona real mediante una validación facial. Por comodidad, ¿prefieres hacerlo en tu celular o continuar en la web?',
+      },
+      web: 'No, continuar en web',
+      mobile: 'Sí, continuar en celular',
+    },
     livenessSuccess: {
       title: '¡PRUEBA DE VIDA EXITOSA!',
       description: '¡Ya puedes continuar con tu verificación KYC!',
@@ -96,7 +105,7 @@ export const esTranslation: Translation = {
     emailPhone: {
       inputLabel: {
         email: 'Correo electrónico',
-        phone: 'Teléfono',
+        phone: 'Teléfono (Lada + Número)',
       },
       instructions: {
         email: 'Enviaremos un correo de verificación a tu correo electrónico',

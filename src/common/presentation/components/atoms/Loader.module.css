@@ -5,35 +5,24 @@
 }
 
 .circle {
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   margin: 0 5px;
   animation:
-    jump 1s cubic-bezier(0.5, 1.8, 0.5, 1) infinite,
-    spin 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite,
-    fadeInOut 1.5s ease-in-out infinite;
-  transform-origin: center bottom;
-  opacity: 0.3;
+    jump 1.5s cubic-bezier(0.5, 1.8, 0.5, 1) infinite,
+    fadeInOut 1.4s ease-in-out infinite;
+  transform-origin: center;
   position: relative;
 }
 
 @keyframes jump {
   0%,
   100% {
-    transform: translateY(0);
+    scale: 0.75;
   }
   50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
+    scale: 1;
   }
 }
 

@@ -82,3 +82,11 @@
       100% 2px;
   }
 }
+
+.react-tel-input .country-list {
+  border-color: var(--color-nebuia-primary-400) !important;
+}
+
+.react-tel-input .form-control.open {
+  border-color: var(--color-nebuia-primary-400) !important;
+}

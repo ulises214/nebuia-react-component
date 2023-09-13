@@ -31,7 +31,7 @@ export const useControlButton = ({
   }, [action, label, side, setNext, active, show]);
 
   useEffect(() => {
-    if (side !== 'previous' || !active) {
+    if (side !== 'previous') {
       return;
     }
     setPrevious({ label, action, active, show });

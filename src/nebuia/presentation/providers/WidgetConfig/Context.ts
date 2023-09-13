@@ -10,6 +10,7 @@ export interface WidgetConfigContext {
   withDetailsPage: boolean;
   enableWidgetBackground: boolean;
   report?: string;
+  language: 'es' | 'en';
 }
 export const widgetConfigContext = createContext({} as WidgetConfigContext);
 

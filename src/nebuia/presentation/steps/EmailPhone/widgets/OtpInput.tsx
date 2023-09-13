@@ -37,7 +37,7 @@ export const OtpInput: FC<Props> = ({ onChange, readonly, value }) => {
           className={clsxm(
             '!h-14 md:!h-16 xl:!h-20 !aspect-[14/20]',
             'xl:text-2xl md:text-xl text-lg',
-            'rounded-md border-2 border-gray-300 text-center focus:border-nebuia-primary-600 focus:outline-none',
+            'rounded-md border-2 border-gray-300 text-center focus:!border-nebuia-primary-500 focus:!ring-nebuia-primary-500 focus:outline-none',
             dark && 'text-gray-100 ring-gray-700 placeholder:text-gray-500',
             {
               'read-only:bg-gray-200 read-only:text-gray-400': !dark,
