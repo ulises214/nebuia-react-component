@@ -1,23 +1,17 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 
 import styles from './Loader.module.css';
 
-import { useTheme } from '../../../../theme/presentation/hooks/UseTheme';
-
 export const Loader: FC = () => {
-  const {
-    theme: { primary },
-  } = useTheme();
-  const circleCount = 3;
+  const circleCount = useMemo(() => [0, 1, 2], []);
 
   return (
     <div className={styles['custom-loader']}>
-      {Array.from({ length: circleCount }).map((_, i) => (
+      {circleCount.map((i) => (
         <div
           className={styles['circle']}
           style={{
-            backgroundColor: primary,
-            animationDelay: `${(i - circleCount) * 0.1}s`,
+            animationDelay: `${(i - circleCount.length) * 0.1}s`,
           }}
           key={i}
         ></div>

@@ -11,6 +11,7 @@ import { initI18n, Lang } from '../translations/initi18';
 import { WidgetProps } from './domain/types/WidgetProps';
 import { FinishDetailsPage } from './presentation/pages/DetailsPage';
 import { GenericWelcomePage } from './presentation/pages/GenericWelcomePage';
+import { SignaturePage } from './presentation/pages/Signature/SignaturePage';
 import { SignatureWelcomePage } from './presentation/pages/SignatureWelcomePage';
 import { StepsView } from './presentation/pages/StepView';
 import { CompanyStepsProvider } from './presentation/providers/CompanySteps';
@@ -54,6 +55,9 @@ const _Content: FC = () => {
   if (currentView === 'steps') {
     return <StepsView />;
   }
+  if (currentView === 'signature') {
+    return <SignaturePage />;
+  }
 
   return <FinishDetailsPage />;
 };
@@ -76,6 +80,22 @@ const Content: FC<{
   );
 };
 
+const getKeysError = (error: PromiseRejectedResult, lang: Lang) => {
+  const reason = error.reason as unknown;
+  const defaultError =
+    lang === 'en' ? 'Error loading keys' : 'Error al cargar las llaves';
+
+  return reason instanceof Error ? reason.message : defaultError;
+};
+
+const getLangError = (error: PromiseRejectedResult, lang: Lang) => {
+  const reason = error.reason as unknown;
+  const defaultError =
+    lang === 'en' ? 'Error loading language' : 'Error al cargar el idioma';
+
+  return reason instanceof Error ? reason.message : defaultError;
+};
+
 const NebuiaStepsListValidations: FC<
   Pick<WidgetProps, 'getKeys'> & {
     lang?: Lang;
@@ -96,22 +116,13 @@ const NebuiaStepsListValidations: FC<
       if (keys.status === 'fulfilled') {
         setKeys(keys.value);
       } else {
-        const reason = keys.reason as unknown;
-        const defaultError =
-          lang === 'en' ? 'Error loading keys' : 'Error al cargar las llaves';
-
-        setError(reason instanceof Error ? reason.message : defaultError);
+        setError(getKeysError(keys, lang ?? 'es'));
 
         return;
       }
 
       if (langResult.status !== 'fulfilled') {
-        const reason = langResult.reason as unknown;
-        const defaultError =
-          lang === 'en'
-            ? 'Error loading language'
-            : 'Error al cargar el idioma';
-        setError(reason instanceof Error ? reason.message : defaultError);
+        setError(getLangError(langResult, lang ?? 'es'));
       }
     };
 
@@ -158,10 +169,12 @@ export const NebuiaStepsList: FC<
   lang,
   phone,
   withDetailsPage,
+  signDocuments,
 }) => {
   return (
     <WidgetConfigProvider
       lang={lang ?? 'es'}
+      signDocuments={signDocuments ?? false}
       enableBackground={enableBackground ?? false}
       email={email}
       onFinished={onFinish}

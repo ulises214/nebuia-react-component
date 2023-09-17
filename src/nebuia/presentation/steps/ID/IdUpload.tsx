@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { Loader } from '../../../../common/presentation/components/atoms/Loader';
@@ -9,16 +9,17 @@ import { useUploadIdImages } from '../../hooks/UseUploladIdImagest';
 import { useReportSteps } from '../../providers/ReportSteps/Context';
 
 type Props = {
-  images: string[];
+  images: { key: string; img: string }[];
   doc: 'ine' | 'passport';
   cancel: () => void;
 };
 export const IdUpload: FC<Props> = ({ doc, images, cancel }) => {
   const { t } = useTranslation();
   const { onNextStep } = useReportSteps();
+  const parsedImages = useMemo(() => images.map((i) => i.img), [images]);
   const [loading, error, result] = useUploadIdImages({
     docType: doc,
-    images,
+    images: parsedImages,
   });
   const handleNext = useCallback(async () => {
     if (loading) {
@@ -56,10 +57,10 @@ export const IdUpload: FC<Props> = ({ doc, images, cancel }) => {
             {t(`pages.id.upload.info.description`)}
           </P>
           <div className="flex flex-col gap-4 lg:flex-row">
-            {images.map((image, i) => (
-              <picture key={i}>
+            {images.map((image) => (
+              <picture key={image.key}>
                 <img
-                  src={`data:image/png;base64,${image}`}
+                  src={`data:image/png;base64,${image.img}`}
                   alt=""
                   className="mx-auto w-full max-w-[18rem] border border-solid border-emerald-500"
                 />

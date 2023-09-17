@@ -36,7 +36,11 @@ export const useAnaliceAddress: ActionHookResponse<NebuiaAddress, T> = ({
     setLoading(true);
     setError(undefined);
     setAddress(undefined);
-    uploadImage().finally(() => setLoading(false));
+    uploadImage()
+      .finally(() => setLoading(false))
+      .catch((err) => {
+        setError(err instanceof Error ? err.message : 'Error desconocido');
+      });
   }, [image, sdk]);
 
   return [loading, error, address];

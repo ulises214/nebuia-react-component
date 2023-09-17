@@ -108,8 +108,6 @@ export const DocumentCapture: FC<Props> = ({
   const handleNext = useCallback(() => {
     if (showInstructions) {
       setShowInstructions(false);
-
-      return;
     }
   }, [showInstructions]);
 

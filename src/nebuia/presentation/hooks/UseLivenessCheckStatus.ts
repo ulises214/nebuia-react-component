@@ -13,24 +13,22 @@ export const useLivenessCheckStatus = (): boolean => {
     if (!report) {
       return;
     }
-    function realizarConsulta() {
+    function checkLiveness() {
       utils
         .existReport({ report })
         .then((res) => {
           if (res.status && res.payload.face?.liveness) {
             setChecked(true);
           } else {
-            timeoutRef.current = setTimeout(realizarConsulta, 5000);
+            timeoutRef.current = setTimeout(checkLiveness, 5000);
           }
         })
-        .catch((err) => {
-          // eslint-disable-next-line no-console
-          console.log(err);
-          timeoutRef.current = setTimeout(realizarConsulta, 5000);
+        .catch(() => {
+          timeoutRef.current = setTimeout(checkLiveness, 5000);
         });
     }
 
-    timeoutRef.current = setTimeout(realizarConsulta, 5000);
+    timeoutRef.current = setTimeout(checkLiveness, 5000);
 
     return () => {
       if (timeoutRef.current) {

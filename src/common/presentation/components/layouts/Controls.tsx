@@ -22,7 +22,7 @@ export const ControlsBack: FC = () => {
   }
 
   return (
-    <div className="!absolute bottom-5 left-5">
+    <div className="!absolute inset-y-0 left-5">
       <IconButton
         isLoading={loadingPrevious}
         variant="ghost"

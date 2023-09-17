@@ -5,9 +5,13 @@ import { P } from '../../../../common/presentation/components/atoms/P';
 import { useControlButton } from '../../../../common/presentation/hooks/UseControlButton';
 import clsxm from '../../../../common/presentation/utils/clsxm';
 import { useTheme } from '../../../../theme/presentation/hooks/UseTheme';
-import { ILUMINATION_BOY, PHONE_GIRL, SELFIE_BOY } from './images';
+import { ILLUMINATION_BOY, PHONE_GIRL, SELFIE_BOY } from './images';
 
-const IMAGES = [SELFIE_BOY, ILUMINATION_BOY, PHONE_GIRL];
+const IMAGES = [
+  { key: 'SELFIE_BOY', img: SELFIE_BOY },
+  { key: 'ILLUMINATION_BOY', img: ILLUMINATION_BOY },
+  { key: 'PHONE_GIRL', img: PHONE_GIRL },
+];
 
 const Dot = ({ active }: { active: boolean }) => {
   const { dark } = useTheme().theme;
@@ -53,7 +57,7 @@ export const LivenessInstructions: FC<{
         {IMAGES.map((src, i) => {
           return (
             <figure
-              key={i}
+              key={src.key}
               className={clsxm(
                 'w-full',
                 'transition-all duration-500',
@@ -63,14 +67,14 @@ export const LivenessInstructions: FC<{
                   : 'opacity-0 pointer-events-none', // Show only the current image
               )}
             >
-              <img src={src} alt="" className="w-full max-w-[27rem]" />
+              <img src={src.img} alt="" className="w-full max-w-[27rem]" />
             </figure>
           );
         })}
       </div>
       <div className="flex -translate-y-5 gap-4">
         {IMAGES.map((_, i) => (
-          <Dot key={i} active={i === currentPhoto} />
+          <Dot key={_.key} active={i === currentPhoto} />
         ))}
       </div>
       <P className="max-w-sm text-center">

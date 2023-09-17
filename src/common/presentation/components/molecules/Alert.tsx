@@ -20,8 +20,8 @@ export const AlertVariants = {
 export type AlertVariants = (typeof AlertVariants)[keyof typeof AlertVariants];
 type AlertProps = {
   variant: AlertVariants;
-  title: string;
-  message: string[] | string;
+  title?: string;
+  message?: string[] | string;
 };
 export const Alert: FC<AlertProps> = ({ message, title, variant }) => {
   const { dark } = useTheme().theme;
@@ -57,12 +57,13 @@ export const Alert: FC<AlertProps> = ({ message, title, variant }) => {
         </div>
       </div>
       <div className="flex grow flex-col gap-1">
-        <P className="font-bold">{title}</P>
-        {(Array.isArray(message) ? message : [message]).map((m, i) => (
-          <P className="font-light" key={i}>
-            {m}
-          </P>
-        ))}
+        {message && <P className="font-bold">{title}</P>}
+        {message &&
+          (Array.isArray(message) ? message : [message]).map((m) => (
+            <P className="font-light" key={m}>
+              {m}
+            </P>
+          ))}
       </div>
     </div>
   );

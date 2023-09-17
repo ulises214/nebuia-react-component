@@ -1,5 +1,5 @@
 import { NebuiaStep, NebuiaStepNames } from '@nebuia-ts/models';
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
+import { FC, PropsWithChildren, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ErrorKeys } from '../../../../common/domain/errors_keys';
@@ -10,7 +10,7 @@ import { reportStepsContext } from './Context';
 
 export const ReportStepsProvider: FC<PropsWithChildren> = ({ children }) => {
   const sdk = useNebuiaSdk();
-  const { withDetailsPage, onFinished } = useWidgetConfig();
+  const { withDetailsPage, onFinished, signDocuments } = useWidgetConfig();
   const [reportSteps, setReportSteps] = useState<NebuiaStep[]>();
   const [currentStep, setCurrentStep] = useState<NebuiaStepNames>();
   const [isLoading, setIsLoading] = useState(false);
@@ -22,29 +22,33 @@ export const ReportStepsProvider: FC<PropsWithChildren> = ({ children }) => {
     setIsLoading(true);
     const res = await sdk.getStepsFromReport();
     setIsLoading(false);
+    if (!res.status) {
+      const errorKey = ErrorKeys[res.payload];
+      setError(errorKey ? t(`errors.${errorKey}`) : res.payload);
 
-    if (res.status) {
-      setReportSteps(res.payload);
-      const firstStep = res.payload.find((step) => !step.status);
-      if (firstStep) {
-        setCurrentStep(firstStep.name);
-        setCurrentView('steps');
+      return;
+    }
+    setReportSteps(res.payload);
+    const firstStep = res.payload.find((step) => !step.status);
+    if (firstStep) {
+      setCurrentStep(firstStep.name);
+      setCurrentView('steps');
 
-        return;
-      }
-      if (!withDetailsPage) {
-        await onFinished(sdk.getReport());
+      return;
+    }
+    if (signDocuments) {
+      setCurrentView('signature');
 
-        return;
-      }
-
+      return;
+    }
+    if (withDetailsPage) {
       setCurrentView('details');
 
       return;
     }
-    const errorKey = ErrorKeys[res.payload];
-    setError(errorKey ? t(`errors.${errorKey}`) : res.payload);
-  }, [onFinished, sdk, setCurrentView, t, withDetailsPage]);
+
+    await onFinished(sdk.getReport());
+  }, [onFinished, sdk, setCurrentView, signDocuments, t, withDetailsPage]);
 
   const onNextStep = useCallback(async () => {
     const currIndex = reportSteps?.findIndex(
@@ -63,6 +67,11 @@ export const ReportStepsProvider: FC<PropsWithChildren> = ({ children }) => {
 
       return;
     }
+    if (signDocuments) {
+      setCurrentView('signature');
+
+      return;
+    }
     if (withDetailsPage) {
       setCurrentView('details');
 
@@ -76,20 +85,24 @@ export const ReportStepsProvider: FC<PropsWithChildren> = ({ children }) => {
     reportSteps,
     sdk,
     setCurrentView,
+    signDocuments,
     withDetailsPage,
   ]);
 
+  const value = useMemo(
+    () => ({
+      loadSteps,
+      isLoading,
+      reportSteps,
+      currentStep,
+      error,
+      onNextStep,
+    }),
+    [currentStep, error, isLoading, loadSteps, onNextStep, reportSteps],
+  );
+
   return (
-    <reportStepsContext.Provider
-      value={{
-        loadSteps,
-        isLoading,
-        reportSteps,
-        currentStep,
-        error,
-        onNextStep,
-      }}
-    >
+    <reportStepsContext.Provider value={value}>
       {children}
     </reportStepsContext.Provider>
   );

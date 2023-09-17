@@ -28,7 +28,10 @@ export const AddressList: FC<{
 
       return;
     }
-    await result?.retry();
+    const pass = await result?.retry();
+    if (pass) {
+      await onNextStep();
+    }
   }, [onNextStep, result]);
 
   const allowNext = useMemo(() => {
@@ -76,7 +79,7 @@ export const AddressList: FC<{
         )}
       </P>
       <ul className="space-y-4 p-2">
-        {address.address.map((item, index) => (
+        {address.address.map((item) => (
           <li
             className={clsxm(
               'flex gap-4 items-center border border-solid border-nebuia-primary-500f',
@@ -86,7 +89,7 @@ export const AddressList: FC<{
                 'shadow-md': !dark,
               },
             )}
-            key={index}
+            key={item}
           >
             <picture>
               <img src={HomeImage} alt="" />

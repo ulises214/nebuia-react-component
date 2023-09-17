@@ -149,22 +149,6 @@ export const IdCapture: FC<Props> = ({
       return;
     }
     setAction('selection');
-    // if (currentSide === 'back') {
-    //   if (backImage) {
-    //     setBackImage(undefined);
-
-    //     return;
-    //   }
-    //   setCurrentSide('front');
-    // }
-    // if (currentSide === 'front') {
-    //   if (frontalImage) {
-    //     setFrontalImage(undefined);
-
-    //     return;
-    //   }
-    //   setAction('selection');
-    // }
   }, [
     backImage,
     currentSide,

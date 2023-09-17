@@ -28,7 +28,7 @@ export const useReportLivenessFace: ActionHookResponse<string> = () => {
 
       setLivenessFace(data);
     };
-    getLivenessFace().finally(() => setIsLoading(false));
+    void getLivenessFace().finally(() => setIsLoading(false));
   }, [sdk]);
 
   return [isLoading, error, livenessFace];

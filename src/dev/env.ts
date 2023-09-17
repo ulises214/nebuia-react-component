@@ -1,7 +1,7 @@
 const API_KEY = import.meta.env['VITE_API_KEY'] as string | undefined;
 const API_SECRET = import.meta.env['VITE_API_SECRET'] as string | undefined;
 const REPORT_ID = import.meta.env['VITE_REPORT_ID'] as string | undefined;
-
+const SIGN_DOCUMENTS = import.meta.env['VITE_SIGN_DOCUMENTS'] === 'true';
 const keySource = {
   FILE: 'FILE',
   QUERY: 'QUERY',
@@ -13,4 +13,10 @@ const keysSource = (
   Object.keys(keySource).includes(envOption ?? '') ? envOption : 'QUERY'
 ) as keyof typeof keySource;
 
-export { API_KEY, API_SECRET, keysSource as KEY_SOURCE, REPORT_ID };
+export {
+  API_KEY,
+  API_SECRET,
+  keysSource as KEY_SOURCE,
+  REPORT_ID,
+  SIGN_DOCUMENTS,
+};

@@ -1,11 +1,31 @@
+import { AdvancedSignType } from '@nebuia-ts/models';
+
 /* eslint-disable no-use-before-define */
 export interface Translation {
   pages: Pages;
   stepsNames: StepsNames;
   stepsProgress: StepsProgress;
+  signature: {
+    types: SignatureTypes;
+    title: string;
+    create: string;
+    createResult: {
+      error: {
+        title: string;
+        message: string;
+      };
+    };
+  };
   errors: Errors;
   common: Common;
 }
+
+export type SignatureTypes = {
+  [key in AdvancedSignType]: {
+    title: string;
+    description: string;
+  };
+};
 
 export interface Common {
   continue: string;
@@ -35,7 +55,7 @@ export interface Errors {
 }
 
 export interface Pages {
-  signatureWelcome: Welcome;
+  signatureWelcome: SignatureWelcome;
   genericWelcome: Welcome;
   livenessInstructions: { '0': string; '1': string; '2': string };
   livenessChoice: {
@@ -115,6 +135,13 @@ export interface Welcome {
   title: string;
   description: string;
   startButton: string;
+}
+
+export interface SignatureWelcome {
+  title: string;
+  description: string;
+  startButton: string;
+  shortDescription: string;
 }
 
 export interface ID {

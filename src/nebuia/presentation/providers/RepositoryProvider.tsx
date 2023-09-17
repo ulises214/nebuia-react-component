@@ -40,13 +40,16 @@ export const NebuiaSdkProvider: FC<PropsWithChildren<Props>> = ({
       });
   }, [sdk, setColorScheme]);
 
+  const value = useMemo(
+    () => ({
+      sdk,
+      utils: nebuiaUtils,
+    }),
+    [sdk, nebuiaUtils],
+  );
+
   return (
-    <RepositoryContext.Provider
-      value={{
-        sdk,
-        utils: nebuiaUtils,
-      }}
-    >
+    <RepositoryContext.Provider value={value}>
       {children}
     </RepositoryContext.Provider>
   );

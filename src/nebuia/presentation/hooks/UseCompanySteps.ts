@@ -17,7 +17,7 @@ export const useCompanySteps: ActionHookResponse<string[]> = () => {
       !response.status && setError(response.payload);
     };
     setIsLoading(true);
-    getStepsCompany().finally(() => setIsLoading(false));
+    void getStepsCompany().finally(() => setIsLoading(false));
   }, [sdk]);
 
   return [isLoading, error, steps];

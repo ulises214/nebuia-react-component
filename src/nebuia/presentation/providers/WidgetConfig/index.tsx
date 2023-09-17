@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, useMemo } from 'react';
 
 import { Lang } from '../../../../translations/initi18';
 import { PromiseCallback } from '../../../domain/types/ParamCallback';
@@ -13,6 +13,7 @@ type Props = {
   enableBackground: boolean;
   report?: string;
   lang: Lang;
+  signDocuments: boolean;
 };
 export const WidgetConfigProvider: FC<PropsWithChildren<Props>> = ({
   children,
@@ -24,20 +25,35 @@ export const WidgetConfigProvider: FC<PropsWithChildren<Props>> = ({
   enableBackground,
   lang,
   report,
+  signDocuments,
 }) => {
+  const value = useMemo(
+    () => ({
+      language: lang,
+      signDocuments,
+      report,
+      enableWidgetBackground: enableBackground,
+      initialEmail: email,
+      initialPhone: phone,
+      isForSignaturePage: isForSignaturePage ?? false,
+      onFinished,
+      withDetailsPage: withDetailsPage ?? false,
+    }),
+    [
+      email,
+      enableBackground,
+      isForSignaturePage,
+      lang,
+      onFinished,
+      phone,
+      report,
+      signDocuments,
+      withDetailsPage,
+    ],
+  );
+
   return (
-    <widgetConfigContext.Provider
-      value={{
-        language: lang,
-        report,
-        enableWidgetBackground: enableBackground,
-        initialEmail: email,
-        initialPhone: phone,
-        isForSignaturePage: isForSignaturePage ?? false,
-        onFinished,
-        withDetailsPage: withDetailsPage ?? false,
-      }}
-    >
+    <widgetConfigContext.Provider value={value}>
       {children}
     </widgetConfigContext.Provider>
   );

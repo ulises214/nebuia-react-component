@@ -168,7 +168,7 @@ declare module 'lean-qr/extras/react' {
   import type { SVGOptions, toSvgDataURLFn } from 'lean-qr/extras/svg';
 
   export interface AsyncFramework<T> {
-    createElement: (type: string, props: any) => T;
+    createElement: (type: string, props: unknown) => T;
     useRef<T>(initialValue: T | null): { readonly current: T | null };
     useEffect(fn: () => void | (() => void), deps: unknown[]): void;
   }
@@ -194,7 +194,7 @@ declare module 'lean-qr/extras/react' {
   ) => AsyncQRComponent<T>;
 
   export interface SyncFramework<T> {
-    createElement: (type: string, props: any) => T;
+    createElement: (type: string, props: unknown) => T;
     useMemo<T>(fn: () => T, deps: unknown[]): T;
   }
 

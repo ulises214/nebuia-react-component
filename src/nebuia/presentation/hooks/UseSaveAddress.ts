@@ -9,7 +9,7 @@ type Props = {
   address: NebuiaAddress;
 };
 type Result = {
-  retry: PromiseCallback;
+  retry: PromiseCallback<void, boolean>;
   success?: boolean;
 };
 export const useSaveAddress: ActionHookResponse<Result, Props> = ({
@@ -31,6 +31,8 @@ export const useSaveAddress: ActionHookResponse<Result, Props> = ({
     } else {
       setError(res.payload);
     }
+
+    return res.status;
   }, [address, sdk]);
 
   const result = useMemo(

@@ -11,6 +11,7 @@ export interface WidgetConfigContext {
   enableWidgetBackground: boolean;
   report?: string;
   language: 'es' | 'en';
+  signDocuments: boolean;
 }
 export const widgetConfigContext = createContext({} as WidgetConfigContext);
 

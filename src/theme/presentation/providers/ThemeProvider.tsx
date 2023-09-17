@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useCallback, useState } from 'react';
+import { FC, PropsWithChildren, useCallback, useMemo, useState } from 'react';
 
 import { Theme } from '../../domain/types/ITheme';
 import { DEFAULT_THEME } from '../constants/theme';
@@ -25,11 +25,16 @@ export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   // broadcast theme to other components
   useThemeBroadcast(setColorScheme);
 
+  const value = useMemo(
+    () => ({
+      setColorScheme,
+      theme,
+      setDefaultColorScheme,
+    }),
+    [setColorScheme, setDefaultColorScheme, theme],
+  );
+
   return (
-    <ThemeContext.Provider
-      value={{ setColorScheme, theme, setDefaultColorScheme }}
-    >
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };

@@ -13,7 +13,7 @@ export const useSendOtp: ActionHookResponse<
   const sendOtp = useCallback(() => {
     setLoading(true);
     onRequested?.();
-    sdk
+    void sdk
       .generateOTPCode({
         toEmail: type === 'email',
       })

@@ -13,6 +13,7 @@ export const NebuiaDemoContent = () => {
       <NebuiaStepsList
         enableBackground
         withDetailsPage
+        signDocuments
         kyc={REPORT}
         onFinish={async (report) => {
           if (window.parent !== window) {

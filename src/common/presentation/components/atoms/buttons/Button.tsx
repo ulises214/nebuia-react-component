@@ -1,10 +1,10 @@
-import * as React from 'react';
+import { ComponentPropsWithRef, ElementType, forwardRef } from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
 import styles from './Button.module.css';
 
 import { useTheme } from '../../../../../theme/presentation/hooks/UseTheme';
-import classNames from '../../../utils/clsxm';
+import clsxm from '../../../utils/clsxm';
 
 export type ButtonVariant =
   | 'primary'
@@ -19,8 +19,7 @@ export type ButtonVariant =
   | 'outline-error'
   | 'outline-info'
   | 'outline-success'
-  | 'info'
-  | 'text';
+  | 'info';
 
 type ButtonProps = {
   isLoading?: boolean;
@@ -30,10 +29,10 @@ type ButtonProps = {
   extraSmall?: boolean;
   center?: boolean;
   withNotification?: boolean;
-  as?: React.ElementType;
-} & React.ComponentPropsWithRef<'button'>;
+  as?: ElementType;
+} & ComponentPropsWithRef<'button'>;
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       extraSmall,
@@ -54,8 +53,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const {
       theme: { dark },
     } = useTheme();
-    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
-    const disabled = isLoading || buttonDisabled;
+    const disabled = !!isLoading || buttonDisabled;
 
     const isDarkBg = isDarkBgProp ?? dark;
 
@@ -66,7 +64,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         type="button"
         disabled={disabled}
-        className={classNames(
+        className={clsxm(
           styles['button'],
           center && styles['center'],
           small && styles['small'],
@@ -76,6 +74,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           isLoading && styles['loading'],
           isDarkBg ? styles['dark'] : styles['light'],
           !isDarkBg && styles['light'],
+          !rest.onClick && styles['no-onclick'],
+          rest.onClick && styles['onclick'],
+          //#endregion  //*======== Variants ===========
           className,
         )}
         {...rest}
@@ -87,7 +88,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         {isLoading && (
           <div
-            className={classNames(
+            className={clsxm(
               'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
               {
                 'text-white': ['primary', 'dark'].includes(variant),

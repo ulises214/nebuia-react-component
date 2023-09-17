@@ -1,12 +1,40 @@
 import { Translation } from '..';
 
 export const esTranslation: Translation = {
+  signature: {
+    create: 'Ir a firmar',
+    types: {
+      block_chain: {
+        description:
+          'Firma el documento con una firma blockchain. Conecta tu propia wallet o crea una nueva.',
+        title: 'Firma blockchain',
+      },
+      fiel: {
+        description:
+          'Usa tu certificado FIEL para firmar el documento. Necesitarás tus archivos FIEL y contraseña.',
+        title: 'Firma FIEL',
+      },
+      graphic: {
+        description: 'Firma el documento con una firma gráfica.',
+        title: 'Firma gráfica',
+      },
+    },
+    createResult: {
+      error: {
+        message: 'No pudimos crear tu firma, por favor intenta de nuevo',
+        title: '¡Ups!',
+      },
+    },
+    title: 'Este documento requiere los siguientes pasos para ser firmado',
+  },
   pages: {
     signatureWelcome: {
       title: '¡PREPARÁNDONOS PARA FIRMAR!',
       description:
         'Antes de firmar el documento, realiza la verificación KYC para asegurar un proceso seguro y confiable. Tu firma está protegida.',
       startButton: 'Comenzar',
+      shortDescription:
+        'Firma los documentos que se te piden a continuación, Tu firma está protegida.',
     },
     genericWelcome: {
       title: '¡PREPÁRATE PARA COMPLETAR TU VERIFICACIÓN KYC!',

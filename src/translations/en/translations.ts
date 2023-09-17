@@ -1,12 +1,40 @@
 import { Translation } from '..';
 
 export const enTranslation: Translation = {
+  signature: {
+    create: 'Go to sign',
+    types: {
+      block_chain: {
+        description:
+          'Sign the document with a blockchain signature. Connect your own wallet or create a new one.',
+        title: 'Blockchain signature',
+      },
+      fiel: {
+        description:
+          'Use your FIEL certificate to sign the document. You will need your FIEL files and password.',
+        title: 'FIEL signature',
+      },
+      graphic: {
+        description: 'Sign the document with a graphic signature.',
+        title: 'Graphic signature',
+      },
+    },
+    title: 'This document requires the following steps to be signed',
+    createResult: {
+      error: {
+        message: 'We could not create your signature, please try again',
+        title: 'Oops!',
+      },
+    },
+  },
   pages: {
     signatureWelcome: {
       title: 'GETTING READY TO SIGN!',
       description:
         'Before signing the document, perform KYC verification to ensure a secure and reliable process. Your signature is protected.',
       startButton: 'Start',
+      shortDescription:
+        'Sign the documents requested below, Your signature is protected.',
     },
     genericWelcome: {
       title: 'GETTING READY TO COMPLETE YOUR KYC VERIFICATION!',

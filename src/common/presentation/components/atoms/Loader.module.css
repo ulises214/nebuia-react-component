@@ -14,6 +14,7 @@
     fadeInOut 1.4s ease-in-out infinite;
   transform-origin: center;
   position: relative;
+  @apply bg-nebuia-primary-500;
 }
 
 @keyframes jump {

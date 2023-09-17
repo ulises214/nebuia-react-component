@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from 'react';
+import { FC, useCallback, useMemo, useState } from 'react';
 
 import { IdCapture } from './IdCapture';
 import { IdSelection } from './IdSelection';
@@ -17,6 +17,17 @@ export const IDStep: FC = () => {
     setFrontalImage(undefined);
     setBackImage(undefined);
   }, []);
+
+  const images = useMemo(() => {
+    if (docType !== 'ine') {
+      return [{ key: 'frontalImage', img: frontalImage as string }];
+    }
+
+    return [
+      { key: 'frontalImage', img: frontalImage as string },
+      { key: 'backImage', img: backImage as string },
+    ];
+  }, [backImage, docType, frontalImage]);
 
   if (action === 'selection') {
     return (
@@ -44,15 +55,5 @@ export const IDStep: FC = () => {
     );
   }
 
-  return (
-    <IdUpload
-      doc={docType}
-      cancel={cancel}
-      images={
-        (docType === 'ine'
-          ? [frontalImage, backImage]
-          : [frontalImage]) as string[]
-      }
-    />
-  );
+  return <IdUpload doc={docType} cancel={cancel} images={images} />;
 };
