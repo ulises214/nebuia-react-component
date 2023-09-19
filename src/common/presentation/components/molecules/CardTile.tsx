@@ -35,8 +35,8 @@ export const CardTile: FC<Props> = ({
         className,
       )}
     >
-      {icon && <div className="h-8 w-8">{icon}</div>}
-      <P className="flex grow flex-col gap-1 text-left">
+      {icon}
+      <P className="flex grow flex-col justify-center gap-1 text-left">
         <span>{title}</span>
         {subTitle && <span className="text-xs font-thin">{subTitle}</span>}
       </P>

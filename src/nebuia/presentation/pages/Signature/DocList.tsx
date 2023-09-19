@@ -1,9 +1,9 @@
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 
+import { GradientCircle } from '../../../../common/presentation/components/atoms/GradientCircle';
 import { P } from '../../../../common/presentation/components/atoms/P';
 import { CardTile } from '../../../../common/presentation/components/molecules/CardTile';
-import { DOC_ICON } from './images';
 import { useSignatureContext } from './SignatureContext';
 
 export const SignDocumentList = () => {
@@ -34,7 +34,7 @@ export const SignDocumentList = () => {
             isActive={!!completed}
             key={doc.id}
             title={doc.name}
-            icon={<img src={DOC_ICON} alt="" />}
+            icon={<GradientCircle />}
             suffix={
               completed ? (
                 <CheckCircleIcon className="text-nebuia-primary-500" />
