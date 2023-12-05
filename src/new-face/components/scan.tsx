@@ -23,7 +23,6 @@ export const Idle = () => {
   );
 };
 const ScanFaceContent: FC<{
-  state: FaceStateScanning;
   children: JSX.Element;
 }> = ({ children }) => {
   return (
@@ -59,8 +58,6 @@ export const ScanFace: FC<{ state: FaceStateScanning }> = ({ state }) => {
     ) {
       return;
     }
-    videoRef.current.srcObject = state.media;
-    videoRef.current.onloadedmetadata = () => videoRef.current?.play();
     void initWebcam({
       canvas: canvasRef.current,
       icon: iconRef.current,
@@ -68,12 +65,17 @@ export const ScanFace: FC<{ state: FaceStateScanning }> = ({ state }) => {
       media: state.media,
       overlay: overlayRef.current,
       video: videoRef.current,
+    }).then(() => {
+      if (videoRef.current) {
+        videoRef.current.srcObject = state.media;
+        videoRef.current.onloadedmetadata = () => videoRef.current?.play();
+      }
     });
   }, [sdk, state.media]);
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <ScanFaceContent state={state}>
+      <ScanFaceContent>
         <>
           <div
             className={clsxm(
