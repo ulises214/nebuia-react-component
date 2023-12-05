@@ -48,7 +48,7 @@ export const LivenessQr = ({ fromChoice }: { fromChoice: boolean }) => {
             'absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full p-1',
             dark ? 'bg-black' : 'bg-white',
           )}
-          width={50}
+          width={30}
           alt="Logo"
         />
       </div>
