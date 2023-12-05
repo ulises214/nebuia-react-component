@@ -36,7 +36,7 @@
     "declaration": true,
     "declarationMap": true
   },
-  "include": ["src", "vite.config.ts"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["public", "dist", "node_modules"]
 }
