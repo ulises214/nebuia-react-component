@@ -1,11 +1,30 @@
 /* eslint-disable no-console */
 import { NebuiaWidget } from '@nebuia-ts/sdk';
 import * as wasmFeatureDetect from 'wasm-feature-detect';
-import './wasm.d.ts';
 
 import { NEBUIA_FACE_RESOURCES } from '../../constants.js';
 import { FaceState } from '../../store/state';
 import { useFaceStore } from '../../store/store';
+
+//// --------------- TYPE DEF ------------------ ////
+declare function _free(dst: Uint8Array): void;
+declare function _malloc(size: number): Uint8Array;
+declare let HEAPU8: {
+  set: (dst: Uint8ClampedArray, src: Uint8Array | null) => void;
+};
+
+declare function _face_ncnn(
+  dst: Uint8Array | null,
+  w: number,
+  h: number,
+): number;
+
+interface WasmModule {
+  onRuntimeInitialized?: VoidFunction;
+  wasmBinary?: ArrayBuffer;
+}
+
+//// --------------- TYPE DEF ------------------ ////
 
 let repository: NebuiaWidget;
 
