@@ -2,7 +2,6 @@
 import { NebuiaWidget } from '@nebuia-ts/sdk';
 import * as wasmFeatureDetect from 'wasm-feature-detect';
 
-import { NEBUIA_FACE_RESOURCES } from '../../constants.js';
 import { FaceState } from '../../store/state';
 import { useFaceStore } from '../../store/store';
 
@@ -194,7 +193,7 @@ Module['onRuntimeInitialized'] = function () {
 
 void wasmFeatureDetect.simd().then(async (simdSupported) => {
   const module = simdSupported ? 'face-simd' : 'face-basic';
-  const URL = `${NEBUIA_FACE_RESOURCES}/${module}`;
+  const URL = `https://widget.nebuia.com/${module}`;
   const response = await fetch(`${URL}.wasm`);
   const buffer = await response.arrayBuffer();
   Module.wasmBinary = buffer;
