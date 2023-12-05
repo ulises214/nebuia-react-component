@@ -192,8 +192,8 @@ Module['onRuntimeInitialized'] = function () {
   }
 };
 
-void wasmFeatureDetect.simd().then(async (_simdSupported) => {
-  const module = 'face-basic';
+void wasmFeatureDetect.simd().then(async (simdSupported) => {
+  const module = simdSupported ? 'face-simd' : 'face-basic';
   const URL = `${NEBUIA_FACE_RESOURCES}/${module}`;
   const response = await fetch(`${URL}.wasm`);
   const buffer = await response.arrayBuffer();
