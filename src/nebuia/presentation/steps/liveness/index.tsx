@@ -1,7 +1,7 @@
 import { FC, useCallback, useState } from 'react';
 import { isDesktop } from 'react-device-detect';
 
-import { LivenessCapture } from './LivenessCapture';
+import { NebuiaFace } from '../../../../new-face/new-face';
 import { LivenessChoice } from './LivenessChoise';
 import { LivenessInstructions } from './LivenessInstructions';
 import { LivenessQr } from './LivenessQr';
@@ -32,12 +32,12 @@ export const LivenessStep: FC = () => {
   }
 
   if (view === 'qr') {
-    return <LivenessQr />;
+    return <LivenessQr fromChoice />;
   }
 
   if (view === 'instructions') {
     return <LivenessInstructions onFinished={removeInstructions} />;
   }
 
-  return <LivenessCapture />;
+  return <NebuiaFace />;
 };

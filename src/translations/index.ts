@@ -1,5 +1,7 @@
 import { AdvancedSignType } from '@nebuia-ts/models';
 
+import { FaceStateScanning } from '../new-face/store/state';
+
 /* eslint-disable no-use-before-define */
 export interface Translation {
   pages: Pages;
@@ -11,6 +13,50 @@ export interface Translation {
     create: string;
     createResult: {
       error: {
+        title: string;
+        message: string;
+      };
+    };
+  };
+  newFace: {
+    idle: {
+      title: string;
+      message: string;
+    };
+    permissions: {
+      requesting: {
+        title: string;
+        message: string;
+        action: string;
+      };
+      deny: {
+        title: string;
+        message: string;
+      };
+      notFound: {
+        title: string;
+        message: string;
+      };
+      error: {
+        title: string;
+        message: string;
+      };
+    };
+    scanning: {
+      idle: {
+        title: string;
+        message: string;
+      };
+      events: {
+        [key in FaceStateScanning['event']]: string;
+      };
+    };
+    complete: {
+      widget: {
+        title: string;
+        message: string;
+      };
+      standalone: {
         title: string;
         message: string;
       };
@@ -70,6 +116,7 @@ export interface Pages {
   livenessQr: {
     title: string;
     description: string;
+    description2: string;
   };
   livenessSuccess: LivenessSuccess;
   id: ID;

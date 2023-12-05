@@ -12,6 +12,7 @@ export interface WidgetConfigContext {
   report?: string;
   language: 'es' | 'en';
   signDocuments: boolean;
+  isFaceStandAlone: boolean;
 }
 export const widgetConfigContext = createContext({} as WidgetConfigContext);
 

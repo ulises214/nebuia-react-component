@@ -64,6 +64,8 @@ export const enTranslation: Translation = {
       title: 'Mobile identity verification',
       description:
         'Great! You have chosen the mobile version to complete the identity verification. Please scan the QR code and follow the instructions.',
+      description2:
+        'Oops! We were unable to complete your identity verification. Please scan the QR code to continue on your cell phone.',
     },
     id: {
       selection: {
@@ -212,6 +214,58 @@ export const enTranslation: Translation = {
         message:
           'The verification passed most of the tests, but a manual review will be required for user security.',
       },
+    },
+  },
+  newFace: {
+    permissions: {
+      requesting: {
+        action: 'Allow',
+        message:
+          'In order to verify your identity we must take a photo of your face. Please grant camera permission.',
+        title: 'Camera access required',
+      },
+      deny: {
+        title: 'Camera access denied',
+        message:
+          'Please grant camera permissions to continue. You may need to enable them manually in your device or browser settings.',
+      },
+      notFound: {
+        title: 'Camera not found',
+        message:
+          'We could not find a camera on your device. Please try another device. Scan the QR code to continue on your phone.',
+      },
+      error: {
+        title: 'Error getting camera',
+        message:
+          'We were unable to get the camera from your device. Please try another device.',
+      },
+    },
+    scanning: {
+      idle: {
+        title: 'Ready to scan!',
+        message:
+          'Please place your face in the center of the circle and wait for the process to finish.',
+      },
+      events: {
+        faceCentered: 'Scanning...',
+        faceError: 'We could not detect your face',
+        faceMoved: 'Center your face',
+        idle: 'Center your face',
+      },
+    },
+    complete: {
+      widget: {
+        title: 'Face verification completed!',
+        message: 'You can continue with your KYC verification now!',
+      },
+      standalone: {
+        title: 'Face verification completed!',
+        message: 'You can close this window now. Thank you!',
+      },
+    },
+    idle: {
+      title: 'Checking permissions',
+      message: 'Please wait while we check your camera permissions.',
     },
   },
 };

@@ -6,6 +6,7 @@ import { Layout } from '../common/presentation/components/layouts/Layout';
 import { ControlActionsProvider } from '../common/presentation/providers/ControlActionsProvider';
 import { CurrentViewProvider } from '../common/presentation/providers/CurrentViewProvider';
 import { useCurrentView } from '../common/presentation/providers/CurrentViewProvider/Context';
+import { NebuiaFace } from '../new-face/new-face';
 import { ThemeProvider } from '../theme/presentation/providers/ThemeProvider';
 import { initI18n, Lang } from '../translations/initi18';
 import { WidgetProps } from './domain/types/WidgetProps';
@@ -24,21 +25,24 @@ import { useWidgetConfig } from './presentation/providers/WidgetConfig/Context';
 const _Content: FC = () => {
   const { currentView } = useCurrentView();
   const { isForSignaturePage, report } = useWidgetConfig();
-  const [loading, isLoading] = useState(!!report);
+  const [isLoading, setIsLoading] = useState(!!report);
   const { loadSteps } = useReportSteps();
+  const { isFaceStandAlone } = useWidgetConfig();
 
   useEffect(() => {
-    if (loading) {
+    if (isLoading) {
       void loadSteps().finally(() => {
-        isLoading(false);
+        setIsLoading(false);
       });
     }
-  }, [loading, loadSteps]);
+  }, [isLoading, loadSteps]);
 
-  if (loading) {
+  if (isLoading) {
     return <Loader />;
   }
-
+  if (isFaceStandAlone) {
+    return <NebuiaFace />;
+  }
   if (currentView === 'initial') {
     if (!report) {
       return (
@@ -158,8 +162,10 @@ export const NebuiaStepsList: FC<
     enableBackground?: boolean;
     lang?: Lang;
     isForSignaturePage?: boolean;
+    isFaceStandAlone?: boolean;
   }
 > = ({
+  isFaceStandAlone,
   enableBackground,
   getKeys,
   onFinish,
@@ -173,6 +179,7 @@ export const NebuiaStepsList: FC<
 }) => {
   return (
     <WidgetConfigProvider
+      isFaceStandAlone={isFaceStandAlone}
       lang={lang ?? 'es'}
       signDocuments={signDocuments ?? false}
       enableBackground={enableBackground ?? false}

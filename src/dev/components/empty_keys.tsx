@@ -15,3 +15,19 @@ export const EmptyKeys = () => {
     </Container>
   );
 };
+
+export const EmptyReport = () => {
+  return (
+    <Container>
+      <div>
+        <h1>report are required</h1>
+        <p>
+          You can get them from{' '}
+          <a href="https://admin.nebuia.com" target="_blank" rel="noreferrer">
+            https://admin.nebuia.com
+          </a>
+        </p>
+      </div>
+    </Container>
+  );
+};

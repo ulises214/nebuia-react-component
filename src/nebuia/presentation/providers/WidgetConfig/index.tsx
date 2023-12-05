@@ -14,6 +14,7 @@ type Props = {
   report?: string;
   lang: Lang;
   signDocuments: boolean;
+  isFaceStandAlone?: boolean;
 };
 export const WidgetConfigProvider: FC<PropsWithChildren<Props>> = ({
   children,
@@ -26,6 +27,7 @@ export const WidgetConfigProvider: FC<PropsWithChildren<Props>> = ({
   lang,
   report,
   signDocuments,
+  isFaceStandAlone,
 }) => {
   const value = useMemo(
     () => ({
@@ -38,6 +40,7 @@ export const WidgetConfigProvider: FC<PropsWithChildren<Props>> = ({
       isForSignaturePage: isForSignaturePage ?? false,
       onFinished,
       withDetailsPage: withDetailsPage ?? false,
+      isFaceStandAlone: isFaceStandAlone ?? false,
     }),
     [
       email,
@@ -49,6 +52,7 @@ export const WidgetConfigProvider: FC<PropsWithChildren<Props>> = ({
       report,
       signDocuments,
       withDetailsPage,
+      isFaceStandAlone,
     ],
   );
 

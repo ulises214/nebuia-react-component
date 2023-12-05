@@ -60,6 +60,8 @@ export const esTranslation: Translation = {
       title: 'Verificación de identidad móvil',
       description:
         '¡Genial! Haz elegido la versión móvil para completar la verificación de identidad. Por favor escanea el código QR y sigue las instrucciones.',
+      description2:
+        '¡Ups! No pudimos completar tu verificación de identidad. Por escanea el código QR para continuar en tu celular.',
     },
     livenessSuccess: {
       title: '¡PRUEBA DE VIDA EXITOSA!',
@@ -213,6 +215,58 @@ export const esTranslation: Translation = {
         title: 'El documento requiere revisión manual',
         message:
           'La verificación superó la mayoría de las pruebas, pero será necesaria una revisión manual por la seguridad del usuario.',
+      },
+    },
+  },
+  newFace: {
+    permissions: {
+      requesting: {
+        title: 'Permiso de cámara requerido',
+        message:
+          'Para poder verificar tu identidad debemos tomar una foto de tu rostro. Por favor otorga el permiso de cámara.',
+        action: 'Otorgar permiso',
+      },
+      deny: {
+        title: 'Permisos denegados',
+        message:
+          'Por favor otorga los permisos de cámara para continuar. Puede que tengas que habilitarlos manualmente en la configuración de tu dispositivo o navegador.',
+      },
+      notFound: {
+        title: 'Cámara no encontrada',
+        message:
+          'No pudimos encontrar una cámara en tu dispositivo. Por favor intenta en otro dispositivo. Escanea el código QR para continuar en tu celular.',
+      },
+      error: {
+        title: 'Error al obtener la cámara',
+        message:
+          'No pudimos obtener la cámara de tu dispositivo. Por favor intenta en otro dispositivo.',
+      },
+    },
+    scanning: {
+      idle: {
+        title: '¡Listo para escanear!',
+        message:
+          'Por favor coloca tu rostro en el centro del círculo y espera a que el proceso termine.',
+      },
+      events: {
+        faceCentered: 'Escaneando...',
+        faceError: 'No pudimos detectar tu rostro',
+        faceMoved: 'Centra tu rostro',
+        idle: 'Centra tu rostro',
+      },
+    },
+    idle: {
+      title: 'Verificando permisos',
+      message: 'Por favor espera mientras verificamos los permisos de cámara.',
+    },
+    complete: {
+      standalone: {
+        title: '¡Verificación exitosa!',
+        message: 'Ya puedes cerrar esta ventana. ¡Gracias!',
+      },
+      widget: {
+        title: '¡Verificación exitosa!',
+        message: 'Ya puedes continuar con tu verificación KYC.',
       },
     },
   },

@@ -1,6 +1,7 @@
 import { generate } from 'lean-qr';
 import { makeAsyncComponent } from 'lean-qr/extras/react';
 import * as React from 'react';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import styles from './LivenessQr.module.css';
@@ -8,22 +9,25 @@ import styles from './LivenessQr.module.css';
 import { P } from '../../../../common/presentation/components/atoms/P';
 import { useControlButton } from '../../../../common/presentation/hooks/UseControlButton';
 import clsxm from '../../../../common/presentation/utils/clsxm';
+import { useFaceStore } from '../../../../new-face/store/store';
 import { useTheme } from '../../../../theme/presentation/hooks/UseTheme';
 import { useLivenessCheckStatus } from '../../hooks/UseLivenessCheckStatus';
 import { useLivenessMobileImage } from '../../hooks/UseLivenessMobileImage';
-import { useReportSteps } from '../../providers/ReportSteps/Context';
 
 // creates a react component (do this at the top-level)
-const QR = makeAsyncComponent(React, generate);
+const Qr = makeAsyncComponent(React, generate);
 
-export const LivenessQr = () => {
+export const LivenessQr = ({ fromChoice }: { fromChoice: boolean }) => {
   const { dark } = useTheme().theme;
+  const { setState } = useFaceStore();
   const { t } = useTranslation();
   const link = useLivenessMobileImage();
   const faceCompleted = useLivenessCheckStatus();
-  const { onNextStep } = useReportSteps();
+  const onContinue = useCallback(() => {
+    setState({ type: 'complete' });
+  }, [setState]);
   useControlButton({
-    action: onNextStep,
+    action: onContinue,
     label: t('common.continue'),
     side: 'next',
     active: faceCompleted,
@@ -33,7 +37,7 @@ export const LivenessQr = () => {
     <div className="mt-8 flex flex-col items-center">
       <div className="relative">
         {link && (
-          <QR
+          <Qr
             content={link}
             className={clsxm(styles['qr'], dark && styles['qr-dark'])}
           />
@@ -52,7 +56,7 @@ export const LivenessQr = () => {
         {t('pages.livenessQr.title')}
       </P>
       <P className="mt-4 max-w-xs text-center">
-        {t('pages.livenessQr.description')}
+        {t(`pages.livenessQr.${fromChoice ? 'description' : 'description2'}`)}
       </P>
     </div>
   );

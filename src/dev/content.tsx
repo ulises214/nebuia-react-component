@@ -1,11 +1,20 @@
 import { NebuiaStepsList } from '../nebuia';
-import { EmptyKeys } from './components/empty_keys';
+import { EmptyKeys, EmptyReport } from './components/empty_keys';
 import { API_KEY, API_SECRET, REPORT } from './constants/keys';
 import { Container } from './container';
 
-export const NebuiaDemoContent = () => {
+export const NebuiaDemoContent = ({
+  faceStandAlone,
+  checkReport,
+}: {
+  faceStandAlone?: boolean;
+  checkReport?: boolean;
+}) => {
   if (!API_KEY || !API_SECRET) {
     return <EmptyKeys />;
+  }
+  if (checkReport && REPORT === undefined) {
+    return <EmptyReport />;
   }
 
   return (
@@ -14,6 +23,7 @@ export const NebuiaDemoContent = () => {
         enableBackground
         withDetailsPage
         signDocuments
+        isFaceStandAlone={faceStandAlone}
         kyc={REPORT}
         onFinish={async (report) => {
           if (window.parent !== window) {
