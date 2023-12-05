@@ -1,7 +1,6 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
-  plugins: ['react-refresh'],
   parserOptions: {
     project: 'tsconfig.json',
     ecmaVersion: 2020,
@@ -36,6 +35,8 @@ module.exports = {
     'postcss.config.cjs',
     'tailwind.config.js',
     'rollup.config.js',
+    'face-basic.js',
+    'face-simd.js',
   ],
   parser: '@typescript-eslint/parser',
   rules: {

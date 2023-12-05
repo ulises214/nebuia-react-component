@@ -22,7 +22,7 @@ import { NebuiaStepsList } from 'nebuia-react-component';
   enableBackground // Use own background, if false its background is transparent
   withDetailsPage // Shows a final page with the report summary
   lang="es" // Optional: Language of the component, default is "es", supported languages are "es" and "en"
-  kyc={REPORT} // Optional: Initialize the component with a report, if not provided it will create a new report 
+  kyc={REPORT} // Optional: Initialize the component with a report, if not provided it will create a new report
   email={EMAIL} // Optional: Initialize the component with an email, if not provided it will ask the user for it
   phone={PHONE} // Optional: Initialize the component with a phone, if not provided it will ask the user for it
   onFinish={async (report) => {
@@ -32,7 +32,7 @@ import { NebuiaStepsList } from 'nebuia-react-component';
     // Returns the API keys, or a promise that resolves to the API keys
     return {
       apiKey: 'API_KEY',
-      apiSecret: 'API_SECRET'
+      apiSecret: 'API_SECRET',
     };
   }}
 />;

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import {
   DragEventHandler,
   FC,
@@ -140,7 +141,7 @@ export const DropFileInput: FC<DropFileInputProps> = ({
             setFile(file);
           }}
           ref={ref}
-          id={label}
+          id={id}
           type="file"
           name={id}
           className="hidden"

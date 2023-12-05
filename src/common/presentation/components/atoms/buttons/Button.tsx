@@ -19,6 +19,7 @@ export type ButtonVariant =
   | 'outline-error'
   | 'outline-info'
   | 'outline-success'
+  | 'text'
   | 'info';
 
 type ButtonProps = {
