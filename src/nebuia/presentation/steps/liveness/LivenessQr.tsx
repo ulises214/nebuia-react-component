@@ -57,6 +57,9 @@ export const LivenessQr = ({ fromChoice }: { fromChoice: boolean }) => {
     side: 'next',
     active: faceCompleted,
   });
+  const error = `pages.livenessQr.description2.${
+    isDesktop ? 'desktop' : 'mobile'
+  }`;
 
   return (
     <div className="mt-8 flex flex-col items-center gap-4">
@@ -65,11 +68,7 @@ export const LivenessQr = ({ fromChoice }: { fromChoice: boolean }) => {
         {t('pages.livenessQr.title')}
       </P>
       <P className="mt-4 max-w-xs text-center">
-        {t(
-          `pages.livenessQr.${fromChoice ? 'description' : 'description2'}.${
-            isDesktop ? 'desktop' : 'mobile'
-          }`,
-        )}
+        {t(fromChoice ? `pages.livenessQr.description` : error)}
       </P>
       {!isDesktop && (
         <Button variant="primary" onClick={() => setState({ type: 'idle' })}>
