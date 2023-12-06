@@ -116,7 +116,10 @@ export interface Pages {
   livenessQr: {
     title: string;
     description: string;
-    description2: string;
+    description2: {
+      mobile: string;
+      desktop: string;
+    };
   };
   livenessSuccess: LivenessSuccess;
   id: ID;

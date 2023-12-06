@@ -60,8 +60,12 @@ export const esTranslation: Translation = {
       title: 'Verificación de identidad móvil',
       description:
         '¡Genial! Haz elegido la versión móvil para completar la verificación de identidad. Por favor escanea el código QR y sigue las instrucciones.',
-      description2:
-        '¡Ups! No pudimos completar tu verificación de identidad. Por escanea el código QR para continuar en tu celular.',
+      description2: {
+        desktop:
+          '¡Ups! No pudimos completar tu verificación de identidad. Por escanea el código QR para continuar en tu celular.',
+        mobile:
+          '¡Ups! No pudimos completar tu verificación de identidad. Por favor intenta de nuevo.',
+      },
     },
     livenessSuccess: {
       title: '¡PRUEBA DE VIDA EXITOSA!',

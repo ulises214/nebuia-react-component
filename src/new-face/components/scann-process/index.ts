@@ -42,6 +42,8 @@ let ctx: CanvasRenderingContext2D;
 let stream: MediaStream;
 let wasmModuleLoaded = false;
 let stop = false;
+let processInit = false;
+
 const wasmModuleLoadedCallbacks: VoidFunction[] = [];
 // @ts-expect-error - Module is not defined
 window.Module = Module;
@@ -52,6 +54,7 @@ const setFaceState = (state: FaceState) => {
 
 const stopCamera = () => {
   stop = true;
+  processInit = false;
   const stream = useFaceStore.getState().state;
   if (stream.type !== 'scanning') {
     return;
@@ -60,6 +63,8 @@ const stopCamera = () => {
   if (script) {
     script.remove();
   }
+  // @ts-expect-error - Module is not defined
+  window.Module = undefined;
   try {
     stream.media.getTracks().forEach((track) => {
       track.stop();
@@ -78,25 +83,6 @@ const showQRMobile = () => {
 
 const checkOrigin = async () => {
   return Promise.resolve(true);
-  if (window.location.hostname.includes('localhost')) {
-    return true;
-  }
-  const response = await repository.getOrigin();
-
-  if (response.status) {
-    const origin = response.payload;
-
-    if (!origin) {
-      return false;
-    }
-    const hostFrame = document.location.ancestorOrigins[0];
-
-    return hostFrame
-      ? hostFrame.includes(origin)
-      : window.location.hostname.includes('nebuia.com');
-  }
-
-  return false;
 };
 
 const domLoaded = async () => {
@@ -132,7 +118,6 @@ const domLoaded = async () => {
     initUpdateFrame(id.data);
   });
 };
-let processInit = false;
 export const initWebcam = async (args: {
   video: HTMLVideoElement;
   canvas: HTMLCanvasElement;
@@ -145,6 +130,7 @@ export const initWebcam = async (args: {
     return;
   }
   processInit = true;
+  stop = false;
   repository = args.sdk;
   const ctx2 = args.canvas.getContext('2d', { willReadFrequently: true });
   if (!ctx2) {
@@ -215,7 +201,7 @@ function initUpdateFrame(d: Uint8ClampedArray) {
 
   function mallocAndCallSFilter() {
     if (dst !== null) {
-      _free(dst);
+      // _free(dst);
       dst = null;
     }
 

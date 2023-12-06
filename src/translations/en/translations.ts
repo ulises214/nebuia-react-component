@@ -64,8 +64,12 @@ export const enTranslation: Translation = {
       title: 'Mobile identity verification',
       description:
         'Great! You have chosen the mobile version to complete the identity verification. Please scan the QR code and follow the instructions.',
-      description2:
-        'Oops! We were unable to complete your identity verification. Please scan the QR code to continue on your cell phone.',
+      description2: {
+        desktop:
+          'Oops! We were unable to complete your identity verification. Please scan the QR code to continue on your cell phone.',
+        mobile:
+          'Oops! We were unable to complete your identity verification. Please try again.',
+      },
     },
     id: {
       selection: {
