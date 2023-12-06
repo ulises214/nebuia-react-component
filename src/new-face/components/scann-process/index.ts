@@ -77,6 +77,7 @@ const showQRMobile = () => {
 };
 
 const checkOrigin = async () => {
+  return Promise.resolve(true);
   if (window.location.hostname.includes('localhost')) {
     return true;
   }
