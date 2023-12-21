@@ -18,8 +18,12 @@ export const LivenessStep: FC = () => {
   }, []);
   const continueIn = useCallback((step: 'mobile' | 'web') => {
     return () => {
-      setView(step === 'web' ? 'capture' : 'qr');
+      setView(step === 'web' ? 'instructions' : 'qr');
     };
+  }, []);
+
+  const onFinishQr = useCallback(() => {
+    setView('capture');
   }, []);
 
   if (view === 'choice') {
@@ -32,7 +36,7 @@ export const LivenessStep: FC = () => {
   }
 
   if (view === 'qr') {
-    return <LivenessQr fromChoice />;
+    return <LivenessQr onFinish={onFinishQr} fromChoice />;
   }
 
   if (view === 'instructions') {

@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import {
   DragEventHandler,
   FC,
@@ -41,11 +42,14 @@ export const DropFileInput: FC<DropFileInputProps> = ({
   }, [file, onFileChange]);
 
   const [dragging, setDragging] = useState(false);
-  const handleClick = useCallback(async () => {
-    ref.current?.click();
-    setDragging(false);
-    await onDrop?.();
-  }, [onDrop]);
+  const handleClick = useCallback(
+    async ({ clickElement = false } = {}) => {
+      clickElement && ref.current?.click();
+      setDragging(false);
+      await onDrop?.();
+    },
+    [onDrop],
+  );
   const handleDrop = useCallback<DragEventHandler<unknown>>(
     async (e) => {
       e.preventDefault();
@@ -69,12 +73,11 @@ export const DropFileInput: FC<DropFileInputProps> = ({
   );
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-    <div
+    <button
       onKeyDown={(ev) => {
         ev.preventDefault();
         if (ev.key === 'Enter') {
-          void handleClick();
+          void handleClick({ clickElement: true });
         }
         ev.stopPropagation();
       }}
@@ -152,6 +155,6 @@ export const DropFileInput: FC<DropFileInputProps> = ({
             .join(', ')}
         />
       </label>
-    </div>
+    </button>
   );
 };

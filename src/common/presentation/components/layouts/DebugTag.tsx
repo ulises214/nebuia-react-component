@@ -1,6 +1,7 @@
+import { IS_DEBUG } from '../../../../dev/constants/env';
+
 export const DebugTag = () => {
-  const isDebug = ['demo', 'development'].includes(import.meta.env.MODE);
-  if (!isDebug) {
+  if (!IS_DEBUG) {
     return <></>;
   }
 

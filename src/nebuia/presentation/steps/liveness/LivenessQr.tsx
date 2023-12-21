@@ -44,13 +44,21 @@ const QrLink = () => {
   );
 };
 
-export const LivenessQr = ({ fromChoice }: { fromChoice: boolean }) => {
+export const LivenessQr = ({
+  fromChoice,
+  onFinish,
+}: {
+  fromChoice: boolean;
+  onFinish?: VoidFunction;
+}) => {
   const { setState } = useFaceStore();
   const { t } = useTranslation();
   const faceCompleted = useLivenessCheckStatus();
+
   const onContinue = useCallback(() => {
     setState({ type: 'complete' });
-  }, [setState]);
+    onFinish?.();
+  }, [onFinish, setState]);
   useControlButton({
     action: onContinue,
     label: t('common.continue'),
