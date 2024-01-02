@@ -2,11 +2,11 @@ import { IS_DEBUG } from '../../../../dev/constants/env';
 
 export const DebugTag = () => {
   if (!IS_DEBUG) {
-    return <></>;
+    return null;
   }
 
   return (
-    <div className="absolute right-0 top-5 rotate-45 rounded-md bg-red-500 px-2 text-white">
+    <div className="absolute right-0 px-2 text-white rotate-45 bg-red-500 rounded-md top-5">
       DEBUG
     </div>
   );

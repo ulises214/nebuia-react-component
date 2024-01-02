@@ -18,7 +18,7 @@ export const ControlsBack: FC = () => {
   };
 
   if (!previous?.show) {
-    return <></>;
+    return null;
   }
 
   return (
@@ -50,7 +50,7 @@ export const ControlsNext: FC = () => {
   };
 
   if (!next?.show) {
-    return <></>;
+    return null;
   }
 
   return (

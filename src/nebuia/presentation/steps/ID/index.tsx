@@ -39,7 +39,7 @@ export const IDStep: FC = () => {
     );
   }
   if (!docType) {
-    return <></>;
+    return null;
   }
 
   if (action === 'capture') {

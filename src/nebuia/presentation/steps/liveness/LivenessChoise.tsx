@@ -21,7 +21,7 @@ export const LivenessChoice: FC<{
         <strong>{t('pages.livenessChoice.label.bold')}</strong>
         {t('pages.livenessChoice.label.last')}
       </P>
-      <div className="mt-8 flex w-full max-w-md justify-evenly gap-4">
+      <div className="flex w-full max-w-md gap-4 mt-8 justify-evenly">
         <Button onClick={continueInWeb} small variant="outline">
           {t('pages.livenessChoice.web')}
         </Button>

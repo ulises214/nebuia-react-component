@@ -63,11 +63,11 @@ export const AddressList: FC<{
   });
 
   if (!address.address) {
-    return <></>;
+    return null;
   }
 
   return (
-    <div className="space-y-4 pt-8">
+    <div className="pt-8 space-y-4">
       <P className="max-w-sm text-center">
         {t(
           `pages.address.successCapture.${
@@ -78,7 +78,7 @@ export const AddressList: FC<{
           },
         )}
       </P>
-      <ul className="space-y-4 p-2">
+      <ul className="p-2 space-y-4">
         {address.address.map((item) => (
           <li
             className={clsxm(

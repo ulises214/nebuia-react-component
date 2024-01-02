@@ -9,7 +9,7 @@ import { LivenessStep } from '../steps/liveness';
 export const StepsView: FC = () => {
   const { currentStep } = useReportSteps();
   if (!currentStep) {
-    return <></>;
+    return null;
   }
 
   if (currentStep === 'liveness') {

@@ -49,10 +49,9 @@ module.exports = {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-non-null-assertion': 'error',
-    'tailwindcss/classnames-order': 'error',
+    'tailwindcss/classnames-order': 'off',
     'tailwindcss/no-custom-classname': 'error',
     'tailwindcss/no-contradicting-classname': 'error',
-    'simple-import-sort/imports': 'off',
     'import/no-unresolved': 'error',
     'prettier/prettier': [
       'error',

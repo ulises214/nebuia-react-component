@@ -80,20 +80,18 @@ export const LivenessCapture = () => {
     return <LivenessCompleted />;
   }
   if (!keys) {
-    return <></>;
+    return null;
   }
 
   return (
-    <>
-      <iframe
-        ref={iframeRef}
-        title="Face Analyzer - Nebuia"
-        id="face_nebuia"
-        width="100%"
-        height="500"
-        src={`${LivenessUrl}?key=${keys.keys.apiKey}&secret=${keys.keys.apiSecret}&report=${keys.report}`}
-        allow="camera"
-      />
-    </>
+    <iframe
+      ref={iframeRef}
+      title="Face Analyzer - Nebuia"
+      id="face_nebuia"
+      width="100%"
+      height="500"
+      src={`${LivenessUrl}?key=${keys.keys.apiKey}&secret=${keys.keys.apiSecret}&report=${keys.report}`}
+      allow="camera"
+    />
   );
 };

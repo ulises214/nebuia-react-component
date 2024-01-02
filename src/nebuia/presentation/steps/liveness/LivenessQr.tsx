@@ -70,12 +70,12 @@ export const LivenessQr = ({
   }`;
 
   return (
-    <div className="mt-8 flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-4 mt-8">
       {isDesktop && <QrLink />}
-      <P className="mt-8 text-center font-bold">
+      <P className="mt-8 font-bold text-center">
         {t('pages.livenessQr.title')}
       </P>
-      <P className="mt-4 max-w-xs text-center">
+      <P className="max-w-xs mt-4 text-center">
         {t(fromChoice ? `pages.livenessQr.description` : error)}
       </P>
       {!isDesktop && (

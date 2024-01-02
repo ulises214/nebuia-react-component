@@ -33,18 +33,18 @@ export const StepIndicator: FC = () => {
   const { currentView } = useCurrentView();
   const { t } = useTranslation();
   if (!currentStep || !reportSteps) {
-    return <></>;
+    return null;
   }
   const currentStepIndex = reportSteps.findIndex(
     ({ name }) => name === currentStep,
   );
 
   if (currentView !== 'steps') {
-    return <></>;
+    return null;
   }
 
   return (
-    <div className="flex w-full flex-col items-center gap-4">
+    <div className="flex flex-col items-center w-full gap-4">
       <P className="flex flex-col items-center xl:flex-row">
         <span className="font-bold">{t(`stepsNames.${currentStep}`)}</span>{' '}
         <span>
