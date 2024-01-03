@@ -41,7 +41,9 @@
     "vite.config.mts",
     "tsconfig.node.json",
     "postcss.config.cjs",
-    "tailwind.config.ts"
+    "tailwind.config.ts",
+    "rollup.config.js",
+    "rollup-tailwind.config.js"
   ],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["public", "dist", "node_modules"]
