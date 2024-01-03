@@ -1,21 +1,17 @@
-/* eslint-disable no-undef */
-const typescript = require('@rollup/plugin-typescript');
-const postcss = require('rollup-plugin-postcss');
+// @ts-check
+import typescript from '@rollup/plugin-typescript';
+import postcss from 'rollup-plugin-postcss';
 /**
  * @type {import('rollup').RollupOptions}
  */
-module.exports = {
+export default {
   input: 'src/index.ts',
+  treeshake: true,
   output: [
     {
-      file: 'dist/cjs/index.js',
-      format: 'cjs',
-      sourcemap: true,
-    },
-    {
-      file: 'dist/esm/index.js',
       format: 'esm',
       sourcemap: true,
+      dir: 'dist',
     },
   ],
   plugins: [

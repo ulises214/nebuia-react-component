@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
     "target": "ES2015",
     "module": "ESNext",
     "useDefineForClassFields": true,
@@ -32,7 +33,7 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
-    "declarationDir": "dist/types",
+    "declarationDir": "dist",
     "declaration": true,
     "declarationMap": true
   },
@@ -42,9 +43,9 @@
     "tsconfig.node.json",
     "postcss.config.cjs",
     "tailwind.config.ts",
-    "rollup.config.js",
-    "rollup-tailwind.config.js"
+    "rollup.config.mjs",
+    "rollup-tailwind.config.mjs"
   ],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "exclude": ["public", "dist", "node_modules"]
+  "exclude": ["public", "dist", "node_modules", "**/node_modules/*"]
 }
