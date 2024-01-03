@@ -29,15 +29,7 @@ module.exports = {
     'eslint-config-codely/typescript',
   ],
   plugins: ['react', 'react-hooks', 'tailwindcss', 'react-refresh'],
-  ignorePatterns: [
-    'dist',
-    '.eslintrc.cjs',
-    'postcss.config.cjs',
-    'tailwind.config.js',
-    'rollup.config.js',
-    'face-basic.js',
-    'face-simd.js',
-  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'face-basic.js', 'face-simd.js'],
   parser: '@typescript-eslint/parser',
   rules: {
     'react-refresh/only-export-components': [

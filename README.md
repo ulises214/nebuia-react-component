@@ -37,3 +37,46 @@ import { NebuiaStepsList } from 'nebuia-react-component';
   }}
 />;
 ```
+
+## Styles
+
+### Global styles
+
+If your aop use another style system other than tailwind, you should import the global styles.
+
+```javascript
+import 'nebuia-react-component/dist/esm/index.css';
+```
+
+### Tailwind
+
+If your app use tailwind, you can import the tailwind config extending the default styles.
+
+In your tailwind.config.js file add the following:
+
+```javascript
+import { NEBUIA_TAILWIND_CONFIG } from 'nebuia-react-component/dist/esm/index.js';
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    ...NEBUIA_TAILWIND_CONFIG
+  }
+};
+```
+
+Also the tailwind form plugin is required, you can install it with:
+
+```bash
+npm install @tailwindcss/forms
+```
+
+And add it to your tailwind.config.js file:
+
+```javascript
+module.exports = {
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
+};
+```
