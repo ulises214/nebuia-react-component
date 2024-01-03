@@ -55,12 +55,16 @@ If your app use tailwind, you can import the tailwind config extending the defau
 In your tailwind.config.js file add the following:
 
 ```javascript
-import { NEBUIA_TAILWIND_CONFIG } from 'nebuia-react-component/dist/tailwind';
+import { NEBUIA_TAILWIND_CONFIG } from 'nebuia-react-component/dist/tailwind'; // <- Add this line
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  content: [
+    "....." // <- Your content
+    "./node_modules/nebuia-react-component/dist/**/*.{js,ts,jsx,tsx}" // <- Add this line
+  ],
   theme: {
-    ...NEBUIA_TAILWIND_CONFIG
+    ...NEBUIA_TAILWIND_CONFIG // <- Add this line
   }
 };
 ```
