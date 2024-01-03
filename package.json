@@ -1,10 +1,10 @@
 {
   "name": "nebuia-react-component",
   "description": "Widget to implement Nebuia in React",
-  "version": "2.0.19",
+  "version": "2.0.20",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "types": "./dist/esm/types/index.d.ts",
+  "types": "./dist/esm/types/src/index.d.ts",
   "author": "Ulises Rafael Ramirez Martinez",
   "repository": "https://github.com/ulises214/nebuia-react-component.git",
   "license": "MIT",
