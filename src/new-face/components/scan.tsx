@@ -3,8 +3,6 @@ import { CheckIcon } from '@heroicons/react/24/outline';
 import { FC, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import styles from './scan.module.css';
-
 import { Alert } from '../../common/presentation/components/molecules/Alert';
 import clsxm from '../../common/presentation/utils/clsxm';
 import { useNebuiaSdk } from '../../nebuia/presentation/hooks/UseRepository';
@@ -79,7 +77,7 @@ export const ScanFace: FC<{ state: FaceStateScanning }> = ({ state }) => {
         <>
           <div
             className={clsxm(
-              styles['video-container'],
+              'relative size-[300px] rounded-full overflow-hidden mx-auto',
               'border-[3px] border-solid',
               state.event === 'faceCentered' && 'border-emerald-500',
               state.event === 'faceError' && 'border-red-500',
@@ -93,16 +91,22 @@ export const ScanFace: FC<{ state: FaceStateScanning }> = ({ state }) => {
               id="nebuia-face-video"
               playsInline
               autoPlay
-              className={clsxm('relative')}
+              className={'relative size-full object-cover rounded-full'}
             ></video>
-            <div ref={overlayRef} className={styles['overlay']}>
-              <CheckIcon ref={iconRef} className={styles['icon']} />
+            <div
+              ref={overlayRef}
+              className="center-float size-full rounded-full bg-black/50 hidden z-[2]"
+            >
+              <CheckIcon
+                ref={iconRef}
+                className="center-float text-5xl text-green-500 hidden"
+              />
             </div>
           </div>
           <canvas
             ref={canvasRef}
             id="nebuia-face-canvas"
-            className={styles['canvas']}
+            className="hidden"
             width="640"
           ></canvas>
         </>

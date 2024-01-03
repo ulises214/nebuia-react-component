@@ -1,8 +1,6 @@
 import { ComponentPropsWithRef, ElementType, forwardRef } from 'react';
 import { ImSpinner2 } from 'react-icons/im';
 
-import styles from './Button.module.css';
-
 import { useTheme } from '../../../../../theme/presentation/hooks/UseTheme';
 import clsxm from '../../../utils/clsxm';
 
@@ -66,17 +64,27 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type="button"
         disabled={disabled}
         className={clsxm(
-          styles['button'],
-          center && styles['center'],
-          small && styles['small'],
-          extraSmall && styles['extraSmall'],
-          styles[variant],
-          disabled && styles['disabled'],
-          isLoading && styles['loading'],
-          isDarkBg ? styles['dark'] : styles['light'],
-          !isDarkBg && styles['light'],
-          !rest.onClick && styles['no-onclick'],
-          rest.onClick && styles['onclick'],
+          'nebuia-button',
+          center && 'center-button',
+          small && 'button-small',
+          extraSmall && 'button-extraSmall',
+          variant === 'primary' && 'nebuia-button-primary',
+          variant === 'secondary' && 'nebuia-button-secondary',
+          variant === 'outline' && 'nebuia-button-outline',
+          variant === 'ghost' && 'nebuia-button-ghost',
+          variant === 'white' && 'nebuia-button-white',
+          variant === 'black' && 'nebuia-button-black',
+          variant === 'error' && 'nebuia-button-error',
+          variant === 'success' && 'nebuia-button-success',
+          variant === 'warning' && 'nebuia-button-warning',
+          variant === 'outline-error' && 'nebuia-button-outlin-eerror',
+          variant === 'outline-info' && 'nebuia-button-outline-info',
+          variant === 'outline-success' && 'nebuia-button-outline-success',
+          variant === 'text' && 'nebuia-button-text',
+          variant === 'info' && 'nebuia-button-info',
+          isLoading && 'loading',
+          isDarkBg ? 'dark' : 'light',
+          !isDarkBg && 'light',
           //#endregion  //*======== Variants ===========
           className,
         )}

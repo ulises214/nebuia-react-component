@@ -1,0 +1,387 @@
+:root {
+  /* #region  /**=========== Primary Color =========== */
+  --tw-nebuia-color-primary-50: 166 156 232; /* #a69ce8 */
+  --tw-nebuia-color-primary-100: 151 139 229; /* #978be5 */
+  --tw-nebuia-color-primary-200: 120 106 221; /* #786aed */
+  --tw-nebuia-color-primary-300: 90 73 214; /* #5a49d6 */
+  --tw-nebuia-color-primary-400: 65 46 200; /* #412ec8 */
+  --tw-nebuia-color-primary-500: 54 38 167; /* #3626a7 */
+  --tw-nebuia-color-primary-600: 39 28 121; /* #271879 */
+  --tw-nebuia-color-primary-700: 24 17 76; /* #18114c */
+  --tw-nebuia-color-primary-800: 10 7 30; /* #0a071e */
+  --tw-nebuia-color-primary-900: 0 0 0; /* #000000 */
+
+  --color-nebuia-primary-50: rgb(var(--tw-nebuia-color-primary-50));
+  --color-nebuia-primary-100: rgb(var(--tw-nebuia-color-primary-100));
+  --color-nebuia-primary-200: rgb(var(--tw-nebuia-color-primary-200));
+  --color-nebuia-primary-300: rgb(var(--tw-nebuia-color-primary-300));
+  --color-nebuia-primary-400: rgb(var(--tw-nebuia-color-primary-400));
+  --color-nebuia-primary-500: rgb(var(--tw-nebuia-color-primary-500));
+  --color-nebuia-primary-600: rgb(var(--tw-nebuia-color-primary-600));
+  --color-nebuia-primary-700: rgb(var(--tw-nebuia-color-primary-700));
+  --color-nebuia-primary-800: rgb(var(--tw-nebuia-color-primary-800));
+  --color-nebuia-primary-900: rgb(var(--tw-nebuia-color-primary-900));
+
+  /* #endregion */
+
+  /* #region  /**=========== Secondary Color =========== */
+  --tw-nebuia-color-secondary-50: /* #6847a2 */ 104 71 162;
+  --tw-nebuia-color-secondary-100: /* #5e4092 */ 94 64 146;
+  --tw-nebuia-color-secondary-200: /* #533982 */ 83 57 130;
+  --tw-nebuia-color-secondary-300: /* #493271 */ 73 50 113;
+  --tw-nebuia-color-secondary-400: /* #3e2b61 */ 62 43 97;
+  --tw-nebuia-color-secondary-500: /* #342451 */ 52 36 81;
+  --tw-nebuia-color-secondary-600: /* #2a1c41 */ 42 28 65;
+  --tw-nebuia-color-secondary-700: /* #1f1531 */ 31 21 49;
+  --tw-nebuia-color-secondary-800: /* #150e20 */ 21 14 32;
+  --tw-nebuia-color-secondary-900: /* #0a0710 */ 10 7 16;
+
+  --color-nebuia-secondary-50: rgb(var(--tw-nebuia-color-secondary-50));
+  --color-nebuia-secondary-100: rgb(var(--tw-nebuia-color-secondary-100));
+  --color-nebuia-secondary-200: rgb(var(--tw-nebuia-color-secondary-200));
+  --color-nebuia-secondary-300: rgb(var(--tw-nebuia-color-secondary-300));
+  --color-nebuia-secondary-400: rgb(var(--tw-nebuia-color-secondary-400));
+  --color-nebuia-secondary-500: rgb(var(--tw-nebuia-color-secondary-500));
+  --color-nebuia-secondary-600: rgb(var(--tw-nebuia-color-secondary-600));
+  --color-nebuia-secondary-700: rgb(var(--tw-nebuia-color-secondary-700));
+  --color-nebuia-secondary-800: rgb(var(--tw-nebuia-color-secondary-800));
+  --color-nebuia-secondary-900: rgb(var(--tw-nebuia-color-secondary-900));
+
+  --tw-nebuia-color-background: #fff;
+}
+@layer utilities {
+  .center-float {
+    @apply: absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2;
+  }
+  .nebuia-button {
+    --_py: var(--py, 0.5rem);
+    --_px: var(--px, 1rem);
+    --_radius: var(--radius, 0.5rem);
+    --_font-size: var(--font-size, 1rem);
+    --_border: var(--border, 1px solid var(--color-border));
+    --_font-weight: var(--font-weight, 500);
+    --tw-ring-opacity: 1;
+    --tw-ring-color: var(--color-border) / var(--tw-ring-opacity);
+
+    /* variant customizations */
+    --color: var(--color-on-surface);
+    --bg: var(--color-surface);
+    --color-border: var(--color-border);
+
+    padding: var(--_py) var(--_px);
+    background-color: var(--bg) !important;
+    color: var(--color);
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--_radius);
+    font-size: var(--_font-size);
+    font-weight: var(--_font-weight);
+    transition: all 0.2s ease;
+    @apply inline-flex items-center relative;
+  }
+
+  .nebuia-button.center-button {
+    @apply justify-center;
+  }
+  .nebuia-button:focus {
+    outline: none;
+  }
+  .nebuia-button:focus-visible {
+    @apply ring;
+  }
+  /* sizing */
+  .nebuia-button.button-small {
+    --py: 0.25rem;
+    --px: 0.5rem;
+    --font-size: 0.875rem;
+  }
+  .nebuia-button.button-extraSmall {
+    --py: 0.125rem;
+    --px: 0.5rem;
+    --font-size: 0.75rem;
+  }
+  /* states */
+  .nebuia-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .nebuia-button.loading {
+    @apply disabled:cursor-wait;
+  }
+  .nebuia-button.light {
+    @apply shadow-sm;
+  }
+  .nebuia-button.light.nebuia-button-primary:disabled {
+    background-color: #98a2b3 !important;
+    border-color: transparent !important;
+  }
+  .nebuia-button.dark.nebuia-button-primary:disabled {
+    background-color: #1f2937 !important;
+  }
+
+  .nebuia-button.light:not(:disabled):hover {
+    @apply shadow-md;
+  }
+
+  .nebuia-button:active,
+  .nebuia-button:hover {
+    --color: var(--color-on-surface-hover);
+    --bg: var(--color-surface-hover);
+    --color-border: var(--color-border-hover);
+  }
+  .nebuia-button:disabled:hover,
+  .nebuia-button.loading:hover {
+    --color: var(--color-on-surface);
+    --bg: var(--color-surface);
+    --color-border: var(--color-border);
+  }
+
+  /* =================== variants =================== */
+
+  /*     =============== primary ===============     */
+  .nebuia-button.nebuia-button-primary {
+    --color-on-surface: var(--color-on-primary);
+    --color-on-surface-hover: var(--color-on-primary);
+  }
+  .nebuia-button.nebuia-button-primary.light {
+    --color-surface: var(--color-nebuia-primary-500);
+    --color-border: var(--color-nebuia-primary-600);
+    --color-border-hover: var(--color-nebuia-primary-700);
+    --color-surface-hover: var(--color-nebuia-primary-600);
+  }
+  .nebuia-button.nebuia-button-primary.dark {
+    --color-surface: var(--color-nebuia-primary-600);
+    --color-border: var(--color-nebuia-primary-700);
+    --color-surface-hover: var(--color-nebuia-primary-700);
+    --color-border-hover: var(--color-nebuia-primary-800);
+  }
+  /*     =============== secondary ===============     */
+  .nebuia-button.nebuia-button-secondary {
+    --color-on-surface: var(--color-on-secondary);
+    --color-on-surface-hover: var(--color-on-secondary);
+  }
+  .nebuia-button.nebuia-button-secondary.light {
+    --color-surface: var(--color-nebuia-secondary-500);
+    --color-border: var(--color-nebuia-secondary-600);
+    --color-border-hover: var(--color-nebuia-secondary-700);
+    --color-surface-hover: var(--color-nebuia-secondary-600);
+  }
+  .nebuia-button.nebuia-button-secondary.dark {
+    --color-surface: var(--color-nebuia-secondary-500);
+    --color-border: var(--color-nebuia-secondary-700);
+    --color-surface-hover: var(--color-nebuia-secondary-700);
+    --color-border-hover: var(--color-nebuia-secondary-800);
+  }
+
+  /*     =============== outline ===============     */
+  .nebuia-button.nebuia-button-outline {
+    --color-on-surface: var(--base-text-color);
+    --color-on-surface-hover: var(--base-text-color);
+    --color-surface: transparent;
+  }
+  .nebuia-button.nebuia-button-outline.light {
+    --color-surface-hover: #f7f8fa;
+    --color-border: #d0d5dd;
+    --color-border-hover: #b8bfc9;
+  }
+  .nebuia-button.nebuia-button-outline.dark {
+    --color-surface-hover: #1f2937;
+    --color-border: #374151;
+    --color-border-hover: #4b5563;
+  }
+  /*     =============== ghost ===============     */
+  .nebuia-button.nebuia-button-ghost {
+    --color-on-surface: var(--base-text-color);
+    --color-on-surface-hover: var(--base-text-color);
+    --color-surface: transparent;
+  }
+  .nebuia-button.nebuia-button-ghost.light {
+    --color-surface-hover: #f7f8fa;
+    --color-border: transparent;
+    --color-border-hover: transparent;
+  }
+  .nebuia-button.nebuia-button-ghost.dark {
+    --color-surface-hover: #1f2937;
+    --color-border: transparent;
+    --color-border-hover: transparent;
+  }
+  /*     =============== white ===============     */
+  .nebuia-button.nebuia-button-white {
+    --color-on-surface: #000;
+    --color-on-surface-hover: #000;
+    --color-surface: #fff;
+  }
+  .nebuia-button.nebuia-button-white.light {
+    --color-border: #d0d5dd;
+    --color-border-hover: #b8bfc9;
+    --color-surface-hover: #f7f8fa;
+  }
+  .nebuia-button.nebuia-button-white.dark {
+    --color-border: #374151;
+    --color-border-hover: #4b5563;
+    --color-surface-hover: #b8bfc9;
+  }
+
+  /*     =============== black ===============     */
+  .nebuia-button.nebuia-button-black {
+    --color-on-surface: #fff;
+    --color-on-surface-hover: #fff;
+    --color-surface: #000;
+    --color-surface-hover: #1f2937;
+  }
+  .nebuia-button.nebuia-button-black.light,
+  .nebuia-button.nebuia-button-black.dark {
+    --color-border: #374151;
+    --color-border-hover: #4b5563;
+  }
+
+  /*     =============== error ===============     */
+  .nebuia-button.nebuia-button-error {
+    --color-on-surface: white;
+    --color-on-surface-hover: white;
+  }
+  .nebuia-button.nebuia-button-error.light {
+    --color-surface: #ef4444;
+    --color-border: #ed2424;
+    --color-border-hover: #ed2424;
+    --color-surface-hover: #db1414;
+  }
+  .nebuia-button.nebuia-button-error.dark {
+    --color-surface: #db1414;
+    --color-border: #ed2424;
+    --color-surface-hover: #ed2424;
+    --color-border-hover: #ed2424;
+  }
+  /*     =============== success ===============     */
+  .nebuia-button.nebuia-button-success {
+    --color-on-surface: white;
+    --color-on-surface-hover: white;
+  }
+  .nebuia-button.nebuia-button-success.light {
+    --color-surface: #10b981;
+    --color-border: #059669;
+    --color-border-hover: #059669;
+    --color-surface-hover: #047857;
+  }
+  .nebuia-button.nebuia-button-success.dark {
+    --color-surface: #047857;
+    --color-border: #059669;
+    --color-surface-hover: #059669;
+    --color-border-hover: #059669;
+  }
+
+  /*     =============== warning ===============     */
+  .nebuia-button.nebuia-button-warning {
+    --color-on-surface: white;
+    --color-on-surface-hover: white;
+  }
+  .nebuia-button.nebuia-button-warning.light {
+    --color-surface: #f59e0b;
+    --color-border: #d97706;
+    --color-border-hover: #d97706;
+    --color-surface-hover: #b45309;
+  }
+  .nebuia-button.nebuia-button-warning.dark {
+    --color-surface: #b45309;
+    --color-border: #d97706;
+    --color-surface-hover: #d97706;
+    --color-border-hover: #d97706;
+  }
+
+  /*     =============== outline-error ===============     */
+  .nebuia-button.nebuia-button-outline-error {
+    --color-on-surface: #ef4444;
+    --color-on-surface-hover: #ef4444;
+  }
+  .nebuia-button.nebuia-button-outline-error.light {
+    --color-border: #ef4444;
+    --color-border-hover: #db1414;
+    --color-surface: rgba(219, 20, 20, 0.02);
+    --color-surface-hover: rgba(219, 20, 20, 0.1);
+  }
+  .nebuia-button.nebuia-button-outline-error.dark {
+    --color-surface-hover: #1f2937;
+    --color-border: #db1414;
+    --color-border-hover: #db1414;
+    --color-surface: rgba(219, 20, 20, 0.02);
+    --color-surface-hover: rgba(219, 20, 20, 0.1);
+  }
+
+  /*     =============== info ===============     */
+  .nebuia-button.nebuia-button-info {
+    --color-on-surface: white;
+    --color-on-surface-hover: white;
+  }
+  .nebuia-button.nebuia-button-info.light {
+    --color-surface: #3b82f6;
+    --color-border: #1d4ed8;
+    --color-border-hover: #1d4ed8;
+    --color-surface-hover: #1e40af;
+  }
+  .nebuia-button.nebuia-button-info.dark {
+    --color-surface: #1e40af;
+    --color-border: #1d4ed8;
+    --color-surface-hover: #1d4ed8;
+    --color-border-hover: #1d4ed8;
+  }
+
+  /*     =============== outline-info ===============     */
+  .nebuia-button.nebuia-button-outline-info {
+    --color-on-surface: #3b82f6;
+    --color-on-surface-hover: #3b82f6;
+  }
+  .nebuia-button.nebuia-button-outline-info.light {
+    --color-border: #3b82f6;
+    --color-border-hover: #1e40af;
+    --color-surface: rgba(14, 165, 233, 0.03);
+    --color-surface-hover: rgba(14, 165, 233, 0.1);
+  }
+  .nebuia-button.nebuia-button-outline-info.dark {
+    --color-border: #1e40af;
+    --color-border-hover: #1e40af;
+    --color-surface: rgba(14, 165, 233, 0.03);
+    --color-surface-hover: rgba(14, 165, 233, 0.1);
+  }
+  /*     =============== outline-success ===============     */
+  .nebuia-button.nebuia-button-outline-success {
+    --color-on-surface: #10b981;
+    --color-on-surface-hover: #10b981;
+  }
+  .nebuia-button.nebuia-button-outline-success.light {
+    --color-border: #10b981;
+    --color-border-hover: #047857;
+    --color-surface: rgba(4, 120, 87, 0.03);
+    --color-surface-hover: rgba(4, 120, 87, 0.1);
+  }
+  .nebuia-button.nebuia-button-outline-success.dark {
+    --color-border: #047857;
+    --color-border-hover: #047857;
+    --color-surface: rgba(4, 120, 87, 0.03);
+    --color-surface-hover: rgba(4, 120, 87, 0.1);
+  }
+
+  /*     =============== text (like ghost but with text in primary) ===============     */
+  .nebuia-button.nebuia-button-text {
+    --color-on-surface: var(--color-nebuia-primary-500);
+    --color-on-surface-hover: var(--color-nebuia-primary-500);
+    --color-surface: transparent;
+  }
+  .nebuia-button.nebuia-button-text.light {
+    --color-surface-hover: #f7f8fa;
+    --color-border: transparent;
+    --color-border-hover: transparent;
+  }
+  .nebuia-button.nebuia-button-text.dark {
+    --color-surface-hover: #1f2937;
+    --color-border: transparent;
+    --color-border-hover: transparent;
+  }
+}
+
+.react-tel-input .country-list {
+  border-color: var(--color-nebuia-primary-400) !important;
+}
+
+.react-tel-input .form-control.open {
+  border-color: var(--color-nebuia-primary-400) !important;
+}

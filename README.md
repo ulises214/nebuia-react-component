@@ -48,14 +48,14 @@ If your aop use another style system other than tailwind, you should import the 
 import 'nebuia-react-component/dist/esm/index.css';
 ```
 
-### Tailwind
+### Tailwindcss
 
 If your app use tailwind, you can import the tailwind config extending the default styles.
 
 In your tailwind.config.js file add the following:
 
 ```javascript
-import { NEBUIA_TAILWIND_CONFIG } from 'nebuia-react-component/dist/esm/index.js';
+import { NEBUIA_TAILWIND_CONFIG } from 'nebuia-react-component/dist/tailwind';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -79,4 +79,10 @@ module.exports = {
     require('@tailwindcss/forms'),
   ],
 };
+```
+
+In your index.css file add the following import at the top:
+
+```css
+@import 'nebuia-react-component/dist/base.css';
 ```

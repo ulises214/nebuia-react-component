@@ -5,8 +5,6 @@ import { useCallback } from 'react';
 import { isDesktop } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 
-import styles from './LivenessQr.module.css';
-
 import Button from '../../../../common/presentation/components/atoms/buttons/Button';
 import { P } from '../../../../common/presentation/components/atoms/P';
 import { useControlButton } from '../../../../common/presentation/hooks/UseControlButton';
@@ -28,7 +26,7 @@ const QrLink = () => {
       {link && (
         <Qr
           content={link}
-          className={clsxm(styles['qr'], dark && styles['qr-dark'])}
+          className={clsxm('size-[15rem]', dark && 'invert')}
         />
       )}
       <img

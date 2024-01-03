@@ -5,8 +5,6 @@ import {
 } from '@heroicons/react/24/outline';
 import { FC } from 'react';
 
-import styles from './Alert.module.css';
-
 import { useTheme } from '../../../../theme/presentation/hooks/UseTheme';
 import clsxm from '../../utils/clsxm';
 import { P } from '../atoms/P';
@@ -42,17 +40,53 @@ export const Alert: FC<AlertProps> = ({ message, title, variant }) => {
   return (
     <div
       className={clsxm(
-        styles['alert'],
-        dark ? styles['dark'] : styles['light'],
-        variant === 'success' && styles['success'],
-        variant === 'error' && styles['error'],
-        variant === 'warning' && styles['warning'],
-        variant === 'info' && styles['info'],
+        'px-4 py-2 rounded-lg flex gap-4 items-center w-full max-w-md',
+        dark ? 'shadow-md' : 'bg-slate-900',
       )}
     >
       <div className="flex items-center gap-2">
-        <div className={clsxm('w-1 h-16', styles['line'])}></div>
-        <div className={clsxm('', styles['icon'])}>
+        <div
+          className={clsxm(
+            variant === 'success' && {
+              'bg-[#0a6b20]': dark,
+              'bg-[#12b76a]': !dark,
+            },
+            variant === 'error' && {
+              'bg-[#d92d20]': !dark,
+              'bg-[#a30e0b]': dark,
+            },
+            variant === 'warning' && {
+              'bg-[#ffc107]': !dark,
+              'bg-[#b78103]': dark,
+            },
+            variant === 'info' && {
+              'bg-[#2196f3]': !dark,
+              'bg-[#0e6cb7]': dark,
+            },
+            'w-1 h-16',
+          )}
+        ></div>
+        <div
+          className={clsxm(
+            variant === 'success' && {
+              'bg-[#0a6b20]': dark,
+              'bg-[#12b76a]': !dark,
+            },
+            variant === 'error' && {
+              'bg-[#d92d20]': !dark,
+              'bg-[#a30e0b]': dark,
+            },
+            variant === 'warning' && {
+              'bg-[#ffc107]': !dark,
+              'bg-[#b78103]': dark,
+            },
+            variant === 'info' && {
+              'bg-[#2196f3]': !dark,
+              'bg-[#0e6cb7]': dark,
+            },
+            'text-white rounded-full p-2',
+          )}
+        >
           <Icon className="h-5 w-5" />
         </div>
       </div>

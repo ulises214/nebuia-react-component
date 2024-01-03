@@ -26,4 +26,26 @@ export const NEBUIA_TAILWIND_CONFIG: Config['theme'] = {
       ),
     },
   },
+  animation: {
+    'circle-loader':
+      'jump 1.5s cubic-bezier(0.5, 1.8, 0.5, 1) infinite, fadeInOut 1.4s ease-in-out infinite',
+  },
+  keyframes: {
+    jump: {
+      '0%, 100%': {
+        scale: '0.75',
+      },
+      '50%': {
+        scale: '1',
+      },
+    },
+    fadeInOut: {
+      '0%, 100%': {
+        opacity: '0.3',
+      },
+      '50%': {
+        opacity: '1',
+      },
+    },
+  },
 };

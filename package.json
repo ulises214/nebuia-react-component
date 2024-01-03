@@ -1,7 +1,7 @@
 {
   "name": "nebuia-react-component",
   "description": "Widget to implement Nebuia in React",
-  "version": "2.0.23",
+  "version": "2.0.24",
   "module": "./dist",
   "types": "./dist",
   "author": "Ulises Rafael Ramirez Martinez",
@@ -16,7 +16,7 @@
     "lint:fix": "eslint ./src --max-warnings=0 --ext .jsx,.js,.ts,.tsx --fix --ignore-path ./.gitignore",
     "lint:format": "prettier  --log-level warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
     "lint": "pnpm lint:format && pnpm lint:fix ",
-    "build": "rimraf dist && rollup -c ./rollup.config.mjs && rollup -c ./rollup-tailwind.config.mjs && mv ./dist/src/* ./dist && rm -rf ./dist/src",
+    "build": "rimraf dist && rollup -c ./rollup.config.mjs && rollup -c ./rollup-tailwind.config.mjs && mv ./dist/src/* ./dist && rm -rf ./dist/src && cp src/base.css dist/base.css",
     "dev": "vite",
     "build:demo": "rimraf demo && vite build --outDir demo",
     "build:demo:debug": "rimraf demo && vite build --mode=demo --outDir demo --base=/nebuia-react-component",
