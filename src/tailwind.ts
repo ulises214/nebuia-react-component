@@ -1,7 +1,8 @@
-import type { Config } from 'tailwindcss';
-
 const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
-export const NEBUIA_TAILWIND_CONFIG: Config['theme'] = {
+/**
+ * @type {Config['theme']}
+ */
+export const NEBUIA_TAILWIND_CONFIG = {
   extend: {
     screens: {
       xs: '475px',
@@ -10,14 +11,18 @@ export const NEBUIA_TAILWIND_CONFIG: Config['theme'] = {
       'nebuia-main': '#6df8e2',
       'nebuia-main-dark': '#050217',
       'nebuia-background': 'var(--tw-nebuia-color-background)',
-      'nebuia-primary': shades.reduce(
+      'nebuia-primary': shades.reduce<{
+        [key: string]: string;
+      }>(
         (acc, shade) => ({
           ...acc,
           [shade]: `rgb(var(--tw-nebuia-color-primary-${shade}) / <alpha-value>)`,
         }),
         {},
       ),
-      'nebuia-secondary': shades.reduce(
+      'nebuia-secondary': shades.reduce<{
+        [key: string]: string;
+      }>(
         (acc, shade) => ({
           ...acc,
           [shade]: `rgb(var(--tw-nebuia-color-secondary-${shade}) / <alpha-value>)`,
@@ -48,4 +53,4 @@ export const NEBUIA_TAILWIND_CONFIG: Config['theme'] = {
       },
     },
   },
-};
+} as const;

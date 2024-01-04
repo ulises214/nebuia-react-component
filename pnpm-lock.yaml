@@ -9,11 +9,11 @@ dependencies:
     specifier: 2.1.1
     version: 2.1.1(react@18.2.0)
   '@nebuia-ts/models':
-    specifier: 1.1.8
-    version: 1.1.8
+    specifier: 2.1.8
+    version: 2.1.8
   '@nebuia-ts/sdk':
-    specifier: 1.0.28
-    version: 1.0.28(axios@1.5.0)(form-data@4.0.0)
+    specifier: 2.0.0
+    version: 2.0.0(@nebuia-ts/api@3.0.0)(@nebuia-ts/models@2.1.8)
   clsx:
     specifier: 2.1.0
     version: 2.1.0
@@ -21,8 +21,8 @@ dependencies:
     specifier: 2.0.4
     version: 2.0.4
   i18next:
-    specifier: 23.7.15
-    version: 23.7.15
+    specifier: 23.7.16
+    version: 23.7.16
   lean-qr:
     specifier: 2.3.2
     version: 2.3.2
@@ -40,7 +40,7 @@ dependencies:
     version: 2.2.3(react-dom@18.2.0)(react@18.2.0)
   react-i18next:
     specifier: 14.0.0
-    version: 14.0.0(i18next@23.7.15)(react-dom@18.2.0)(react@18.2.0)
+    version: 14.0.0(i18next@23.7.16)(react-dom@18.2.0)(react@18.2.0)
   react-icons:
     specifier: 4.12.0
     version: 4.12.0(react@18.2.0)
@@ -61,6 +61,9 @@ dependencies:
     version: 4.4.7(@types/react@18.2.46)(react@18.2.0)
 
 devDependencies:
+  '@rollup/plugin-terser':
+    specifier: 0.4.4
+    version: 0.4.4(rollup@4.9.2)
   '@rollup/plugin-typescript':
     specifier: 11.1.5
     version: 11.1.5(rollup@4.9.2)(tslib@2.6.2)(typescript@5.3.3)
@@ -680,6 +683,13 @@ packages:
     engines: {node: '>=6.0.0'}
     dev: true
 
+  /@jridgewell/source-map@0.3.5:
+    resolution: {integrity: sha512-UTYAUj/wviwdsMfzoSJspJxbkH5o1snzwX0//0ENX1u/55kkZZkcTZP6u9bwKGkv+dkk9at4m1Cpt0uY80kcpQ==}
+    dependencies:
+      '@jridgewell/gen-mapping': 0.3.3
+      '@jridgewell/trace-mapping': 0.3.19
+    dev: true
+
   /@jridgewell/sourcemap-codec@1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
     dev: true
@@ -691,30 +701,30 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@nebuia-ts/api@2.2.41(@nebuia-ts/models@1.1.8)(axios@1.5.0)(form-data@4.0.0):
-    resolution: {integrity: sha512-/GDHZLQtYF373dMRXnIJb+yGiWsJ1O4/eTf10AlkeKlyrrdsrV7C8Wu1lvOzmq4z9cXXPu3UpL0dWD02a1eBvA==}
+  /@nebuia-ts/api@3.0.0(@nebuia-ts/models@2.1.8)(axios@1.6.4)(form-data@4.0.0):
+    resolution: {integrity: sha512-EmZU8jtkViYy3wcMqYKZL+jt6SKXy5y5yNNuEmd06VMSEEQjyJmZRJKCdxkiBAkRh5qdnPNHq1PCwlkaATThOA==}
     peerDependencies:
-      '@nebuia-ts/models': 1.1.8
-      axios: 1.5.0
+      '@nebuia-ts/models': 2.1.8
+      axios: 1.6.4
       form-data: 4.0.0
     dependencies:
-      '@nebuia-ts/models': 1.1.8
-      axios: 1.5.0
+      '@nebuia-ts/models': 2.1.8
+      axios: 1.6.4
       form-data: 4.0.0
     dev: false
 
-  /@nebuia-ts/models@1.1.8:
-    resolution: {integrity: sha512-a3Fg+CcS3ZRcYugb4KeaXLsr3vN15vYF2JujZ4YUN179mqAhluB8qr7HM48hGaSKCSZA/KW+jlGbRJVBjqmRaQ==}
+  /@nebuia-ts/models@2.1.8:
+    resolution: {integrity: sha512-R9OY/vz63wxXh8vfCjUDGxv5sSvS6yMv+pQFhCwg2YGW2HcbIUWVyeanb5DeGN8T/PGO3ObuvRvB/YZZm2VK8Q==}
     dev: false
 
-  /@nebuia-ts/sdk@1.0.28(axios@1.5.0)(form-data@4.0.0):
-    resolution: {integrity: sha512-X/2I09iuW6EiB1mJ2uvFHLIkU4YSXkGsd6YZ52cAD8jTZgp4CFy/yv+6fGb3TFbjP00vYt16BhPCTb0f3PBpBw==}
+  /@nebuia-ts/sdk@2.0.0(@nebuia-ts/api@3.0.0)(@nebuia-ts/models@2.1.8):
+    resolution: {integrity: sha512-L66nM+GqmpqTbhcABVS/kttYL5QJQverAqXkjmXwlaOPBeeejYksBg+tBgOc95d4ajf65SPfw60ZdY+XJJbkbQ==}
+    peerDependencies:
+      '@nebuia-ts/api': 3.0.0
+      '@nebuia-ts/models': 2.1.8
     dependencies:
-      '@nebuia-ts/api': 2.2.41(@nebuia-ts/models@1.1.8)(axios@1.5.0)(form-data@4.0.0)
-      '@nebuia-ts/models': 1.1.8
-    transitivePeerDependencies:
-      - axios
-      - form-data
+      '@nebuia-ts/api': 3.0.0(@nebuia-ts/models@2.1.8)(axios@1.6.4)(form-data@4.0.0)
+      '@nebuia-ts/models': 2.1.8
     dev: false
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
@@ -759,6 +769,21 @@ packages:
   /@remix-run/router@1.14.1:
     resolution: {integrity: sha512-Qg4DMQsfPNAs88rb2xkdk03N3bjK4jgX5fR24eHCTR9q6PrhZQZ4UJBPzCHJkIpTRN1UKxx2DzjZmnC+7Lj0Ow==}
     engines: {node: '>=14.0.0'}
+    dev: true
+
+  /@rollup/plugin-terser@0.4.4(rollup@4.9.2):
+    resolution: {integrity: sha512-XHeJC5Bgvs8LfukDwWZp7yeqin6ns8RTl2B9avbejt6tZqsqvVoWI7ZTQrcNsfKEDWBTnTxM8nMDkO2IFFbd0A==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      rollup: 4.9.2
+      serialize-javascript: 6.0.1
+      smob: 1.4.1
+      terser: 5.26.0
     dev: true
 
   /@rollup/plugin-typescript@11.1.5(rollup@4.9.2)(tslib@2.6.2)(typescript@5.3.3):
@@ -1462,10 +1487,10 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axios@1.5.0:
-    resolution: {integrity: sha512-D4DdjDo5CY50Qms0qGQTTw6Q44jl7zRwY7bthds06pUGfChBCTcQs+N743eFWGEd6pRTMd6A+I87aWyFV5wiZQ==}
+  /axios@1.6.4:
+    resolution: {integrity: sha512-heJnIs6N4aa1eSthhN9M5ioILu8Wi8vmQW9iHQ9NUvfkJb0lEEDUiIdQNAuBtfUt3FxReaKdpQA5DbmMOqzF/A==}
     dependencies:
-      follow-redirects: 1.15.2
+      follow-redirects: 1.15.4
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -1520,6 +1545,10 @@ packages:
       electron-to-chromium: 1.4.499
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.10)
+    dev: true
+
+  /buffer-from@1.1.2:
+    resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
     dev: true
 
   /call-bind@1.0.2:
@@ -1632,6 +1661,10 @@ packages:
   /commander@11.0.0:
     resolution: {integrity: sha512-9HMlXtt/BNoYr8ooyjjNRdIilOTkVJXB+GhxMTtOKwk0R4j4lS4NpjuqmRxroBfnfTSHQIHQB7wryHhXarNjmQ==}
     engines: {node: '>=16'}
+    dev: true
+
+  /commander@2.20.3:
+    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
     dev: true
 
   /commander@4.1.1:
@@ -2568,8 +2601,8 @@ packages:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
     dev: true
 
-  /follow-redirects@1.15.2:
-    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+  /follow-redirects@1.15.4:
+    resolution: {integrity: sha512-Cr4D/5wlrb0z9dgERpUL3LrmPKVDsETIJhaCMeDfuFYcqa5bldGV6wBsAN6X/vxlXQtFBMrXdXxdL8CbDTGniw==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -2855,8 +2888,8 @@ packages:
       void-elements: 3.1.0
     dev: false
 
-  /i18next@23.7.15:
-    resolution: {integrity: sha512-WukNgiqkUgU7xSaY8k2B4nXNesD+O8O4ta5g344U5B6Ag7mG61A1EBcDmktFgc4aL447V0cmpjw5l18v58KUfg==}
+  /i18next@23.7.16:
+    resolution: {integrity: sha512-SrqFkMn9W6Wb43ZJ9qrO6U2U4S80RsFMA7VYFSqp7oc7RllQOYDCdRfsse6A7Cq/V8MnpxKvJCYgM8++27n4Fw==}
     dependencies:
       '@babel/runtime': 7.23.5
     dev: false
@@ -4137,6 +4170,12 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
+  /randombytes@2.1.0:
+    resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
+    dependencies:
+      safe-buffer: 5.2.1
+    dev: true
+
   /react-device-detect@2.2.3(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-buYY3qrCnQVlIFHrC5UcUoAj7iANs/+srdkwsnNjI7anr3Tt7UY6MqNxtMLlr0tMBied0O49UZVK8XKs3ZIiPw==}
     peerDependencies:
@@ -4157,7 +4196,7 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-i18next@14.0.0(i18next@23.7.15)(react-dom@18.2.0)(react@18.2.0):
+  /react-i18next@14.0.0(i18next@23.7.16)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-OCrS8rHNAmnr8ggGRDxjakzihrMW7HCbsplduTm3EuuQ6fyvWGT41ksZpqbduYoqJurBmEsEVZ1pILSUWkHZng==}
     peerDependencies:
       i18next: '>= 23.2.3'
@@ -4172,7 +4211,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.5
       html-parse-stringify: 3.0.1
-      i18next: 23.7.15
+      i18next: 23.7.16
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -4419,6 +4458,10 @@ packages:
       isarray: 2.0.5
     dev: true
 
+  /safe-buffer@5.2.1:
+    resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
+    dev: true
+
   /safe-identifier@0.4.2:
     resolution: {integrity: sha512-6pNbSMW6OhAi9j+N8V+U715yBQsaWJ7eyEUaOrawX+isg5ZxhUlV1NipNtgaKHmFGiABwt+ZF04Ii+3Xjkg+8w==}
     dev: true
@@ -4447,6 +4490,12 @@ packages:
     hasBin: true
     dependencies:
       lru-cache: 6.0.0
+    dev: true
+
+  /serialize-javascript@6.0.1:
+    resolution: {integrity: sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==}
+    dependencies:
+      randombytes: 2.1.0
     dev: true
 
   /set-function-name@2.0.1:
@@ -4488,9 +4537,20 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /smob@1.4.1:
+    resolution: {integrity: sha512-9LK+E7Hv5R9u4g4C3p+jjLstaLe11MDsL21UpYaCNmapvMkYhqCV4A/f/3gyH8QjMyh6l68q9xC85vihY9ahMQ==}
+    dev: true
+
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
+
+  /source-map-support@0.5.21:
+    resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
+    dependencies:
+      buffer-from: 1.1.2
+      source-map: 0.6.1
+    dev: true
 
   /source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
@@ -4702,6 +4762,17 @@ packages:
   /tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
     engines: {node: '>=6'}
+    dev: true
+
+  /terser@5.26.0:
+    resolution: {integrity: sha512-dytTGoE2oHgbNV9nTzgBEPaqAWvcJNl66VZ0BkJqlvp71IjO8CxdBx/ykCNb47cLnCmCvRZ6ZR0tLkqvZCdVBQ==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dependencies:
+      '@jridgewell/source-map': 0.3.5
+      acorn: 8.10.0
+      commander: 2.20.3
+      source-map-support: 0.5.21
     dev: true
 
   /text-table@0.2.0:
