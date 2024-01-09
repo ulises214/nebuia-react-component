@@ -9,11 +9,11 @@ dependencies:
     specifier: 2.1.1
     version: 2.1.1(react@18.2.0)
   '@nebuia-ts/models':
-    specifier: 2.1.8
-    version: 2.1.8
+    specifier: 2.1.9
+    version: 2.1.9
   '@nebuia-ts/sdk':
-    specifier: 2.0.0
-    version: 2.0.0(@nebuia-ts/api@3.0.0)(@nebuia-ts/models@2.1.8)
+    specifier: 2.0.2
+    version: 2.0.2(@nebuia-ts/api@3.0.0)(@nebuia-ts/models@2.1.9)
   clsx:
     specifier: 2.1.0
     version: 2.1.0
@@ -701,30 +701,30 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@nebuia-ts/api@3.0.0(@nebuia-ts/models@2.1.8)(axios@1.6.4)(form-data@4.0.0):
+  /@nebuia-ts/api@3.0.0(@nebuia-ts/models@2.1.9)(axios@1.6.4)(form-data@4.0.0):
     resolution: {integrity: sha512-EmZU8jtkViYy3wcMqYKZL+jt6SKXy5y5yNNuEmd06VMSEEQjyJmZRJKCdxkiBAkRh5qdnPNHq1PCwlkaATThOA==}
     peerDependencies:
       '@nebuia-ts/models': 2.1.8
       axios: 1.6.4
       form-data: 4.0.0
     dependencies:
-      '@nebuia-ts/models': 2.1.8
+      '@nebuia-ts/models': 2.1.9
       axios: 1.6.4
       form-data: 4.0.0
     dev: false
 
-  /@nebuia-ts/models@2.1.8:
-    resolution: {integrity: sha512-R9OY/vz63wxXh8vfCjUDGxv5sSvS6yMv+pQFhCwg2YGW2HcbIUWVyeanb5DeGN8T/PGO3ObuvRvB/YZZm2VK8Q==}
+  /@nebuia-ts/models@2.1.9:
+    resolution: {integrity: sha512-6BbyRlCTHYPJFo65zybFampN64SkrPg85qln/KlcPF+rW9UTpUH3012/se5cbYnAME+cJmQkJLvKGcqd20F5lw==}
     dev: false
 
-  /@nebuia-ts/sdk@2.0.0(@nebuia-ts/api@3.0.0)(@nebuia-ts/models@2.1.8):
-    resolution: {integrity: sha512-L66nM+GqmpqTbhcABVS/kttYL5QJQverAqXkjmXwlaOPBeeejYksBg+tBgOc95d4ajf65SPfw60ZdY+XJJbkbQ==}
+  /@nebuia-ts/sdk@2.0.2(@nebuia-ts/api@3.0.0)(@nebuia-ts/models@2.1.9):
+    resolution: {integrity: sha512-nnK1YIUo99bmPJo9OChar2xFvh2hMFyBZsZo2dwuRtt9IfftDWqvde87RmlkQX2aYBONyqbgr/3srO6pvxXqnA==}
     peerDependencies:
       '@nebuia-ts/api': 3.0.0
       '@nebuia-ts/models': 2.1.8
     dependencies:
-      '@nebuia-ts/api': 3.0.0(@nebuia-ts/models@2.1.8)(axios@1.6.4)(form-data@4.0.0)
-      '@nebuia-ts/models': 2.1.8
+      '@nebuia-ts/api': 3.0.0(@nebuia-ts/models@2.1.9)(axios@1.6.4)(form-data@4.0.0)
+      '@nebuia-ts/models': 2.1.9
     dev: false
 
   /@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1:
