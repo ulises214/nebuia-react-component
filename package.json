@@ -1,7 +1,7 @@
 {
   "name": "nebuia-react-component",
   "description": "Widget to implement Nebuia in React",
-  "version": "2.0.28",
+  "version": "2.0.29",
   "module": "./dist",
   "types": "./dist",
   "author": "Ulises Rafael Ramirez Martinez",
@@ -24,26 +24,6 @@
     "upload:demo": "pnpm build:demo && rsync -avz --delete ./demo/* root@194.146.12.166:/root/nebuia_widget_react_2",
     "prepare": "pnpm build",
     "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@heroicons/react": "2.1.1",
-    "@nebuia-ts/models": "2.1.9",
-    "@nebuia-ts/sdk": "2.0.3",
-    "clsx": "2.1.0",
-    "email-validator": "2.0.4",
-    "i18next": "23.7.16",
-    "lean-qr": "2.3.2",
-    "libphonenumber-js": "1.10.53",
-    "postcss-import": "16.0.0",
-    "react": "18.2.0",
-    "react-device-detect": "2.2.3",
-    "react-i18next": "14.0.0",
-    "react-icons": "4.12.0",
-    "react-otp-input": "3.1.1",
-    "react-phone-input-2": "2.15.1",
-    "tailwind-merge": "2.2.0",
-    "wasm-feature-detect": "^1.6.1",
-    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "0.4.4",
@@ -81,8 +61,8 @@
   },
   "peerDependencies": {
     "@heroicons/react": "2.1.1",
-    "@nebuia-ts/models": "2.1.8",
-    "@nebuia-ts/sdk": "2.0.0",
+    "@nebuia-ts/models": "2.1.9",
+    "@nebuia-ts/sdk": "2.0.3",
     "clsx": "2.1.0",
     "email-validator": "2.0.4",
     "i18next": "23.7.16",
