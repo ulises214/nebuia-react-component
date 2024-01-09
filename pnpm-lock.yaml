@@ -12,8 +12,8 @@ dependencies:
     specifier: 2.1.9
     version: 2.1.9
   '@nebuia-ts/sdk':
-    specifier: 2.0.2
-    version: 2.0.2(@nebuia-ts/api@3.0.0)(@nebuia-ts/models@2.1.9)
+    specifier: 2.0.3
+    version: 2.0.3(@nebuia-ts/api@3.0.2)(@nebuia-ts/models@2.1.9)
   clsx:
     specifier: 2.1.0
     version: 2.1.0
@@ -701,15 +701,15 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@nebuia-ts/api@3.0.0(@nebuia-ts/models@2.1.9)(axios@1.6.4)(form-data@4.0.0):
-    resolution: {integrity: sha512-EmZU8jtkViYy3wcMqYKZL+jt6SKXy5y5yNNuEmd06VMSEEQjyJmZRJKCdxkiBAkRh5qdnPNHq1PCwlkaATThOA==}
+  /@nebuia-ts/api@3.0.2(@nebuia-ts/models@2.1.9)(axios@1.6.5)(form-data@4.0.0):
+    resolution: {integrity: sha512-nbVVSeaXLb0Yxuu/InsMzVyy+m04dxHVK7urm1AEIbUymW63gmIaz6+/1ffT0fgx1fqElibgbdoID8JwPT6oQA==}
     peerDependencies:
-      '@nebuia-ts/models': 2.1.8
-      axios: 1.6.4
+      '@nebuia-ts/models': 2.1.9
+      axios: 1.6.5
       form-data: 4.0.0
     dependencies:
       '@nebuia-ts/models': 2.1.9
-      axios: 1.6.4
+      axios: 1.6.5
       form-data: 4.0.0
     dev: false
 
@@ -717,13 +717,13 @@ packages:
     resolution: {integrity: sha512-6BbyRlCTHYPJFo65zybFampN64SkrPg85qln/KlcPF+rW9UTpUH3012/se5cbYnAME+cJmQkJLvKGcqd20F5lw==}
     dev: false
 
-  /@nebuia-ts/sdk@2.0.2(@nebuia-ts/api@3.0.0)(@nebuia-ts/models@2.1.9):
-    resolution: {integrity: sha512-nnK1YIUo99bmPJo9OChar2xFvh2hMFyBZsZo2dwuRtt9IfftDWqvde87RmlkQX2aYBONyqbgr/3srO6pvxXqnA==}
+  /@nebuia-ts/sdk@2.0.3(@nebuia-ts/api@3.0.2)(@nebuia-ts/models@2.1.9):
+    resolution: {integrity: sha512-8vlpX4TS/gCwTZsfgIzyCy5DIGcOHe17zFdMUl3T3UmkoUgw5dKkdKJ8wTcQD0FFAqfVkN+BhtkITSSTRy+lvg==}
     peerDependencies:
-      '@nebuia-ts/api': 3.0.0
-      '@nebuia-ts/models': 2.1.8
+      '@nebuia-ts/api': 3.0.2
+      '@nebuia-ts/models': 2.1.9
     dependencies:
-      '@nebuia-ts/api': 3.0.0(@nebuia-ts/models@2.1.9)(axios@1.6.4)(form-data@4.0.0)
+      '@nebuia-ts/api': 3.0.2(@nebuia-ts/models@2.1.9)(axios@1.6.5)(form-data@4.0.0)
       '@nebuia-ts/models': 2.1.9
     dev: false
 
@@ -1487,8 +1487,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axios@1.6.4:
-    resolution: {integrity: sha512-heJnIs6N4aa1eSthhN9M5ioILu8Wi8vmQW9iHQ9NUvfkJb0lEEDUiIdQNAuBtfUt3FxReaKdpQA5DbmMOqzF/A==}
+  /axios@1.6.5:
+    resolution: {integrity: sha512-Ii012v05KEVuUoFWmMW/UQv9aRIc3ZwkWDcM+h5Il8izZCtRVpDUfwpoFf7eOtajT3QiGR4yDUx7lPqHJULgbg==}
     dependencies:
       follow-redirects: 1.15.4
       form-data: 4.0.0
