@@ -1,7 +1,7 @@
-import { NebuiaCompanyWidgetSettings } from '@nebuia-ts/models';
 import { createContext } from 'react';
 
 import { Theme } from '../../domain/types/ITheme';
+import { NebuiaCompanyWidgetSettings } from '../hooks/UseThemeBroadcast';
 
 export interface ThemeContextValue {
   theme: Theme;

@@ -31,13 +31,12 @@ export const useSetColorScheme = (
   setTheme: OnSetTheme,
 ): ThemeContextValue['setColorScheme'] => {
   const setColorScheme = useCallback<ThemeContextValue['setColorScheme']>(
-    ({
-      primary_color: primary,
-      secondary_color: secondary,
-      dark_mode: dark,
-    }) => {
+    ({ primary_color: primary, secondary_color: secondary }) => {
       setTheme((prev: Partial<Theme>) => {
-        const isDark = dark ?? prev.dark ?? false;
+        // check browser preference
+        const isDark = window.matchMedia(
+          '(prefers-color-scheme: dark)',
+        ).matches;
         const [defaultPrimary, defaultSecondary] = getColorsByBrightness({
           isDark,
         });

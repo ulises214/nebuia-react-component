@@ -15,7 +15,6 @@ export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const setDefaultColorScheme = useCallback(() => {
     setColorScheme({
       primary_color: DEFAULT_THEME.primary,
-      dark_mode: DEFAULT_THEME.dark,
       secondary_color: DEFAULT_THEME.secondary,
     });
   }, [setColorScheme]);

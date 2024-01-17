@@ -1,6 +1,10 @@
-import { NebuiaCompanyWidgetSettings } from '@nebuia-ts/models';
+import { NebuiaCompanySettings } from '@nebuia-ts/models';
 import { useEffect } from 'react';
 
+export type NebuiaCompanyWidgetSettings = Pick<
+  NebuiaCompanySettings,
+  'primary_color' | 'secondary_color'
+>;
 type OnThemeChange = (arg0: NebuiaCompanyWidgetSettings) => void;
 export const useThemeBroadcast = (setColorScheme: OnThemeChange): void => {
   useEffect(() => {
