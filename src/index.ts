@@ -1,3 +1,5 @@
 import './index.css';
 
-export { NebuiaStepsList } from './nebuia';
+import NebuiaStepsList from './nebuia';
+
+export { NebuiaStepsList };

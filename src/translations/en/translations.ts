@@ -1,6 +1,6 @@
 import { Translation } from '..';
 
-export const enTranslation: Translation = {
+const enTranslation: Translation = {
   signature: {
     create: 'Go to sign',
     types: {
@@ -273,3 +273,5 @@ export const enTranslation: Translation = {
     },
   },
 };
+
+export default enTranslation;

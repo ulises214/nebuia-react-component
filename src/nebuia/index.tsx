@@ -1,5 +1,5 @@
 import { NebuiaKeys } from '@nebuia-ts/models';
-import { FC, useEffect, useState } from 'react';
+import { FC, lazy, Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '../common/presentation/components/atoms/Loader';
 import { Layout } from '../common/presentation/components/layouts/Layout';
@@ -12,7 +12,6 @@ import { initI18n, Lang } from '../translations/initi18';
 import { WidgetProps } from './domain/types/WidgetProps';
 import { FinishDetailsPage } from './presentation/pages/DetailsPage';
 import { GenericWelcomePage } from './presentation/pages/GenericWelcomePage';
-import { SignaturePage } from './presentation/pages/Signature/SignaturePage';
 import { SignatureWelcomePage } from './presentation/pages/SignatureWelcomePage';
 import { StepsView } from './presentation/pages/StepView';
 import { CompanyStepsProvider } from './presentation/providers/CompanySteps';
@@ -21,6 +20,10 @@ import { useReportSteps } from './presentation/providers/ReportSteps/Context';
 import { NebuiaSdkProvider } from './presentation/providers/RepositoryProvider';
 import { WidgetConfigProvider } from './presentation/providers/WidgetConfig';
 import { useWidgetConfig } from './presentation/providers/WidgetConfig/Context';
+
+const SignaturePage = lazy(
+  () => import('./presentation/pages/Signature/SignaturePage'),
+);
 
 const _Content: FC = () => {
   const { currentView } = useCurrentView();
@@ -60,7 +63,7 @@ const _Content: FC = () => {
     return <StepsView />;
   }
   if (currentView === 'signature') {
-    return <SignaturePage />;
+    return <Suspense fallback={<Loader />}>{<SignaturePage />}</Suspense>;
   }
 
   return <FinishDetailsPage />;
@@ -157,7 +160,7 @@ const NebuiaStepsListValidations: FC<
   return <Content keys={keys} />;
 };
 
-export const NebuiaStepsList: FC<
+const NebuiaStepsList: FC<
   WidgetProps & {
     enableBackground?: boolean;
     lang?: Lang;
@@ -200,3 +203,5 @@ export const NebuiaStepsList: FC<
     </WidgetConfigProvider>
   );
 };
+
+export default NebuiaStepsList;

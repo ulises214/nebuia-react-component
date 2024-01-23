@@ -12,8 +12,8 @@ dependencies:
     specifier: 3.0.0
     version: 3.0.0
   '@nebuia-ts/sdk':
-    specifier: 2.1.3
-    version: 2.1.3
+    specifier: 2.1.5
+    version: 2.1.5
   clsx:
     specifier: 2.1.0
     version: 2.1.0
@@ -21,14 +21,14 @@ dependencies:
     specifier: 2.0.4
     version: 2.0.4
   i18next:
-    specifier: 23.7.16
-    version: 23.7.16
+    specifier: 23.7.18
+    version: 23.7.18
   lean-qr:
-    specifier: 2.3.2
-    version: 2.3.2
+    specifier: 2.3.3
+    version: 2.3.3
   libphonenumber-js:
-    specifier: 1.10.53
-    version: 1.10.53
+    specifier: 1.10.54
+    version: 1.10.54
   postcss-import:
     specifier: 16.0.0
     version: 16.0.0(postcss@8.4.33)
@@ -39,8 +39,8 @@ dependencies:
     specifier: 2.2.3
     version: 2.2.3(react-dom@18.2.0)(react@18.2.0)
   react-i18next:
-    specifier: 14.0.0
-    version: 14.0.0(i18next@23.7.16)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 14.0.1
+    version: 14.0.1(i18next@23.7.18)(react-dom@18.2.0)(react@18.2.0)
   react-icons:
     specifier: 5.0.1
     version: 5.0.1(react@18.2.0)
@@ -51,14 +51,14 @@ dependencies:
     specifier: 2.15.1
     version: 2.15.1(react-dom@18.2.0)(react@18.2.0)
   tailwind-merge:
-    specifier: 2.2.0
-    version: 2.2.0
+    specifier: 2.2.1
+    version: 2.2.1
   wasm-feature-detect:
     specifier: ^1.6.1
     version: 1.6.1
   zustand:
-    specifier: ^4.4.7
-    version: 4.4.7(@types/react@18.2.48)(react@18.2.0)
+    specifier: ^4.5.0
+    version: 4.5.0(@types/react@18.2.48)(react@18.2.0)
 
 devDependencies:
   '@rollup/plugin-terser':
@@ -352,6 +352,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
+
+  /@babel/runtime@7.23.8:
+    resolution: {integrity: sha512-Y7KbAP984rn1VGMbGqKmBLio9V7y5Je9GvU4rQPCPinCyNfUcToxIXl06d59URp/F3LwinvODxab5N/G6qggkw==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.14.0
+    dev: false
 
   /@babel/template@7.22.15:
     resolution: {integrity: sha512-QPErUVm4uyJa60rkI73qneDacvdvzxshT3kksGqlGWYdOTIUOwJ7RDUL8sGqslY1uXWSL6xMFKEXDS3ox2uF0w==}
@@ -701,8 +708,8 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.15
     dev: true
 
-  /@nebuia-ts/api@3.1.1:
-    resolution: {integrity: sha512-35eZ1zbqJXqwe5a17IfC6OjIUG3eyIw3glrPrC2k03Ie+SIxz82Q3FOTbAZR4XDJLd0jEZP1DNv0vomIehUh0A==}
+  /@nebuia-ts/api@3.1.2:
+    resolution: {integrity: sha512-O1/lelkJKwwoAtPvNe9OKzbJ4K6UqhShZ3cJeWHRAwUYjGdgdEP36nEsdACsuA0xZ+urLwDfGgpD5O85L2UysQ==}
     dependencies:
       '@nebuia-ts/models': 3.0.0
       axios: 1.6.5
@@ -715,10 +722,10 @@ packages:
     resolution: {integrity: sha512-67Diq24UnL8KZvj3X5fWHf3527BHWnAoGaHNMpnrbzphoey4MwoIH9q6ZR6Q9CUSJYWkR0sYkSzZij/jYZyMZg==}
     dev: false
 
-  /@nebuia-ts/sdk@2.1.3:
-    resolution: {integrity: sha512-VCVT1hRcRZ/uoQrTqHnGZcwWey0IswuxnAYD7vxu/cpwFCr/bfc8LgUF0AmsRzkGwqNgEwYNd2mDYGMvy/5GiA==}
+  /@nebuia-ts/sdk@2.1.5:
+    resolution: {integrity: sha512-Tzz2x2vjbw22L99nb+lH5j23wVadRNW+GJVKeq0TKQPRbqXCT98EPpSBjJBZZb95GjBUJXehljRQDRAulvjUlQ==}
     dependencies:
-      '@nebuia-ts/api': 3.1.1
+      '@nebuia-ts/api': 3.1.2
       '@nebuia-ts/models': 3.0.0
     transitivePeerDependencies:
       - debug
@@ -2889,8 +2896,8 @@ packages:
       void-elements: 3.1.0
     dev: false
 
-  /i18next@23.7.16:
-    resolution: {integrity: sha512-SrqFkMn9W6Wb43ZJ9qrO6U2U4S80RsFMA7VYFSqp7oc7RllQOYDCdRfsse6A7Cq/V8MnpxKvJCYgM8++27n4Fw==}
+  /i18next@23.7.18:
+    resolution: {integrity: sha512-b9N2KjRCYQNlUvE1Kc83g8knyUkL5NiZQOp9BsTR/v/LXk6Fzz+doOzTg2/826XK28mCgBkYLNAtixjE58qpCw==}
     dependencies:
       '@babel/runtime': 7.23.5
     dev: false
@@ -3239,8 +3246,8 @@ packages:
       language-subtag-registry: 0.3.22
     dev: true
 
-  /lean-qr@2.3.2:
-    resolution: {integrity: sha512-nSTEGipJIWYMvXDmMGOgacgkG3ouTnFsC8yHnWJ6XXbigFbMZ8MgRr/ge3Qiyz6hy38OEvzuniCr47aaW42qyQ==}
+  /lean-qr@2.3.3:
+    resolution: {integrity: sha512-GneENsPo/TRBRILuIT/A+SM6TbprJUXfZw3/tYSF/bhLCGXniLvGytyEnSuC7b7vtxDVjwBEIBEVV4ntoZjOOA==}
     hasBin: true
     dev: false
 
@@ -3252,8 +3259,8 @@ packages:
       type-check: 0.4.0
     dev: true
 
-  /libphonenumber-js@1.10.53:
-    resolution: {integrity: sha512-sDTnnqlWK4vH4AlDQuswz3n4Hx7bIQWTpIcScJX+Sp7St3LXHmfiax/ZFfyYxHmkdCvydOLSuvtAO/XpXiSySw==}
+  /libphonenumber-js@1.10.54:
+    resolution: {integrity: sha512-P+38dUgJsmh0gzoRDoM4F5jLbyfztkU6PY6eSK6S5HwTi/LPvnwXqVCQZlAy1FxZ5c48q25QhxGQ0pq+WQcSlQ==}
     dev: false
 
   /lilconfig@2.1.0:
@@ -4197,8 +4204,8 @@ packages:
       react: 18.2.0
       scheduler: 0.23.0
 
-  /react-i18next@14.0.0(i18next@23.7.16)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-OCrS8rHNAmnr8ggGRDxjakzihrMW7HCbsplduTm3EuuQ6fyvWGT41ksZpqbduYoqJurBmEsEVZ1pILSUWkHZng==}
+  /react-i18next@14.0.1(i18next@23.7.18)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-TMV8hFismBmpMdIehoFHin/okfvgjFhp723RYgIqB4XyhDobVMyukyM3Z8wtTRmajyFMZrBl/OaaXF2P6WjUAw==}
     peerDependencies:
       i18next: '>= 23.2.3'
       react: '>= 16.8.0'
@@ -4212,7 +4219,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.5
       html-parse-stringify: 3.0.1
-      i18next: 23.7.16
+      i18next: 23.7.18
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -4725,10 +4732,10 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /tailwind-merge@2.2.0:
-    resolution: {integrity: sha512-SqqhhaL0T06SW59+JVNfAqKdqLs0497esifRrZ7jOaefP3o64fdFNDMrAQWZFMxTLJPiHVjRLUywT8uFz1xNWQ==}
+  /tailwind-merge@2.2.1:
+    resolution: {integrity: sha512-o+2GTLkthfa5YUt4JxPfzMIpQzZ3adD1vLVkvKE1Twl9UAhGsEbIZhHHZVRttyW177S8PDJI3bTQNaebyofK3Q==}
     dependencies:
-      '@babel/runtime': 7.23.5
+      '@babel/runtime': 7.23.8
     dev: false
 
   /tailwindcss@3.4.1:
@@ -5092,12 +5099,12 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand@4.4.7(@types/react@18.2.48)(react@18.2.0):
-    resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
+  /zustand@4.5.0(@types/react@18.2.48)(react@18.2.0):
+    resolution: {integrity: sha512-zlVFqS5TQ21nwijjhJlx4f9iGrXSL0o/+Dpy4txAP22miJ8Ti6c1Ol1RLNN98BMib83lmDH/2KmLwaNXpjrO1A==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
       '@types/react': '>=16.8'
-      immer: '>=9.0'
+      immer: '>=9.0.6'
       react: '>=16.8'
     peerDependenciesMeta:
       '@types/react':

@@ -1,4 +1,4 @@
-import { NebuiaStepsList } from '../nebuia';
+import NebuiaStepsList from '../nebuia';
 import { EmptyKeys, EmptyReport } from './components/empty_keys';
 import { API_KEY, API_SECRET, REPORT } from './constants/keys';
 import { Container } from './container';

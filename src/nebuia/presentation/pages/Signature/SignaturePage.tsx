@@ -17,10 +17,10 @@ const Content = () => {
 
   return <SignatureDocumentsWelcomePage />;
 };
-export const SignaturePage = () => {
+export default function SignaturePage() {
   return (
     <SignatureProvider>
       <Content />
     </SignatureProvider>
   );
-};
+}

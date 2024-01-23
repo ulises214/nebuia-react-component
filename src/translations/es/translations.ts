@@ -1,6 +1,6 @@
 import { Translation } from '..';
 
-export const esTranslation: Translation = {
+const esTranslation: Translation = {
   signature: {
     create: 'Ir a firmar',
     types: {
@@ -275,3 +275,5 @@ export const esTranslation: Translation = {
     },
   },
 };
+
+export default esTranslation;

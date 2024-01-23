@@ -43,8 +43,10 @@
     "tsconfig.node.json",
     "postcss.config.cjs",
     "tailwind.config.ts",
-    "rollup.config.mjs",
-    "rollup-tailwind.config.mjs"
+    "config/rollup.config.mjs",
+    "config/rollup.tailwind.config.mjs",
+    "config/rollup.lazy.config.mjs",
+    "config/rollup.deps-list.mjs"
   ],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["public", "dist", "node_modules", "**/node_modules/*"]

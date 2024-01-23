@@ -2,6 +2,7 @@
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 
+import { depsList } from './rollup.deps-list.mjs';
 /**
  * @type {import('rollup').RollupOptions}
  */
@@ -10,15 +11,11 @@ export default {
   treeshake: true,
   output: [
     {
-      file: 'dist/tailwind.js',
       format: 'esm',
       sourcemap: true,
+      dir: 'dist',
     },
   ],
-  plugins: [
-    typescript({
-      project: './tsconfig.json',
-    }),
-    terser(),
-  ],
+  plugins: [typescript(), terser()],
+  external: depsList,
 };
