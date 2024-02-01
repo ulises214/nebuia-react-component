@@ -21,9 +21,11 @@ type AlertProps = {
   title?: string;
   message?: string[] | string;
 };
-export const Alert: FC<AlertProps> = ({ message, title, variant }) => {
-  const { dark } = useTheme().theme;
 
+const Icon: FC<{ variant: AlertVariants }> = ({ variant }) => {
+  const {
+    theme: { dark },
+  } = useTheme();
   const Icon = (() => {
     switch (variant) {
       case 'success':
@@ -40,64 +42,91 @@ export const Alert: FC<AlertProps> = ({ message, title, variant }) => {
   return (
     <div
       className={clsxm(
-        'px-4 py-2 rounded-lg flex gap-4 items-center w-full max-w-md',
-        dark ? 'shadow-md' : 'bg-slate-900',
+        variant === 'success' && {
+          'bg-[#0a6b20]': dark,
+          'bg-[#12b76a]': !dark,
+        },
+        variant === 'error' && {
+          'bg-[#d92d20]': !dark,
+          'bg-[#a30e0b]': dark,
+        },
+        variant === 'warning' && {
+          'bg-[#ffc107]': !dark,
+          'bg-[#b78103]': dark,
+        },
+        variant === 'info' && {
+          'bg-[#2196f3]': !dark,
+          'bg-[#0e6cb7]': dark,
+        },
+        'text-white rounded-full p-1',
       )}
     >
-      <div className="flex items-center gap-2">
-        <div
-          className={clsxm(
-            variant === 'success' && {
-              'bg-[#0a6b20]': dark,
-              'bg-[#12b76a]': !dark,
-            },
-            variant === 'error' && {
-              'bg-[#d92d20]': !dark,
-              'bg-[#a30e0b]': dark,
-            },
-            variant === 'warning' && {
-              'bg-[#ffc107]': !dark,
-              'bg-[#b78103]': dark,
-            },
-            variant === 'info' && {
-              'bg-[#2196f3]': !dark,
-              'bg-[#0e6cb7]': dark,
-            },
-            'w-1 h-16',
-          )}
-        ></div>
-        <div
-          className={clsxm(
-            variant === 'success' && {
-              'bg-[#0a6b20]': dark,
-              'bg-[#12b76a]': !dark,
-            },
-            variant === 'error' && {
-              'bg-[#d92d20]': !dark,
-              'bg-[#a30e0b]': dark,
-            },
-            variant === 'warning' && {
-              'bg-[#ffc107]': !dark,
-              'bg-[#b78103]': dark,
-            },
-            variant === 'info' && {
-              'bg-[#2196f3]': !dark,
-              'bg-[#0e6cb7]': dark,
-            },
-            'text-white rounded-full p-2',
-          )}
-        >
-          <Icon className="h-5 w-5" />
+      <Icon className="size-4" />
+    </div>
+  );
+};
+
+export const Alert: FC<AlertProps> = ({ message, title, variant }) => {
+  const {
+    theme: { dark },
+  } = useTheme();
+
+  return (
+    <div
+      className={clsxm(
+        'border-l-4 p-4',
+        variant === 'warning' && {
+          'border-yellow-400 bg-yellow-50': !dark,
+          'border-yellow-500 bg-yellow-100': dark,
+        },
+        variant === 'success' && {
+          'border-green-400 bg-green-50': !dark,
+          'border-green-500 bg-green-100': dark,
+        },
+        variant === 'error' && {
+          'border-red-400 bg-red-50': !dark,
+          'border-red-500 bg-red-100': dark,
+        },
+        variant === 'info' && {
+          'border-blue-400 bg-blue-50': !dark,
+          'border-blue-500 bg-blue-100': dark,
+        },
+      )}
+    >
+      <div className="flex">
+        <div className="shrink-0">
+          <Icon variant={variant} />
         </div>
-      </div>
-      <div className="flex grow flex-col gap-1">
-        {message && <P className="font-bold">{title}</P>}
-        {message &&
-          (Array.isArray(message) ? message : [message]).map((m) => (
-            <P className="font-light" key={m}>
-              {m}
+        <div className="ml-3">
+          {message && (
+            <P
+              className={clsxm(
+                'font-bold',
+                variant === 'warning' && 'text-yellow-800',
+                variant === 'success' && 'text-green-800',
+                variant === 'error' && 'text-red-800',
+                variant === 'info' && 'text-blue-800',
+              )}
+            >
+              {title}
             </P>
-          ))}
+          )}
+          {message &&
+            (Array.isArray(message) ? message : [message]).map((m) => (
+              <P
+                className={clsxm(
+                  'font-light',
+                  variant === 'warning' && 'text-yellow-800',
+                  variant === 'success' && 'text-green-800',
+                  variant === 'error' && 'text-red-800',
+                  variant === 'info' && 'text-blue-800',
+                )}
+                key={m}
+              >
+                {m}
+              </P>
+            ))}
+        </div>
       </div>
     </div>
   );

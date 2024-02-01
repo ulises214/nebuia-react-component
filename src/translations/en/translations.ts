@@ -1,6 +1,10 @@
 import { Translation } from '..';
 
 const enTranslation: Translation = {
+  validateKeys: {
+    error: 'We could not validate your keys, please try again',
+    invalid: 'Invalid keys, please try again',
+  },
   signature: {
     create: 'Go to sign',
     types: {

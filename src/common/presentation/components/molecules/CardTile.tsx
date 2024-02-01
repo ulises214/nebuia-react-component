@@ -40,7 +40,7 @@ export const CardTile: FC<Props> = ({
         <span>{title}</span>
         {subTitle && <span className="text-xs font-thin">{subTitle}</span>}
       </P>
-      {suffix && <div className="h-8 w-8">{suffix}</div>}
+      {suffix && <div className="size-8">{suffix}</div>}
     </Button>
   );
 };

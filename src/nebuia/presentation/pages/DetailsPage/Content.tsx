@@ -56,7 +56,7 @@ const DownloadButton: FC<{ getPdf: PromiseValueCallback<PdfResult> }> = ({
       onClick={() => void handleClick()}
       isLoading={loading}
     >
-      <CloudArrowDownIcon className="mr-2 h-6 w-6" />
+      <CloudArrowDownIcon className="mr-2 size-6" />
       {t('common.downloadReport')}
     </Button>
   );

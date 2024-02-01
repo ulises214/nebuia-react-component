@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren, useCallback, useMemo, useState } from 'react';
 
+import { useWidgetConfig } from '../../../nebuia/presentation/providers/WidgetConfig/Context';
 import { Theme } from '../../domain/types/ITheme';
 import { DEFAULT_THEME } from '../constants/theme';
 import { useRootThemeVars } from '../hooks/UseRootThemeVars';
@@ -8,16 +9,17 @@ import { useThemeBroadcast } from '../hooks/UseThemeBroadcast';
 import { ThemeContext } from './ThemeContext';
 
 export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>(DEFAULT_THEME);
+  const { theme: colorScheme } = useWidgetConfig();
+  const [theme, setTheme] = useState<Theme>(DEFAULT_THEME(colorScheme));
   // update color scheme based on company theme
-  const setColorScheme = useSetColorScheme(setTheme);
+  const setColorScheme = useSetColorScheme(setTheme, theme);
   // restart color scheme to default
   const setDefaultColorScheme = useCallback(() => {
     setColorScheme({
-      primary_color: DEFAULT_THEME.primary,
-      secondary_color: DEFAULT_THEME.secondary,
+      primary_color: DEFAULT_THEME(colorScheme).primary,
+      secondary_color: DEFAULT_THEME(colorScheme).secondary,
     });
-  }, [setColorScheme]);
+  }, [setColorScheme, colorScheme]);
 
   // set root theme variables
   useRootThemeVars(theme);

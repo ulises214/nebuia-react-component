@@ -38,12 +38,13 @@ export const OtpInput: FC<Props> = ({ onChange, readonly, value }) => {
           className={clsxm(
             '!h-14 md:!h-16 xl:!h-20',
             '!w-10 md:!w-12 xl:!w-14',
-            'xl:text-2xl md:text-xl text-lg !p-0 ',
+            'xl:text-2xl md:text-xl text-lg !p-0 text-center',
             'rounded-md border-2 border-gray-300 text-center focus:!border-nebuia-primary-500 focus:!ring-nebuia-primary-500 focus:outline-none',
             dark && 'text-gray-100 ring-gray-700 placeholder:text-gray-500',
             {
               'read-only:bg-gray-200 read-only:text-gray-400': !dark,
-              'read-only:bg-gray-700 read-only:text-gray-500': dark,
+              'read-only:bg-gray-700 read-only:text-gray-500 bg-slate-800':
+                dark,
             },
             'read-only:focus:ring-0',
             props.className,

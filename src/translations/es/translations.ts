@@ -1,6 +1,10 @@
 import { Translation } from '..';
 
 const esTranslation: Translation = {
+  validateKeys: {
+    error: 'No pudimos validar tus llaves, por favor intenta de nuevo',
+    invalid: 'Llaves inválidas, por favor intenta de nuevo',
+  },
   signature: {
     create: 'Ir a firmar',
     types: {

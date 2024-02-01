@@ -79,9 +79,7 @@ And add it to your tailwind.config.js file:
 
 ```javascript
 module.exports = {
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
+  plugins: [require('@tailwindcss/forms')],
 };
 ```
 

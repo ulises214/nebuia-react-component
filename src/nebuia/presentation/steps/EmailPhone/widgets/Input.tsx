@@ -82,7 +82,7 @@ export const Input: FC<Props> = ({
           </P>
         </label>
         <div className="mt-2 flex gap-2 rounded-md shadow-sm">
-          <div className="relative flex grow items-stretch focus-within:z-10">
+          <div className="relative flex grow items-stretch focus-within:z-10 email-phone-container">
             {type === 'email' && (
               <input
                 value={_value}
@@ -98,7 +98,7 @@ export const Input: FC<Props> = ({
                   !dark &&
                     'text-gray-900 ring-gray-300 placeholder:text-gray-400',
                   dark &&
-                    'text-gray-100 ring-gray-700 placeholder:text-gray-500',
+                    'text-gray-100 ring-gray-700 placeholder:text-gray-500 bg-slate-800',
                   {
                     'read-only:bg-gray-200 read-only:text-gray-400': !dark,
                     'read-only:bg-gray-700 read-only:text-gray-500': dark,
@@ -112,18 +112,29 @@ export const Input: FC<Props> = ({
               <PhoneInput
                 localization={language === 'es' ? es : undefined}
                 autoFormat
+                dropdownClass={clsxm(
+                  dark && '!bg-slate-800 text-gray-100 hover:!bg-slate-800',
+                )}
+                preferredCountries={['mx']}
+                containerClass={clsxm(
+                  // only for dark mode
+                  dark && '!bg-slate-800',
+                )}
                 copyNumbersOnly
                 value={value}
                 onChange={(value) => {
                   setValue(value);
                 }}
                 disabled={!!initialValue}
+                inputStyle={{
+                  backgroundColor: dark ? 'rgb(107,114,128)' : '#fff',
+                }}
                 inputClass={clsxm(
                   'focus:ring-nebuia-primary-600',
                   !dark &&
                     'text-gray-900 ring-gray-300 placeholder:text-gray-400',
                   dark &&
-                    'text-gray-100 ring-gray-700 placeholder:text-gray-500',
+                    'text-gray-100 ring-gray-700 placeholder:text-gray-500 !bg-slate-800',
                   {
                     'disabled:bg-gray-200 disabled:text-gray-400': !dark,
                     'disabled:bg-gray-700 disabled:text-gray-500': dark,

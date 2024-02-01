@@ -50,7 +50,7 @@ export const IdUpload: FC<Props> = ({ doc, images, cancel }) => {
   });
 
   return (
-    <div className="mt-8 flex h-full w-full flex-col items-center gap-4 overflow-y-auto">
+    <div className="mt-8 flex size-full flex-col items-center gap-4 overflow-y-auto">
       {!loading && !error && !result?.result && (
         <>
           <P className="max-w-sm text-center">

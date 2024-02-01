@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "target": "ES2015",
     "module": "ESNext",
     "useDefineForClassFields": true,
@@ -35,7 +34,14 @@
     "noUncheckedIndexedAccess": true,
     "declarationDir": "dist",
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "strictBindCallApply": true,
+    "removeComments": true,
+    "paths": {
+      "@components/*": ["./src/common/presentation/components/*"],
+      "@utils/*": ["./src/common/presentation/utils/*"],
+      "@nebuia-services/*": ["./src/services/*"]
+    }
   },
   "include": [
     "src",

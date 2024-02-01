@@ -9,5 +9,5 @@ export type WidgetProps = {
   onFinish: PromiseCallback<string>;
   getKeys: PromiseOrValueCallback<NebuiaKeys>;
   withDetailsPage?: boolean;
-  signDocuments?: boolean;
+  reportType: 'KYC' | 'SIGNATURE' | 'CREDITS_ENROLLMENT';
 };

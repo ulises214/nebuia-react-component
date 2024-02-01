@@ -29,7 +29,7 @@ export const ControlsBack: FC = () => {
         onClick={() => void handlePrevious()}
         disabled={!previous.active}
       >
-        <ArrowLeftIcon className="h-4 w-4" />
+        <ArrowLeftIcon className="size-4" />
       </IconButton>
     </div>
   );
@@ -72,7 +72,7 @@ export const ControlsNext: FC = () => {
         className="!p-3"
         disabled={!next.active}
       >
-        <ArrowRightIcon className="h-6 w-6" />
+        <ArrowRightIcon className="size-6" />
       </IconButton>
     </div>
   );

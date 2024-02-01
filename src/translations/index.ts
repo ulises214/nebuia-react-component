@@ -7,6 +7,10 @@ export interface Translation {
   pages: Pages;
   stepsNames: StepsNames;
   stepsProgress: StepsProgress;
+  validateKeys: {
+    error: string;
+    invalid: string;
+  };
   signature: {
     types: SignatureTypes;
     title: string;

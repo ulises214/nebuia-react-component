@@ -92,7 +92,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {withNotification && (
           <div className="absolute -top-2 right-[-2px]">
-            <span className="inline-flex h-2 w-2 items-center justify-center rounded-full bg-red-500 text-white"></span>
+            <span className="inline-flex size-2 items-center justify-center rounded-full bg-red-500 text-white"></span>
           </div>
         )}
         {isLoading && (

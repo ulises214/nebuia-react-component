@@ -34,6 +34,7 @@ export const NEBUIA_TAILWIND_CONFIG = {
   animation: {
     'circle-loader':
       'jump 1.5s cubic-bezier(0.5, 1.8, 0.5, 1) infinite, fadeInOut 1.4s ease-in-out infinite',
+    spin: 'spin 1s linear infinite',
   },
   keyframes: {
     jump: {
@@ -50,6 +51,14 @@ export const NEBUIA_TAILWIND_CONFIG = {
       },
       '50%': {
         opacity: '1',
+      },
+    },
+    spin: {
+      '0%': {
+        transform: 'rotate(0deg)',
+      },
+      '100%': {
+        transform: 'rotate(360deg)',
       },
     },
   },

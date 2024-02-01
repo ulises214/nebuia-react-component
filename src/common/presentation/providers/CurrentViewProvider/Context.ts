@@ -1,6 +1,12 @@
 import { createContext, useContext } from 'react';
 
-export type Views = 'initial' | 'steps' | 'details' | 'signature' | 'newFace';
+export type Views =
+  | 'initial'
+  | 'steps'
+  | 'details'
+  | 'signature'
+  | 'newFace'
+  | 'credits_enrollment';
 type CurrentViewContextType = {
   currentView?: Views;
   setCurrentView: (view: Views) => void;

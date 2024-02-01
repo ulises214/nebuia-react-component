@@ -10,7 +10,7 @@ import { reportStepsContext } from './Context';
 
 export const ReportStepsProvider: FC<PropsWithChildren> = ({ children }) => {
   const sdk = useNebuiaSdk();
-  const { withDetailsPage, onFinished, signDocuments } = useWidgetConfig();
+  const { withDetailsPage, onFinished, reportType } = useWidgetConfig();
   const [reportSteps, setReportSteps] = useState<NebuiaStep[]>();
   const [currentStep, setCurrentStep] = useState<NebuiaStepNames>();
   const [isLoading, setIsLoading] = useState(false);
@@ -36,8 +36,10 @@ export const ReportStepsProvider: FC<PropsWithChildren> = ({ children }) => {
 
       return;
     }
-    if (signDocuments) {
-      setCurrentView('signature');
+    if (reportType !== 'KYC') {
+      reportType === 'SIGNATURE' && setCurrentView('signature');
+      reportType === 'CREDITS_ENROLLMENT' &&
+        setCurrentView('credits_enrollment');
 
       return;
     }
@@ -48,7 +50,7 @@ export const ReportStepsProvider: FC<PropsWithChildren> = ({ children }) => {
     }
 
     await onFinished(sdk.getReport());
-  }, [onFinished, sdk, setCurrentView, signDocuments, t, withDetailsPage]);
+  }, [onFinished, reportType, sdk, setCurrentView, t, withDetailsPage]);
 
   const onNextStep = useCallback(async () => {
     const currIndex = reportSteps?.findIndex(
@@ -67,8 +69,10 @@ export const ReportStepsProvider: FC<PropsWithChildren> = ({ children }) => {
 
       return;
     }
-    if (signDocuments) {
-      setCurrentView('signature');
+    if (reportType !== 'KYC') {
+      reportType === 'SIGNATURE' && setCurrentView('signature');
+      reportType === 'CREDITS_ENROLLMENT' &&
+        setCurrentView('credits_enrollment');
 
       return;
     }
@@ -83,9 +87,9 @@ export const ReportStepsProvider: FC<PropsWithChildren> = ({ children }) => {
     currentStep,
     onFinished,
     reportSteps,
+    reportType,
     sdk,
     setCurrentView,
-    signDocuments,
     withDetailsPage,
   ]);
 

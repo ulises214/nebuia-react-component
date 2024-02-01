@@ -376,6 +376,20 @@
     --color-border: transparent;
     --color-border-hover: transparent;
   }
+
+  .email-phone-container {
+  }
+
+  /* dark mode */
+  @media (prefers-color-scheme: dark) {
+    .email-phone-container .selected-flag,
+    .email-phone-container .country:hover {
+      @apply !bg-slate-800 hover:!bg-slate-700;
+    }
+    .email-phone-container .country.highlight {
+      @apply !bg-slate-900 hover:!bg-slate-600;
+    }
+  }
 }
 
 .react-tel-input .country-list {

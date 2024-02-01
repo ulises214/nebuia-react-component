@@ -31,7 +31,7 @@ export const Card: React.FC<
 
   return (
     <Button
-      variant="ghost"
+      variant={dark ? 'outline' : 'ghost'}
       onClick={() => onSelect(doc)}
       className={clsxm(
         'p-4 border border-solid flex items-center justify-start gap-4',
@@ -48,7 +48,7 @@ export const Card: React.FC<
           <img
             src={doc === 'ine' ? ID_ICON : PASSPORT_ICON}
             alt=""
-            className="h-12 w-12"
+            className="size-12"
           />
         </picture>
       }

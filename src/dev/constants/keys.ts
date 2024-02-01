@@ -1,20 +1,41 @@
 // eslint-disable-next-line simple-import-sort/imports
 import {
   API_KEY as EnvKey,
+  REPORT_ID as EnvReportId,
+  REPORT_TYPE as EnvReportType,
   API_SECRET as EnvSecret,
   SIGN_DOCUMENTS as EnvSignDocuments,
   KEY_SOURCE,
-  REPORT_ID,
+  getReportType,
 } from '../env';
 import { getFromQuery } from '../utils/getValueFromQuery';
 
 const QuerySecret = getFromQuery('api_secret');
 const QueryKey = getFromQuery('api_key');
-export const QueryReport = getFromQuery('report');
-export const QuerySignDocuments = getFromQuery('sign_documents') === 'true';
+const QueryReport = getFromQuery('report');
+const QuerySignDocuments = getFromQuery('sign_documents') === 'true';
+const _queryReportType = getFromQuery('report_type');
 
-export const API_KEY = KEY_SOURCE === 'FILE' ? EnvKey : QueryKey;
-export const API_SECRET = KEY_SOURCE === 'FILE' ? EnvSecret : QuerySecret;
-export const REPORT = KEY_SOURCE === 'FILE' ? REPORT_ID : QueryReport;
-export const SIGN_DOCUMENTS =
-  KEY_SOURCE === 'FILE' ? EnvSignDocuments : QuerySignDocuments;
+const FROM_FILE = {
+  API_KEY: EnvKey,
+  API_SECRET: EnvSecret,
+  REPORT: EnvReportId,
+  REPORT_TYPE: EnvReportType,
+  SIGN_DOCUMENTS: EnvSignDocuments,
+};
+
+const FROM_QUERY = {
+  API_KEY: QueryKey,
+  API_SECRET: QuerySecret,
+  REPORT: QueryReport,
+  REPORT_TYPE: getReportType(_queryReportType ?? '', 'KYC'),
+  SIGN_DOCUMENTS: QuerySignDocuments,
+};
+
+const toExport = KEY_SOURCE === 'FILE' ? FROM_FILE : FROM_QUERY;
+
+export const API_KEY = toExport.API_KEY;
+export const API_SECRET = toExport.API_SECRET;
+export const REPORT = toExport.REPORT;
+export const REPORT_TYPE = toExport.REPORT_TYPE;
+export const SIGN_DOCUMENTS = toExport.SIGN_DOCUMENTS;

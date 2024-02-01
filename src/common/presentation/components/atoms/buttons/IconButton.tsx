@@ -1,6 +1,6 @@
+import clsxm from '@utils/clsxm';
 import { FC, PropsWithChildren } from 'react';
 
-import clsxm from '../../../utils/clsxm';
 import Button, { ButtonVariant } from './Button';
 
 type Props = Omit<
