@@ -1,13 +1,9 @@
-import { Layout } from '@components/layouts/Layout';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import '../index.css';
 
-import { ThemeProvider } from '../theme/presentation/providers/ThemeProvider';
-import { IS_DEBUG } from './constants/env';
 import { NebuiaDemoContent } from './content';
-import { ComponentsPages } from './pages/components-pages';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -21,27 +17,29 @@ root.render(
         path="/"
         element={<NebuiaDemoContent theme="system" enableBackground />}
       />
-      <Route path="/widget" element={<NebuiaDemoContent />} />
-      <Route path="/widget/:secret" element={<NebuiaDemoContent />} />
-      <Route path="/nebuia-react-component" element={<NebuiaDemoContent />} />
+      <Route
+        path="/widget"
+        element={<NebuiaDemoContent theme="system" enableBackground />}
+      />
+      <Route
+        path="/widget/:secret"
+        element={<NebuiaDemoContent theme="system" enableBackground />}
+      />
+      <Route
+        path="/nebuia-react-component"
+        element={<NebuiaDemoContent theme="system" enableBackground />}
+      />
       <Route
         path="/nebuia-face"
-        element={<NebuiaDemoContent checkReport faceStandAlone />}
+        element={
+          <NebuiaDemoContent
+            theme="system"
+            enableBackground
+            checkReport
+            faceStandAlone
+          />
+        }
       />
-      {IS_DEBUG && (
-        <Route
-          path="/dev"
-          element={
-            <ThemeProvider>
-              <Layout>
-                <Outlet />
-              </Layout>
-            </ThemeProvider>
-          }
-        >
-          <Route path="components" element={<ComponentsPages />} />
-        </Route>
-      )}
     </Routes>
   </BrowserRouter>,
 );

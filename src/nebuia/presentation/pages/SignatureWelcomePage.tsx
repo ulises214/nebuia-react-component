@@ -7,7 +7,7 @@ import { P } from '../../../common/presentation/components/atoms/P';
 import { H1 } from '../../../common/presentation/components/atoms/titles/H1';
 import { HAPPY_GIRL_JUMPING } from '../../../common/presentation/constants/HappyGirlJumping';
 import { useControlButton } from '../../../common/presentation/hooks/UseControlButton';
-import { useNebuiaSdk } from '../hooks/UseRepository';
+import { useCreditsEnrollment, useNebuiaSdk } from '../hooks/UseRepository';
 import { useCompanySteps } from '../providers/CompanySteps/context';
 import { useReportSteps } from '../providers/ReportSteps/Context';
 
@@ -15,15 +15,17 @@ export const SignatureWelcomePage = () => {
   const { steps, isLoading, error } = useCompanySteps();
   const { loadSteps } = useReportSteps();
   const sdk = useNebuiaSdk();
+  const enrollment = useCreditsEnrollment();
   const { t } = useTranslation();
   const onNext = useCallback(async () => {
     const report = sdk.getReport(true);
     if (!report) {
-      await sdk.createReport();
+      const report = await sdk.createReport();
+      report.status && enrollment.setReport(report.payload);
       updateUrl('report', sdk.getReport());
     }
     await loadSteps();
-  }, [loadSteps, sdk]);
+  }, [enrollment, loadSteps, sdk]);
 
   useControlButton({
     action: onNext,

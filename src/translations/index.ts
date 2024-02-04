@@ -4,6 +4,7 @@ import { FaceStateScanning } from '../new-face/store/state';
 
 /* eslint-disable no-use-before-define */
 export interface Translation {
+  services: Services;
   pages: Pages;
   stepsNames: StepsNames;
   stepsProgress: StepsProgress;
@@ -257,4 +258,42 @@ export interface StepsNames {
 
 export interface StepsProgress {
   stepNofN: string;
+}
+
+export interface Services {
+  credit: {
+    instructions: {
+      title: string;
+      message: string;
+    };
+    nss: {
+      title: string;
+      message: string;
+    };
+    documents: {
+      title: string;
+      message: string;
+      select: string;
+      documentTypes: {
+        image: string;
+        pdf: string;
+      };
+    };
+    finish: {
+      title: string;
+      message: string;
+      loading: {
+        title: string;
+        message: string;
+      };
+      success: {
+        title: string;
+        message: string;
+      };
+      error: {
+        title: string;
+        message: string;
+      };
+    };
+  };
 }

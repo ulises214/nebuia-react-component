@@ -1,10 +1,14 @@
 import { NebuiaKeys } from '@nebuia-ts/models';
-import { NebuiaReportsUtils, NebuiaWidget } from '@nebuia-ts/sdk';
+import {
+  NebuiaCreditsEnrollment,
+  NebuiaReportsUtils,
+  NebuiaWidget,
+} from '@nebuia-ts/sdk';
 import { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 
 import { updateUrl } from '../../../common/domain/utils/updateUrl';
 import { useTheme } from '../../../theme/presentation/hooks/UseTheme';
-import { RepositoryContext } from './RepositoryContext';
+import { RepositoryContext, RepositoryContextValue } from './RepositoryContext';
 import { useWidgetConfig } from './WidgetConfig/Context';
 
 type Props = {
@@ -18,15 +22,20 @@ export const NebuiaSdkProvider: FC<PropsWithChildren<Props>> = ({
   const { setColorScheme } = useTheme();
   const { report: kyc } = useWidgetConfig();
 
-  const [sdk, nebuiaUtils] = useMemo(() => {
+  const [sdk, nebuiaUtils, enrollment] = useMemo(() => {
     const sdk = new NebuiaWidget(keys);
     const nebuiaUtils = new NebuiaReportsUtils(keys);
+    const enrollment = new NebuiaCreditsEnrollment(
+      keys,
+      import.meta.env.DEV ? 'http://localhost:5402/api' : undefined,
+    );
     if (kyc) {
       sdk.setReport(kyc);
+      enrollment.setReport(kyc);
       updateUrl('report', kyc);
     }
 
-    return [sdk, nebuiaUtils];
+    return [sdk, nebuiaUtils, enrollment];
   }, [keys, kyc]);
 
   useEffect(() => {
@@ -40,12 +49,13 @@ export const NebuiaSdkProvider: FC<PropsWithChildren<Props>> = ({
       });
   }, [sdk, setColorScheme]);
 
-  const value = useMemo(
+  const value = useMemo<RepositoryContextValue>(
     () => ({
       sdk,
       utils: nebuiaUtils,
+      creditsEnrollment: enrollment,
     }),
-    [sdk, nebuiaUtils],
+    [sdk, nebuiaUtils, enrollment],
   );
 
   return (

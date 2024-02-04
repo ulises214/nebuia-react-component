@@ -5,6 +5,44 @@ const enTranslation: Translation = {
     error: 'We could not validate your keys, please try again',
     invalid: 'Invalid keys, please try again',
   },
+  services: {
+    credit: {
+      instructions: {
+        title: 'Continue your enrollment',
+        message: 'There is an additional step to complete your process',
+      },
+      nss: {
+        title: 'Enter your NSS',
+        message: 'Enter your NSS to continue with your enrollment',
+      },
+      documents: {
+        title: 'Extra documents',
+        message:
+          'Upload the following documents to continue with your enrollment',
+        documentTypes: {
+          image: 'Image (JPG, PNG)',
+          pdf: 'PDF',
+        },
+        select: 'Select',
+      },
+      finish: {
+        title: 'Just a moment',
+        message: 'Please wait while we finish your enrollment',
+        loading: {
+          title: 'Uploading documents',
+          message: 'Please wait while we upload your documents',
+        },
+        success: {
+          title: 'Enrollment completed',
+          message: 'You can close this window now. Thank you!',
+        },
+        error: {
+          title: 'Oops!',
+          message: 'We could not finish your enrollment, please try again',
+        },
+      },
+    },
+  },
   signature: {
     create: 'Go to sign',
     types: {

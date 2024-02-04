@@ -27,7 +27,7 @@ const SignaturePage = lazy(
 );
 
 const CreditEnrollmentPage = lazy(
-  () => import('../services/credits/presentation/pages/instructions'),
+  () => import('../services/credits/presentation/pages'),
 );
 
 const _Content: FC = () => {

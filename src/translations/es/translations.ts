@@ -5,6 +5,46 @@ const esTranslation: Translation = {
     error: 'No pudimos validar tus llaves, por favor intenta de nuevo',
     invalid: 'Llaves inválidas, por favor intenta de nuevo',
   },
+  services: {
+    credit: {
+      instructions: {
+        title: 'Continua tu enrolamiento',
+        message: 'Hay un paso adicional para completar tu proceso',
+      },
+      nss: {
+        title: 'Número de seguro social',
+        message:
+          'Por favor ingresa tu número de seguro social (NSS) para continuar',
+      },
+      documents: {
+        title: 'Documentos extra',
+        message: 'Para tu enrolamiento necesitamos los siguientes documentos',
+        documentTypes: {
+          image: 'Imagen (JPG, PNG)',
+          pdf: 'PDF',
+        },
+        select: 'Seleccionar',
+      },
+      finish: {
+        title: 'Ya casi terminamos',
+        message: 'Quedan unos pasos para completar tu enrolamiento',
+        loading: {
+          title: 'Subiendo documentos',
+          message: 'Por favor espera mientras subimos tus documentos',
+        },
+        success: {
+          title: '¡Enrolamiento completado!',
+          message:
+            '¡Gracias por completar tu enrolamiento!, ya puedes cerrar esta ventana',
+        },
+        error: {
+          title: '¡Ups!',
+          message:
+            'No pudimos completar tu enrolamiento, por favor intenta de nuevo',
+        },
+      },
+    },
+  },
   signature: {
     create: 'Ir a firmar',
     types: {
