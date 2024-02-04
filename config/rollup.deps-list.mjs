@@ -23,4 +23,5 @@ export const depsList = [
   'react-phone-input-2/lang/es.json',
   'react-phone-input-2/lib/semantic-ui.css',
   'zustand',
+  '@heroicons/react/20/solid',
 ];
