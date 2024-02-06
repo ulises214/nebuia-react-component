@@ -1,8 +1,7 @@
 import NebuiaStepsList from '../nebuia';
 import { EmptyKeys, EmptyReport } from './components/empty_keys';
-import { API_KEY, API_SECRET, REPORT } from './constants/keys';
+import { API_KEY, API_SECRET, REPORT, REPORT_TYPE } from './constants/keys';
 import { Container } from './container';
-import { REPORT_TYPE } from './env';
 
 export const NebuiaDemoContent = ({
   faceStandAlone,
