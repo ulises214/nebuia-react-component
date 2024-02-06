@@ -12,8 +12,8 @@ dependencies:
     specifier: 3.0.2
     version: 3.0.2
   '@nebuia-ts/sdk':
-    specifier: 2.1.12
-    version: 2.1.12
+    specifier: 2.1.13
+    version: 2.1.13
   '@tailwindcss/forms':
     specifier: 0.5.7
     version: 0.5.7(tailwindcss@3.4.1)
@@ -716,8 +716,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@nebuia-ts/api@3.1.7:
-    resolution: {integrity: sha512-vrNEMN6e9aTUc0B9mRBstdvTGorBqhGgw3oGw0kzMbS21ilEIKWk3/CWrwUFnzxNC6a98UzAmCLaAYOznYyD6A==}
+  /@nebuia-ts/api@3.1.8:
+    resolution: {integrity: sha512-lLQCO5rDD6UjXNpqIeLCxuzl07WS6BrGYUhTorRco217rORRZKTQqeqyX39DTN+mYDkW1u1z1lltA6BvrPbInA==}
     dependencies:
       '@nebuia-ts/models': 3.0.2
       axios: 1.6.7
@@ -730,10 +730,10 @@ packages:
     resolution: {integrity: sha512-wa1kKNCn9FGqnSkEjTEvi9fpARvIuxQLTEEfu84ch2K/yjVKh3ONICRwWjvcdV91BiAu8qMjfSECoaS62DPzbw==}
     dev: false
 
-  /@nebuia-ts/sdk@2.1.12:
-    resolution: {integrity: sha512-5zlrKQy3H0Z+mIhahGNb2a5u9GmHL+kEJrMeoy5uHguM0vAM8OfZErMtb5f1uXZiwtI+I66u2cC3DX7aOLfujw==}
+  /@nebuia-ts/sdk@2.1.13:
+    resolution: {integrity: sha512-vI/CzjLJLB5w9+Ov5q2xSBXVXro9/QSdgQ0TolRCLM9Nsdmiu7XX1nPQyViRyniiXICNbQxeGI5/Vso3P3VzBg==}
     dependencies:
-      '@nebuia-ts/api': 3.1.7
+      '@nebuia-ts/api': 3.1.8
       '@nebuia-ts/models': 3.0.2
     transitivePeerDependencies:
       - debug

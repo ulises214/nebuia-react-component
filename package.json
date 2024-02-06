@@ -1,7 +1,7 @@
 {
   "name": "nebuia-react-component",
   "description": "Widget to implement Nebuia in React",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "module": "./dist",
   "types": "./dist",
   "author": "Ulises Rafael Ramirez Martinez",
@@ -68,7 +68,7 @@
     "@tailwindcss/forms": "0.5.7",
     "@heroicons/react": "2.1.1",
     "@nebuia-ts/models": "3.0.2",
-    "@nebuia-ts/sdk": "2.1.12",
+    "@nebuia-ts/sdk": "2.1.13",
     "i18next": "23.8.2",
     "lean-qr": "2.3.3",
     "libphonenumber-js": "1.10.55",

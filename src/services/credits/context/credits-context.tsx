@@ -11,8 +11,8 @@ export type CreditsStepContext = {
   onPreviousStep: () => void;
 };
 export type CreditsCompanyContext = {
-  company?: NebuiaCompany;
-  setCompany: (company: NebuiaCompany) => void;
+  company?: NebuiaCompany['settings'];
+  setCompany: (company: NebuiaCompany['settings']) => void;
 };
 
 export type CreditsEnrollmentInfoContext = {

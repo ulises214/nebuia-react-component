@@ -22,7 +22,7 @@ export const DocumentsCreditEnrollment = () => {
   const { setData } = useCreditsEnrollmentInfoContext();
   const [error, setError] = useState<string>();
 
-  const companyDocs = company?.settings.credit.collaborator_document_config;
+  const companyDocs = company?.credit.collaborator_document_config;
 
   const validate = useCallback(() => {
     if (!companyDocs) {

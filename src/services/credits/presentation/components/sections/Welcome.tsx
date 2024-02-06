@@ -17,7 +17,7 @@ import { useNebuiaSdk } from '../../../../../nebuia/presentation/hooks/UseReposi
 type Status =
   | { loading: true }
   | { error: string }
-  | { success: NebuiaCompany };
+  | { success: NebuiaCompany['settings'] };
 export const WelcomeCreditEnrollment = () => {
   const sdk = useNebuiaSdk();
   const { onNextStep } = useCreditsStepContext();
@@ -34,46 +34,11 @@ export const WelcomeCreditEnrollment = () => {
   useEffect(() => {
     void init();
     async function init() {
-      const response = await sdk.getCompany();
+      const response = await sdk.getCompanySettings();
       if (response.status) {
         setStatus({ success: response.payload });
       } else {
-        setStatus({
-          success: {
-            id: '659444bda5383d25f13998f9',
-            name: 'WalleLab',
-            ip: '127.0.0.0',
-            origin: 'localhost',
-            steps: ['email', 'phone', 'liveness', 'address', 'id'],
-            keys: {
-              public_key: '19PKXH7-087CHR8-21DFA5J-3R991EZ',
-              secret_key: '5369f627-1076-4708-82d7-a8b2f09485df',
-            },
-            settings: {
-              image: 'logo_WalleLab.jpg',
-              primary_color: '#a108e7',
-              secondary_color: '#402154',
-              credit: {
-                domain: 'wallelab',
-                platform_name: 'Creditos Walle',
-                collaborator_document_config: [
-                  {
-                    document_name: 'Compronte de ingresos',
-                    document_type: 'Image',
-                  },
-                  {
-                    document_name: 'Titulo universitario',
-                    document_type: 'Image',
-                  },
-                ],
-              },
-            },
-            otp: {
-              secret: 'IWRZXWA3PEYAUZE76ZWFQGBGPE',
-            },
-            admin: '65944490a5383d25f13998f8',
-          },
-        });
+        setStatus({ error: response.payload });
       }
     }
   }, [sdk]);
