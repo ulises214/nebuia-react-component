@@ -1,4 +1,4 @@
-import { NebuiaCompanySettings } from '@nebuia-ts/models';
+import { NebuiaCompanySettings } from 'nebuia-ts/models';
 import { useEffect } from 'react';
 
 export type NebuiaCompanyWidgetSettings = Pick<

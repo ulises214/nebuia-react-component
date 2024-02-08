@@ -1,6 +1,6 @@
 export const depsList = [
-  '@nebuia-ts/models',
-  '@nebuia-ts/sdk',
+  'nebuia-ts/models',
+  'nebuia-ts/sdk',
   'react',
   'react/jsx-runtime',
   'react-i18next',

@@ -1,4 +1,4 @@
-import { NebuiaReport } from '@nebuia-ts/models';
+import { NebuiaReport } from 'nebuia-ts/models';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { ActionHookResponse } from '../../../common/presentation/types/ActionHookResponse';

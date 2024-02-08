@@ -1,5 +1,5 @@
 import { Layout } from '@components/layouts/Layout';
-import { NebuiaKeys } from '@nebuia-ts/models';
+import { NebuiaKeys } from 'nebuia-ts/models';
 import { FC, lazy, Suspense, useEffect, useState } from 'react';
 
 import { Loader } from '../common/presentation/components/atoms/Loader';

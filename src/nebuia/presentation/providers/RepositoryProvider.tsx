@@ -1,9 +1,9 @@
-import { NebuiaKeys } from '@nebuia-ts/models';
+import { NebuiaKeys } from 'nebuia-ts/models';
 import {
   NebuiaCreditsEnrollment,
   NebuiaReportsUtils,
   NebuiaWidget,
-} from '@nebuia-ts/sdk';
+} from 'nebuia-ts/sdk';
 import { FC, PropsWithChildren, useEffect, useMemo } from 'react';
 
 import { updateUrl } from '../../../common/domain/utils/updateUrl';

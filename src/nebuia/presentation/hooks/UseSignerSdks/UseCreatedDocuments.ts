@@ -1,4 +1,4 @@
-import { NebuiaSignDocuments } from '@nebuia-ts/sdk';
+import { NebuiaSignDocuments } from 'nebuia-ts/sdk';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useNebuiaSdk } from '../UseRepository';

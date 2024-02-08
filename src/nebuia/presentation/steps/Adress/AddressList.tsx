@@ -1,4 +1,4 @@
-import { NebuiaAddress } from '@nebuia-ts/models';
+import { NebuiaAddress } from 'nebuia-ts/models';
 import { FC, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 

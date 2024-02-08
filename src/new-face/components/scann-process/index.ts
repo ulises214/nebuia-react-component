@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { NebuiaWidget } from '@nebuia-ts/sdk';
+import { NebuiaWidget } from 'nebuia-ts/sdk';
 import * as wasmFeatureDetect from 'wasm-feature-detect';
 
 import { FaceState } from '../../store/state';

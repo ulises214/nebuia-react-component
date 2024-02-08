@@ -1,4 +1,4 @@
-import { AdvancedSignType } from '@nebuia-ts/models';
+import { AdvancedSignType } from 'nebuia-ts/models';
 import { FC, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 

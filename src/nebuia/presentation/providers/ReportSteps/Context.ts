@@ -1,4 +1,4 @@
-import { NebuiaStep, NebuiaStepNames } from '@nebuia-ts/models';
+import { NebuiaStep, NebuiaStepNames } from 'nebuia-ts/models';
 import { createContext, useContext } from 'react';
 
 import { PromiseCallback } from '../../../domain/types/ParamCallback';

@@ -1,7 +1,7 @@
 import { Loader } from '@components/atoms/Loader';
 import { Alert } from '@components/molecules/Alert';
-import { NebuiaKeys } from '@nebuia-ts/models';
-import { NebuiaWidget } from '@nebuia-ts/sdk';
+import { NebuiaKeys } from 'nebuia-ts/models';
+import { NebuiaWidget } from 'nebuia-ts/sdk';
 import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

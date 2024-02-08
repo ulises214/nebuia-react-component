@@ -1,4 +1,4 @@
-import { NebuiaStepNames } from '@nebuia-ts/models';
+import { NebuiaStepNames } from 'nebuia-ts/models';
 import { createContext, useContext } from 'react';
 
 type CompanyStepsContext = {

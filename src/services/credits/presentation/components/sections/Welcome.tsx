@@ -6,7 +6,7 @@ import {
   useCreditsCompanyContext,
   useCreditsStepContext,
 } from '@nebuia-services/credits/context/credits-context';
-import { NebuiaCompany } from '@nebuia-ts/models';
+import { NebuiaCompany } from 'nebuia-ts/models';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

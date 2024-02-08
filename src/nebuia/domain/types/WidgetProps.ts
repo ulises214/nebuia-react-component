@@ -1,4 +1,4 @@
-import { NebuiaKeys } from '@nebuia-ts/models';
+import { NebuiaKeys } from 'nebuia-ts/models';
 
 import { PromiseCallback, PromiseOrValueCallback } from './ParamCallback';
 

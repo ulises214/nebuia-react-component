@@ -2,7 +2,7 @@ import {
   NebuiaCreditsEnrollment,
   NebuiaReportsUtils,
   NebuiaWidget,
-} from '@nebuia-ts/sdk';
+} from 'nebuia-ts/sdk';
 import { createContext } from 'react';
 
 export interface RepositoryContextValue {

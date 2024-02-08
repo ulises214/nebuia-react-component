@@ -1,4 +1,4 @@
-import { NebuiaAddress } from '@nebuia-ts/models';
+import { NebuiaAddress } from 'nebuia-ts/models';
 import { useEffect, useState } from 'react';
 
 import { ActionHookResponse } from '../../../common/presentation/types/ActionHookResponse';

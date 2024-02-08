@@ -1,4 +1,4 @@
-import { NebuiaStep, NebuiaStepNames } from '@nebuia-ts/models';
+import { NebuiaStep, NebuiaStepNames } from 'nebuia-ts/models';
 import { FC, PropsWithChildren, useCallback, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

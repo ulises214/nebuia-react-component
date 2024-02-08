@@ -1,4 +1,4 @@
-import { AdvancedSignType } from '@nebuia-ts/models';
+import { AdvancedSignType } from 'nebuia-ts/models';
 
 import { FaceStateScanning } from '../new-face/store/state';
 

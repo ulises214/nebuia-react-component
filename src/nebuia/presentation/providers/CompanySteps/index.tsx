@@ -1,4 +1,4 @@
-import { NebuiaStepNames } from '@nebuia-ts/models';
+import { NebuiaStepNames } from 'nebuia-ts/models';
 import { FC, PropsWithChildren, useMemo, useState } from 'react';
 
 import { useCompanySteps } from '../../hooks/UseCompanySteps';

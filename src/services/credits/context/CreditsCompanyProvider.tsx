@@ -1,4 +1,4 @@
-import { NebuiaCompany } from '@nebuia-ts/models';
+import { NebuiaCompany } from 'nebuia-ts/models';
 import { FC, PropsWithChildren, useMemo, useState } from 'react';
 
 import { companyContext } from './credits-context';

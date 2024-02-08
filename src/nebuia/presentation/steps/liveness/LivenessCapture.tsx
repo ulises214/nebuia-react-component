@@ -1,4 +1,4 @@
-import { NebuiaKeys } from '@nebuia-ts/models';
+import { NebuiaKeys } from 'nebuia-ts/models';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

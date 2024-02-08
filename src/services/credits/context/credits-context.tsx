@@ -1,5 +1,5 @@
-import { NebuiaCompany } from '@nebuia-ts/models';
-import { NebuiaCreditsEnrollment } from '@nebuia-ts/sdk';
+import { NebuiaCompany } from 'nebuia-ts/models';
+import { NebuiaCreditsEnrollment } from 'nebuia-ts/sdk';
 import { createContext, useContext } from 'react';
 
 type EnrollmentData = Parameters<
