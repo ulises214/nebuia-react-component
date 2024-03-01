@@ -26,7 +26,7 @@ export const ReportSummaryCard: FC<{ report: NebuiaReport }> = ({ report }) => {
   const { status } = checkNebuiaReportValidity(report);
 
   return (
-    <div className='max-w-md'>
+    <div className="max-w-md">
       <Alert
         variant={mapValidityToVariant(status)}
         title={t(`common.reportValidity.${status.toLowerCase()}.title`)}
