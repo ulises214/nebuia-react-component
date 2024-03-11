@@ -19,14 +19,10 @@ export const LIGHT_THEME = {
   textSecondary: 'rgba(0, 0, 0, 0.6)',
   secondaryBackground: '#0B132B',
 } as const;
-const getIsDark = (): boolean =>
-  window.matchMedia('(prefers-color-scheme: dark)').matches;
-const defaultIsDark = getIsDark();
 export const DEFAULT_THEME = (
   colorScheme: 'light' | 'dark' | 'system' = 'system',
 ): Theme => {
-  const isDark =
-    colorScheme === 'dark' || (colorScheme === 'system' && defaultIsDark);
+  const isDark = colorScheme === 'dark';
 
   const primary = isDark ? DEFAULT_DARK_PRIMARY_COLOR : DEFAULT_PRIMARY_COLOR;
   const secondary = isDark

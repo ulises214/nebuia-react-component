@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
 import { useWidgetConfig } from '../../../nebuia/presentation/providers/WidgetConfig/Context';
 import { Theme } from '../../domain/types/ITheme';
@@ -67,22 +67,6 @@ export const useSetColorScheme = (
     },
     [setTheme, colorScheme],
   );
-
-  useEffect(() => {
-    // Listen for changes in the OS color scheme
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => {
-      setColorScheme({
-        primary_color: currentTheme.primary,
-        secondary_color: currentTheme.secondary,
-      });
-    };
-    mediaQuery.addEventListener('change', handleChange);
-
-    return () => {
-      mediaQuery.removeEventListener('change', handleChange);
-    };
-  }, [currentTheme.primary, currentTheme.secondary, setColorScheme, setTheme]);
 
   return setColorScheme;
 };
