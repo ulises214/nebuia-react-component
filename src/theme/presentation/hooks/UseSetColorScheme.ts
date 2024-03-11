@@ -37,10 +37,7 @@ export const useSetColorScheme = (
     ({ primary_color: primary, secondary_color: secondary }) => {
       setTheme((prev: Partial<Theme>) => {
         // check browser preference
-        const isDark =
-          colorScheme === 'system'
-            ? window.matchMedia('(prefers-color-scheme: dark)').matches
-            : colorScheme === 'dark';
+        const isDark = colorScheme === 'dark';
         const [defaultPrimary, defaultSecondary] = getColorsByBrightness({
           isDark,
         });

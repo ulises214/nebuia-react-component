@@ -14,14 +14,6 @@ html {
   color: var(--base-text-color, #333);
 }
 
-/* dark */
-@media (prefers-color-scheme: dark) {
-  body,
-  html {
-    background: #08001a;
-  }
-}
-
 #root {
   width: 100%;
   height: 100%;
